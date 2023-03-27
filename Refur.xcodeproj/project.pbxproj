@@ -74,6 +74,7 @@
 				6A517A5C29CB357E00C2929B /* SceneDelegate.swift */,
 				6A517A5E29CB357E00C2929B /* ViewController.swift */,
 				6A517A6029CB357E00C2929B /* Main.storyboard */,
+				6A52901A29D07348004BCE7B /* ItemDetails.storyboard */,
 				6A517A6329CB357F00C2929B /* Assets.xcassets */,
 				6A517A6529CB357F00C2929B /* LaunchScreen.storyboard */,
 				6A9AFE8129D1BCDF00C4CFAB /* Model */,
@@ -163,6 +164,7 @@
 				6A517A6429CB357F00C2929B /* Assets.xcassets in Resources */,
 				6A2D1DC929D06DAE004D48B0 /* GoogleService-Info.plist in Resources */,
 				6A517A6229CB357E00C2929B /* Main.storyboard in Resources */,
+				6A52901B29D07348004BCE7B /* ItemDetails.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
