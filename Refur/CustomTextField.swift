@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+extension UIColor {
+    static var primary: UIColor  { return UIColor(red: 0.0902, green: 0.06275, blue: 0.26667, alpha: 1.0) }
+    static var secondaryOne: UIColor { return UIColor(red: 0.10588, green: 0.85882, blue: 0.53333, alpha: 1.0) }
+    static var secondaryTwo: UIColor { return UIColor(red: 0.24314, green: 0.83922, blue: 0.72549, alpha: 1.0) }
+}
+
 class CustomTextField : UITextField {
     let padding: CGFloat = 45
     required init?(coder: NSCoder) {
@@ -17,7 +23,7 @@ class CustomTextField : UITextField {
     func setupLeftImageView(image : UIImage) {
         self.leftViewMode = .always
         let leftView = UIImageView(frame: CGRect(x: 10, y: self.frame.height / 2 - 10, width: 25, height: 18))
-        leftView.tintColor = .brown
+        leftView.tintColor = .secondaryOne
         leftView.image = image
         self.addSubview(leftView)
     }

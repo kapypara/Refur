@@ -10,17 +10,16 @@
         <!--Login View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="LoginViewController" customModule="Refur" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="Refur" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="refur-logo" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-Jv-rJa">
-                                <rect key="frame" x="53" y="158" width="286" height="152"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refur-logo-dark" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-Jv-rJa">
+                                <rect key="frame" x="30" y="149" width="333" height="175"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nue-Yf-d9x">
-                                <rect key="frame" x="30" y="347" width="333" height="158.33333333333337"/>
+                                <rect key="frame" x="30" y="539.66666666666663" width="333" height="158.33333333333337"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHv-QX-Pby" customClass="CustomTextField" customModule="Refur" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="34"/>
@@ -46,24 +45,30 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1I-56-KUt">
                                         <rect key="frame" x="0.0" y="84" width="333" height="32"/>
-                                        <color key="tintColor" red="0.64313725490196072" green="0.36078431372549019" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.24313725490196078" green="0.83921568627450982" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="SIGN IN">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
-                                            <color key="baseBackgroundColor" red="0.64313725489999995" green="0.36078431370000003" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseBackgroundColor" red="0.1058823529" green="0.85882352939999995" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpU-1M-8xE">
                                         <rect key="frame" x="0.0" y="123.99999999999999" width="333" height="34.333333333333329"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3g-gL-GGn">
-                                                <rect key="frame" x="0.0" y="0.0" width="87.666666666666671" height="34.333333333333336"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="New User? " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3g-gL-GGn">
+                                                <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.96470588239999999" green="0.93333333330000001" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLD-5O-9Qp">
-                                                <rect key="frame" x="87.666666666666671" y="0.0" width="245.33333333333331" height="34.333333333333336"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLD-5O-9Qp">
+                                                <rect key="frame" x="202.66666666666663" y="0.0" width="130.33333333333337" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Register Now!"/>
                                             </button>
@@ -73,11 +78,14 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.96470588235294119" green="0.93333333333333335" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.090196078431372548" green="0.062745098039215685" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="nue-Yf-d9x" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="65t-O8-3P4"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nue-Yf-d9x" secondAttribute="trailing" constant="30" id="hZM-0M-pIX"/>
-                            <constraint firstItem="nue-Yf-d9x" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="i06-c9-ZYc"/>
+                            <constraint firstItem="qRb-Jv-rJa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="WfO-aM-MI1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="nue-Yf-d9x" secondAttribute="bottom" constant="120" id="YIz-5s-eRm"/>
+                            <constraint firstItem="qRb-Jv-rJa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="cqK-RA-64F"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nue-Yf-d9x" secondAttribute="trailing" constant="30" id="pBm-s1-nKh"/>
+                            <constraint firstItem="nue-Yf-d9x" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="slI-rc-YfS"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qRb-Jv-rJa" secondAttribute="trailing" constant="30" id="xi2-fd-3Og"/>
                         </constraints>
                     </view>
                     <connections>
@@ -91,6 +99,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="refur-logo" width="700" height="300"/>
+        <image name="refur-logo-dark" width="175.71000671386719" height="175.71000671386719"/>
     </resources>
 </document>

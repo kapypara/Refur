@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
         passwordTextField.setupLeftImageView(image: UIImage(systemName: "lock")!)
     }
     
-    
     /*
     // MARK: - Navigation
 
