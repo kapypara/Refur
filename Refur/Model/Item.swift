@@ -32,14 +32,23 @@ class Item {
                 category: ItemCategory.Clothing, type: type, size: size)
     }
 
+    static func Clothing(name: String, description: String,
+            condition: ItemCondition, price: Double,
+            type: ClothingType, size: Double) -> Item {
+
+        return Item(name: name, description: description,
+                condition: condition, price: price,
+                category: ItemCategory.Clothing, type: type, size: size)
+    }
+
     // MARK: Shoe init
     static func Shoes(name: String, description: String,
             condition: ItemCondition, price: Double,
             ShoeSize: Double) -> Item {
 
-        return Item(name: name, description: description,
+        return Clothing(name: name, description: description,
                 condition: condition, price: price,
-                category: ItemCategory.Clothing, type: ClothingType.Shoes, size: ShoeSize)
+                type: ItemCategory.Shoe, size: ShoeSize)
     }
 
 
