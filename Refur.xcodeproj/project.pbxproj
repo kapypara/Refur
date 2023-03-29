@@ -23,6 +23,7 @@
 		6A517A6729CB357F00C2929B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A517A6529CB357F00C2929B /* LaunchScreen.storyboard */; };
 		6A73A06729D3045700F6FFAD /* ItemDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A73A06629D3045700F6FFAD /* ItemDetails.storyboard */; };
 		6A73A06B29D317E100F6FFAD /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A73A06A29D317E100F6FFAD /* Profile.storyboard */; };
+		6A8DF56329D4717000E5B77C /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8DF56229D4717000E5B77C /* Add.storyboard */; };
 		6A9AFE7E29D1BCD000C4CFAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9AFE7D29D1BCD000C4CFAB /* User.swift */; };
 		6A9AFE7F29D1BCD000C4CFAB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9AFE7B29D1BCD000C4CFAB /* Profile.swift */; };
 		6A9AFE8029D1BCD000C4CFAB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9AFE7C29D1BCD000C4CFAB /* Item.swift */; };
@@ -44,6 +45,7 @@
 		6A517A6829CB357F00C2929B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A73A06629D3045700F6FFAD /* ItemDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemDetails.storyboard; sourceTree = "<group>"; };
 		6A73A06A29D317E100F6FFAD /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6A8DF56229D4717000E5B77C /* Add.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		6A9AFE7B29D1BCD000C4CFAB /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		6A9AFE7C29D1BCD000C4CFAB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		6A9AFE7D29D1BCD000C4CFAB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				6A517A6529CB357F00C2929B /* LaunchScreen.storyboard */,
 				6A73A06629D3045700F6FFAD /* ItemDetails.storyboard */,
 				6A73A06A29D317E100F6FFAD /* Profile.storyboard */,
+				6A8DF56229D4717000E5B77C /* Add.storyboard */,
 				6A9AFE8129D1BCDF00C4CFAB /* Model */,
 				6A517A6829CB357F00C2929B /* Info.plist */,
 				6A2D1DC829D06DAE004D48B0 /* GoogleService-Info.plist */,
@@ -181,6 +184,7 @@
 				6A517A6729CB357F00C2929B /* LaunchScreen.storyboard in Resources */,
 				6A517A6429CB357F00C2929B /* Assets.xcassets in Resources */,
 				6A2D1DC929D06DAE004D48B0 /* GoogleService-Info.plist in Resources */,
+				6A8DF56329D4717000E5B77C /* Add.storyboard in Resources */,
 				3F0D397629D31B77009AC073 /* Login.storyboard in Resources */,
 				6A517A6229CB357E00C2929B /* Main.storyboard in Resources */,
 				6A73A06B29D317E100F6FFAD /* Profile.storyboard in Resources */,
