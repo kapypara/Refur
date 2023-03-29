@@ -74,9 +74,9 @@ class User {
                 return
             }
             
-            let ref = Database.database(url: "https://refur-2a2f0-default-rtdb.firebaseio.com/").reference()
+            let ref = FirebaseDatabase.Database.database(url: "https://refur-2a2f0-default-rtdb.firebaseio.com/").reference()
             let uid = Auth.auth().currentUser?.uid
-            ref.child("users").child(uid!).setValue(["Email" : email, "Name" : password])
+            ref.child("users").child(uid!).setValue(["Email" : email, "Name" : password, "TYpe": "user"])
             
         })
         
