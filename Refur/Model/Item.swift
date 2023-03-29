@@ -19,8 +19,8 @@ class Item {
     let category: ItemCategory
 
     // the type and size will be set depending on the category
-    let type: Any? = nil
-    let size: Any? = nil
+    let type: Any?
+    let size: Any?
     
     // MARK: Clothing init
     static func Clothing(name: String, description: String,
@@ -48,7 +48,7 @@ class Item {
 
         return Clothing(name: name, description: description,
                 condition: condition, price: price,
-                type: ItemCategory.Shoe, size: ShoeSize)
+                type: ClothingType.Shoes, size: ShoeSize)
     }
 
 
@@ -77,7 +77,7 @@ class Item {
 
     private init(name: String, description: String,
          condition: ItemCondition, price: Double,
-         category: Any, type: Any, size: Any) {
+         category: ItemCategory, type: Any, size: Any?) {
         
         self.name = name
         self.description = description
