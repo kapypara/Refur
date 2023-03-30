@@ -39,9 +39,7 @@ class Database {
             return imageUuid
         }
         
-        static func loadImage(uuid: String) -> UIImage? {
-            
-            var image: UIImage? = nil
+        static func loadImage(view: UIImageView, uuid: String) {
             
             ref.child("images/\(uuid).png").getData(maxSize:(104857666), completion: { (data, error) in
                 
@@ -51,11 +49,9 @@ class Database {
                 }
                 
                 if let image = data {
-                    let image = UIImage(data: image)
+                    view.image = UIImage(data: image)
                 }
             })
-            
-            return image
         }
     }
     
