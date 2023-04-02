@@ -1,6 +1,6 @@
 
 enum ItemCondition {
-    case BrandNew, AsGoodAsNew, GoodCondition, Decent
+    case BrandNew, AsGoodAsNew, GoodCondition, /* Decent */ Used
 }
 
 enum ItemCategory {
@@ -108,7 +108,7 @@ enum OtherTYpe {
 }
 
 enum ClothingSize {
-    case medium, small, large
+    case Medium, Small, Large
 
     case XXS, XS, XL, XXL
 }
