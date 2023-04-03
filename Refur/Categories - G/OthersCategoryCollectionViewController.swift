@@ -1,0 +1,50 @@
+//
+//  OthersCategoryCollectionViewController.swift
+//  Refur
+//
+//  Created by iOSdev on 03/04/2023.
+//
+
+import UIKit
+
+private let reuseIdentifier = "Cell"
+
+class OthersCategoryCollectionViewController: UICollectionViewController {
+
+    var arrayOthers: [othersItems] = [
+        othersItems(othersImage: UIImageView(image: UIImage(named: "ClothingCategory")!), othersLabel: "Hi"),
+        
+    ]
+   
+
+     
+     override func viewDidLoad() {
+         super.viewDidLoad()
+         collectionView.delegate = self
+         collectionView.dataSource = self
+     }
+
+
+
+     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+         // #warning Incomplete implementation, return the number of items
+         return arrayOthers.count
+     }
+
+     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OthersCell", for: indexPath) as! CategoriesCollectionViewCell
+     
+         // Configure the cell
+         let others = arrayOthers[indexPath.row]
+         cell.setupCell(image: others.othersImage.image!, label: others.othersLabel)
+         return cell
+     }
+
+     struct othersItems {
+         let othersImage : UIImageView
+         let othersLabel : String
+     }
+
+
+
+}

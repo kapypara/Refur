@@ -15,7 +15,7 @@
 		3FFAC65129D48BF100BE739B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAC65029D48BF100BE739B /* Home.storyboard */; };
 		3FFAC65329D48BFC00BE739B /* Likes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FFAC65229D48BFC00BE739B /* Likes.storyboard */; };
 		6623102129D8994F00CD0885 /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6623102029D8994F00CD0885 /* AddTableViewController.swift */; };
-		66E0FA9429DA5F8600179A9B /* ClothesCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E0FA9329DA5F8600179A9B /* ClothesCategoryCollectionViewCell.swift */; };
+		66E0FA9429DA5F8600179A9B /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E0FA9329DA5F8600179A9B /* CategoriesCollectionViewCell.swift */; };
 		66E0FA9629DA602D00179A9B /* ClothingCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E0FA9529DA602D00179A9B /* ClothingCategoryCollectionViewController.swift */; };
 		6A2D1DC929D06DAE004D48B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A2D1DC829D06DAE004D48B0 /* GoogleService-Info.plist */; };
 		6A2D1DCC29D06E09004D48B0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6A2D1DCB29D06E09004D48B0 /* FirebaseAuth */; };
@@ -35,6 +35,8 @@
 		6A9AFE7E29D1BCD000C4CFAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9AFE7D29D1BCD000C4CFAB /* User.swift */; };
 		6A9AFE7F29D1BCD000C4CFAB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9AFE7B29D1BCD000C4CFAB /* Profile.swift */; };
 		6A9AFE8029D1BCD000C4CFAB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9AFE7C29D1BCD000C4CFAB /* Item.swift */; };
+		6AA8077829DB0D790099CAD4 /* BooksCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8077729DB0D790099CAD4 /* BooksCategoryCollectionViewController.swift */; };
+		6AA8077A29DB0D8E0099CAD4 /* OthersCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8077929DB0D8E0099CAD4 /* OthersCategoryCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +48,7 @@
 		3FFAC65029D48BF100BE739B /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3FFAC65229D48BFC00BE739B /* Likes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Likes.storyboard; sourceTree = "<group>"; };
 		6623102029D8994F00CD0885 /* AddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
-		66E0FA9329DA5F8600179A9B /* ClothesCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		66E0FA9329DA5F8600179A9B /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		66E0FA9529DA602D00179A9B /* ClothingCategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		6A2D1DC829D06DAE004D48B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A517A5729CB357E00C2929B /* Refur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Refur.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,8 @@
 		6A9AFE7B29D1BCD000C4CFAB /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		6A9AFE7C29D1BCD000C4CFAB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		6A9AFE7D29D1BCD000C4CFAB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6AA8077729DB0D790099CAD4 /* BooksCategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCategoryCollectionViewController.swift; sourceTree = "<group>"; };
+		6AA8077929DB0D8E0099CAD4 /* OthersCategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersCategoryCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				3FFAC64E29D47DD100BE739B /* Categories.storyboard */,
-				66E0FA9329DA5F8600179A9B /* ClothesCategoryCollectionViewCell.swift */,
+				66E0FA9329DA5F8600179A9B /* CategoriesCollectionViewCell.swift */,
+				6AA8077729DB0D790099CAD4 /* BooksCategoryCollectionViewController.swift */,
+				6AA8077929DB0D8E0099CAD4 /* OthersCategoryCollectionViewController.swift */,
 				66E0FA9529DA602D00179A9B /* ClothingCategoryCollectionViewController.swift */,
 			);
 			path = "Categories - G";
@@ -248,11 +254,13 @@
 				6A517A5F29CB357E00C2929B /* ViewController.swift in Sources */,
 				6A517A5B29CB357E00C2929B /* AppDelegate.swift in Sources */,
 				3F0D397229D31AEA009AC073 /* LoginViewController.swift in Sources */,
+				6AA8077A29DB0D8E0099CAD4 /* OthersCategoryCollectionViewController.swift in Sources */,
 				6A9AFE8029D1BCD000C4CFAB /* Item.swift in Sources */,
 				6A91F80029D457CA001303E5 /* Post.swift in Sources */,
 				6A9AFE7E29D1BCD000C4CFAB /* User.swift in Sources */,
-				66E0FA9429DA5F8600179A9B /* ClothesCategoryCollectionViewCell.swift in Sources */,
+				66E0FA9429DA5F8600179A9B /* CategoriesCollectionViewCell.swift in Sources */,
 				6A91F80229D45C7C001303E5 /* Database.swift in Sources */,
+				6AA8077829DB0D790099CAD4 /* BooksCategoryCollectionViewController.swift in Sources */,
 				66E0FA9629DA602D00179A9B /* ClothingCategoryCollectionViewController.swift in Sources */,
 				6A517A5D29CB357E00C2929B /* SceneDelegate.swift in Sources */,
 			);
