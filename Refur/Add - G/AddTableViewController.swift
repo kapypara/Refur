@@ -26,6 +26,23 @@ class AddTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // for debuging
+        Database.Posts["test"].observe(.value) { snapshot in
+            
+            //let userName = snapshot.value as? String ?? "Unknown";
+            
+            guard
+                snapshot.value != nil,
+                let result = snapshot.value! as? [String: Any]
+            else {
+                return
+            }
+            
+            if let itemDict = result["Item"] as? [String: Any] {
+                let item = Item.loadItem(dictionary: itemDict)
+                print(item)
+            }
+          }
     }
     
     
@@ -43,6 +60,7 @@ class AddTableViewController: UITableViewController {
                                  condition: selectedCondition,
                                  price: price,
                                  type: .TShirt,
+                                 brnad: "ADD ME BUG",
                                  size: selectedSize
         )
         print(item.name)

@@ -1,9 +1,9 @@
 
-enum ItemCondition {
+enum ItemCondition: String {
     case BrandNew, AsGoodAsNew, GoodCondition, /* Decent */ Used
 }
 
-enum ItemCategory {
+enum ItemCategory: String {
     case Clothing, Book, Other
 }
 
@@ -21,34 +21,35 @@ class Item {
     // the type and size will be set depending on the category
     let type: Any?
     let size: Any?
+    var brand: String? = nil
     
     // MARK: Clothing init
     static func Clothing(name: String, description: String,
             condition: ItemCondition, price: Double,
-            type: ClothingType, size: ClothingSize) -> Item {
+            type: ClothingType, brnad: String, size: ClothingSize) -> Item {
 
         return Item(name: name, description: description,
                 condition: condition, price: price,
-                category: ItemCategory.Clothing, type: type, size: size)
+                category: ItemCategory.Clothing, brand: brnad, type: type, size: size)
     }
 
     static func Clothing(name: String, description: String,
             condition: ItemCondition, price: Double,
-            type: ClothingType, size: Double) -> Item {
+            type: ClothingType, brnad: String, size: Double) -> Item {
 
         return Item(name: name, description: description,
                 condition: condition, price: price,
-                category: ItemCategory.Clothing, type: type, size: size)
+                category: ItemCategory.Clothing, brand: brnad, type: type, size: size)
     }
 
     // MARK: Shoe init
     static func Shoes(name: String, description: String,
             condition: ItemCondition, price: Double,
-            ShoeSize: Double) -> Item {
+            brand: String, ShoeSize: Double) -> Item {
 
         return Clothing(name: name, description: description,
                 condition: condition, price: price,
-                type: ClothingType.Shoes, size: ShoeSize)
+                type: ClothingType.Shoes, brnad: brand, size: ShoeSize)
     }
 
 
@@ -59,25 +60,25 @@ class Item {
 
         return Item(name: name, description: description,
                 condition: condition, price: price,
-                category: ItemCategory.Book, type: type, size: nil)
+                category: ItemCategory.Book, brand: "", type: type, size: nil)
     }
 
 
     // MARK: Other init
     static func Other(name: String, description: String,
             condition: ItemCondition, price: Double,
-            type: OtherTYpe) -> Item {
+            type: OtherType) -> Item {
 
         return Item(name: name, description: description,
                 condition: condition, price: price,
-                category: ItemCategory.Other, type: type, size: nil)
+                category: ItemCategory.Other, brand: "", type: type, size: nil)
     }
 
 
 
     private init(name: String, description: String,
          condition: ItemCondition, price: Double,
-         category: ItemCategory, type: Any, size: Any?) {
+        category: ItemCategory, brand: String?, type: Any, size: Any?) {
         
         self.name = name
         self.description = description
@@ -89,25 +90,92 @@ class Item {
 
         self.type = type
         self.size = size
+        
+        self.brand = brand
+    }
+    
+    
+    static func loadItem(dictionary: [String: Any]) -> Item? {
+        
+        // making sure common item field are present
+        guard
+            let categoryString = dictionary["Category"] as? String,
+            let category = ItemCategory(rawValue: categoryString),
+            
+            let conditionString = dictionary["Condition"] as? String,
+            let condition = ItemCondition(rawValue: conditionString),
+            
+            let price = dictionary["Price"] as? Double,
+            let name = dictionary["Name"] as? String,
+            let description = dictionary["Description"] as? String
+        else {
+            print("[Item.loadItem] early parsing error, dumping dict", dictionary)
+            return nil
+        }
+        
+        switch category {
+        case .Clothing:
+            guard
+                let sizeString = dictionary["Size"] as? String,
+                let size = ClothingSize(rawValue: sizeString),
+                
+                let typeString = dictionary["Type"] as? String,
+                let type = ClothingType(rawValue: typeString),
+                
+                let brand = dictionary["Brand"] as? String
+                    
+            else {
+                print("[Item.loadItem] error parsing Clothing item, dumping dict", dictionary)
+                return nil
+            }
+            
+            return Item(name: name, description: description, condition: condition, price: price, category: category, brand: brand, type: type, size: size)
+            
+        case .Book:
+            guard
+                let typeString = dictionary["Type"] as? String,
+                let type = BookType(rawValue: typeString)
+                    
+            else {
+                print("[Item.loadItem] error parsing Clothing item, dumping dict", dictionary)
+                return nil
+            }
+            
+            return Item(name: name, description: description, condition: condition, price: price, category: category, brand: nil, type: type, size: nil)
+            
+        case .Other:
+            guard
+                let typeString = dictionary["Type"] as? String,
+                let type = OtherType(rawValue: typeString)
+                    
+            else {
+                print("[Item.loadItem] error parsing Clothing item, dumping dict", dictionary)
+                return nil
+            }
+            
+            return Item(name: name, description: description, condition: condition, price: price, category: category, brand: nil, type: type, size: nil)
+            
+        }
+        
     }
 }
 
 
 // MARK: category specific enum
 
-enum ClothingType {
+enum ClothingType: String {
     case TShirt, Pants, Shoes, Hat
 }
 
-enum BookType {
+enum BookType: String {
     case Paperback, Hardcover
 }
     
-enum OtherTYpe {
+enum OtherType: String {
     case Other, Anitque
 }
 
-enum ClothingSize {
+enum ClothingSize: String {
     case Medium, Small, Large
 
     case XXS, XS, XL, XXL
