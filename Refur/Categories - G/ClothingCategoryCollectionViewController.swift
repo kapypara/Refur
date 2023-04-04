@@ -17,7 +17,10 @@ class ClothingCategoryCollectionViewController: UICollectionViewController {
     //clothingItems(clothingImage: UIImageView(image: UIImage(named: "Books")!), clothingLabel: "65432"),
     //clothingItems(clothingImage: UIImageView(image: UIImage(named: "others")!), clothingLabel: "jon"),
     
-    clothingItems(clothingLabel: "Jhon", uuid: "jon")
+    clothingItems(clothingLabel: "Jhon", uuid: "jon.png"),
+    clothingItems(clothingLabel: "shirt", uuid: "shopping.jpeg"),
+    clothingItems(clothingLabel: "whiteyT", uuid: "whiteyt.jpeg")
+    
    ]
   
 
