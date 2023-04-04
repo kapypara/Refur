@@ -12,7 +12,18 @@ private let reuseIdentifier = "Cell"
 class OthersCategoryCollectionViewController: UICollectionViewController {
 
     var arrayOthers: [othersItems] = [
-        othersItems(othersImage: UIImageView(image: UIImage(named: "ClothingCategory")!), othersLabel: "Hi"),
+        othersItems(othersLabel: "@green", uuid: "others1.jpeg"),
+        othersItems(othersLabel: "@red", uuid: "others2.png"),
+        othersItems(othersLabel: "@blue", uuid: "others3.jpeg"),
+        othersItems(othersLabel: "@white", uuid: "others4.jpeg"),
+        othersItems(othersLabel: "@gold", uuid: "others5.jpeg"),
+        othersItems(othersLabel: "@green", uuid: "others6.jpeg"),
+        othersItems(othersLabel: "@red", uuid: "others7.jpeg"),
+        othersItems(othersLabel: "@orange", uuid: "others8.jpeg"),
+        othersItems(othersLabel: "@black", uuid: "others9.jpeg"),
+        othersItems(othersLabel: "@beige", uuid: "others10.jpeg"),
+
+
         
     ]
    
@@ -36,13 +47,13 @@ class OthersCategoryCollectionViewController: UICollectionViewController {
      
          // Configure the cell
          let others = arrayOthers[indexPath.row]
-         cell.setupCell(image: others.othersImage.image!, label: others.othersLabel)
+         cell.setupCell(uuid: others.uuid, label: others.othersLabel  )
          return cell
      }
 
      struct othersItems {
-         let othersImage : UIImageView
          let othersLabel : String
+         let uuid: String
      }
 
 

@@ -13,10 +13,17 @@ class BooksCategoryCollectionViewController: UICollectionViewController {
 
     
       var arrayBooks: [booksItems] = [
+        booksItems(booksLabel: "@hash", uuid: "books1.jpeg"),
+        booksItems(booksLabel: "@hash", uuid: "book2.jpeg"),
+        booksItems(booksLabel: "@hash", uuid: "books3.jpeg"),
+        booksItems(booksLabel: "@hash", uuid: "books4.jpeg"),
+        booksItems(booksLabel: "@hash", uuid: "books5.jpeg"),
+        booksItems(booksLabel: "@hash", uuid: "books7.jpeg"),
+        booksItems(booksLabel: "@hash", uuid: "books8.jpeg"),
+        booksItems(booksLabel: "@hash", uuid: "books9.jpeg"),
+        booksItems(booksLabel: "@hash", uuid: "books10.jpeg"),
        
-       booksItems(booksImage: UIImageView(image: UIImage(named: "ClothingCategory")!), booksLabel: "Hi"),
-       booksItems(booksImage: UIImageView(image: UIImage(named: "ClothingCategory")!), booksLabel: "Hi"),
-       booksItems(booksImage: UIImageView(image: UIImage(named: "ClothingCategory")!), booksLabel: "Hi"),
+        
       ]
      
 
@@ -39,13 +46,15 @@ class BooksCategoryCollectionViewController: UICollectionViewController {
        
            // Configure the cell
            let books = arrayBooks[indexPath.row]
-           cell.setupCell(image: books.booksImage.image!, label: books.booksLabel)
+           cell.setupCell(uuid: books.uuid, label: books.booksLabel)
            return cell
        }
 
        struct booksItems {
-           let booksImage : UIImageView
            let booksLabel : String
+           
+           // debug
+           let uuid: String
        }
 
 

@@ -13,13 +13,13 @@ class ClothingCategoryCollectionViewController: UICollectionViewController {
  
    var arrayClothes: [clothingItems] = [
     
-    //clothingItems(clothingImage: UIImageView(image: UIImage(named: "ClothingCategory")!), clothingLabel: "Hi"),
-    //clothingItems(clothingImage: UIImageView(image: UIImage(named: "Books")!), clothingLabel: "65432"),
-    //clothingItems(clothingImage: UIImageView(image: UIImage(named: "others")!), clothingLabel: "jon"),
     
-    clothingItems(clothingLabel: "Jhon", uuid: "jon.png"),
-    clothingItems(clothingLabel: "shirt", uuid: "shopping.jpeg"),
-    clothingItems(clothingLabel: "whiteyT", uuid: "whiteyt.jpeg")
+    clothingItems(clothingLabel: "@sThrifts", uuid: "clothes1.jpeg"),
+    clothingItems(clothingLabel: "@Kapy", uuid: "clothes2.webp"),
+    clothingItems(clothingLabel: "@thriftG", uuid: "clothes3.avif"),
+    clothingItems(clothingLabel: "@yhs", uuid: "clothes4.jpeg"),
+    clothingItems(clothingLabel: "@Gigi", uuid: "clothes5.jpeg"),
+    clothingItems(clothingLabel: "@Ahmed", uuid: "clothes6.jpeg")
     
    ]
   

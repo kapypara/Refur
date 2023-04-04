@@ -148,9 +148,9 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="Ejn-ug-M5E">
                                             <rect key="frame" x="5" y="142" width="161" height="34.333333333333343"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKw-Dz-Gya">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKw-Dz-Gya">
                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="34.333333333333336"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.30370190740000003" green="0.1809886694" blue="0.1175929084" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -165,10 +165,14 @@
                                                     </buttonConfiguration>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vFH-b9-WG9" firstAttribute="leading" secondItem="bKw-Dz-Gya" secondAttribute="trailing" constant="61" id="TBT-uj-xXb"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <viewLayoutGuide key="safeArea" id="D8p-WL-7rg"/>
                                     <constraints>
+                                        <constraint firstItem="bKw-Dz-Gya" firstAttribute="leading" secondItem="D8p-WL-7rg" secondAttribute="leading" constant="5" id="5dq-NQ-Uur"/>
                                         <constraint firstItem="D8p-WL-7rg" firstAttribute="bottom" secondItem="Ejn-ug-M5E" secondAttribute="bottom" constant="9.6666666666666572" id="W2c-gu-98M"/>
                                         <constraint firstItem="Ejn-ug-M5E" firstAttribute="leading" secondItem="D8p-WL-7rg" secondAttribute="leading" constant="5" id="YVS-WA-2wK"/>
                                         <constraint firstItem="dqD-5f-jlr" firstAttribute="leading" secondItem="D8p-WL-7rg" secondAttribute="leading" constant="5" id="Z19-aS-rmz"/>
@@ -372,8 +376,8 @@
     <resources>
         <image name="Books" width="1080" height="1080"/>
         <image name="ClothingCategory" width="626" height="417"/>
-        <image name="bag" catalog="system" width="32" height="32"/>
-        <image name="list.bullet" catalog="system" width="32" height="32"/>
+        <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="others" width="612" height="408"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
