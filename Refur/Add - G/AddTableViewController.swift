@@ -26,6 +26,32 @@ class AddTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let userUUID = "Gigi"
+        // for debuging
+        Database.Users[userUUID].observe(.value) { snapshot in
+            
+            //let userName = snapshot.value as? String ?? "Unknown";
+            
+            guard
+                snapshot.value != nil,
+                let result = snapshot.value! as? [String: Any]
+            else {
+                return
+            }
+            
+            let gigiProfile = Profile.loadProfile(dictionary: result)
+            
+            print(gigiProfile)
+            
+            gigiProfile?.name = "Liquid G"
+            gigiProfile?.handle = "NotG"
+            
+            Profile.saveProfile(uuid: "NG", profile: gigiProfile!)
+            
+        }
+            
+        return
+        
         let postUUID = "test"
         // for debuging
         Database.Posts[postUUID].observe(.value) { snapshot in
