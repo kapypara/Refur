@@ -26,8 +26,9 @@ class AddTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let postUUID = "test"
         // for debuging
-        Database.Posts["test"].observe(.value) { snapshot in
+        Database.Posts[postUUID].observe(.value) { snapshot in
             
             //let userName = snapshot.value as? String ?? "Unknown";
             
@@ -38,11 +39,17 @@ class AddTableViewController: UITableViewController {
                 return
             }
             
-            if let itemDict = result["Item"] as? [String: Any] {
-                let item = Item.loadItem(dictionary: itemDict)
-                print(item)
+            let post = Post.loadPost(uuid: postUUID, dictionary: result)
+            
+            print(post, post?.postUuid, post?.item)
+            
+            
+            if let post = post {
+                //post.postUuid = "Hello-from-swift"
+                
+                Post.savePost(post: post, postUuid: post.postUuid)
             }
-          }
+        }
     }
     
     
