@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refur-logo-dark" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-Jv-rJa">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refur-logo-light" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-Jv-rJa">
                                 <rect key="frame" x="30" y="149" width="333" height="175"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nue-Yf-d9x">
@@ -78,7 +78,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.090196078431372548" green="0.062745098039215685" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="qRb-Jv-rJa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="WfO-aM-MI1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="nue-Yf-d9x" secondAttribute="bottom" constant="120" id="YIz-5s-eRm"/>
@@ -99,6 +99,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="refur-logo-dark" width="175.71000671386719" height="175.71000671386719"/>
+        <image name="refur-logo-light" width="175.71000671386719" height="175.71000671386719"/>
     </resources>
 </document>
