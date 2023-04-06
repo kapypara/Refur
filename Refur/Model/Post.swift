@@ -17,7 +17,7 @@ class Post {
     init(item: Item, images: [String], likes: Int = 0) {
 
         postUuid = UUID().uuidString
-        userUuid = User.user.uid!
+        userUuid = User.user.uid ?? "Guest"
 
         datePosted = Date()
         dateModified = datePosted

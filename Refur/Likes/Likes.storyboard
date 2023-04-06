@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aoO-nH-a8u">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Likes Collection View Controller-->
+        <scene sceneID="Vx5-65-Iyc">
+            <objects>
+                <collectionViewController id="aoO-nH-a8u" customClass="LikesCollectionViewController" customModule="Refur" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="P9c-vd-4cN">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="j4e-Cv-PXZ">
+                            <size key="itemSize" width="177" height="186"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="15" minY="0.0" maxX="16" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LikesCell" id="hfJ-tr-p6s" customClass="CategoriesCollectionViewCell" customModule="Refur" customModuleProvider="target">
+                                <rect key="frame" x="15" y="0.0" width="173" height="186"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="g80-3M-C0I">
+                                    <rect key="frame" x="0.0" y="0.0" width="173" height="186"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="85b-Iu-KNS">
+                                            <rect key="frame" x="5" y="5" width="163" height="133"/>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="WwK-Li-cuY">
+                                            <rect key="frame" x="5" y="142" width="161" height="34.333333333333343"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ps-JM-V8n">
+                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="34.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.30370190740000003" green="0.1809886694" blue="0.1175929084" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SsP-f8-HZM">
+                                                    <rect key="frame" x="133" y="0.0" width="28" height="34.333333333333336"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="n60-eV-IU9"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="heart.fill" catalog="system" symbolScale="medium"/>
+                                                    </buttonConfiguration>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <viewLayoutGuide key="safeArea" id="Ea1-xh-Iku"/>
+                                    <constraints>
+                                        <constraint firstItem="WwK-Li-cuY" firstAttribute="leading" secondItem="Ea1-xh-Iku" secondAttribute="leading" constant="5" id="20U-nl-cEs"/>
+                                        <constraint firstItem="Ea1-xh-Iku" firstAttribute="trailing" secondItem="85b-Iu-KNS" secondAttribute="trailing" constant="5" id="Aw1-he-CjJ"/>
+                                        <constraint firstItem="Ea1-xh-Iku" firstAttribute="trailing" secondItem="WwK-Li-cuY" secondAttribute="trailing" constant="7" id="FrK-NS-OCu"/>
+                                        <constraint firstItem="WwK-Li-cuY" firstAttribute="top" secondItem="85b-Iu-KNS" secondAttribute="bottom" constant="4" id="JRG-Yb-YLt"/>
+                                        <constraint firstItem="Ea1-xh-Iku" firstAttribute="bottom" secondItem="WwK-Li-cuY" secondAttribute="bottom" constant="9.6666666666666572" id="OWI-ZK-7ly"/>
+                                        <constraint firstItem="85b-Iu-KNS" firstAttribute="leading" secondItem="Ea1-xh-Iku" secondAttribute="leading" constant="5" id="YFK-DX-txG"/>
+                                        <constraint firstItem="85b-Iu-KNS" firstAttribute="top" secondItem="Ea1-xh-Iku" secondAttribute="top" constant="5" id="wvX-Xa-gG7"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="173" height="186"/>
+                                <connections>
+                                    <outlet property="cellImageView" destination="85b-Iu-KNS" id="UhF-Lz-cLd"/>
+                                    <outlet property="cellLabel" destination="4ps-JM-V8n" id="umM-dN-Qzz"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="aoO-nH-a8u" id="wOU-rp-agH"/>
+                            <outlet property="delegate" destination="aoO-nH-a8u" id="xFS-LW-gJZ"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" selectedImage="heart.fill" id="wZg-Y9-En4"/>
+                    <navigationItem key="navigationItem" id="Cwq-56-Tvg"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MbG-sb-m9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4356" y="787"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
