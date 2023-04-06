@@ -45,7 +45,7 @@ class AddTableViewController: UITableViewController {
             
             gigiProfile?.name = "Liquid G"
             gigiProfile?.handle = "NotG"
-            
+             
             Profile.saveProfile(uuid: "NG", profile: gigiProfile!)
             
         }

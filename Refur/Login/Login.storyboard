@@ -33,6 +33,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="fieldModified:" destination="Y6W-OH-hqX" eventType="editingChanged" id="ssK-qi-C50"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4a2-Ev-2a8" customClass="CustomTextField" customModule="Refur" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="42" width="333" height="34"/>
@@ -44,6 +47,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="fieldModified:" destination="Y6W-OH-hqX" eventType="editingChanged" id="tk4-fj-e01"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1I-56-KUt">
                                         <rect key="frame" x="0.0" y="84" width="333" height="32"/>
@@ -59,6 +65,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signIn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tzq-fm-tp3"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpU-1M-8xE">
                                         <rect key="frame" x="0.0" y="123.99999999999999" width="333" height="34.333333333333329"/>
@@ -95,18 +104,22 @@
                     </view>
                     <navigationItem key="navigationItem" id="uBM-Vy-7sC"/>
                     <connections>
-                        <outlet property="emailTextField" destination="eHv-QX-Pby" id="HcI-E1-jyA"/>
-                        <outlet property="passwordTextField" destination="4a2-Ev-2a8" id="Eb8-mW-Ec8"/>
+                        <outlet property="emailTextField" destination="eHv-QX-Pby" id="1E3-FP-9eF"/>
+                        <outlet property="passwordTextField" destination="4a2-Ev-2a8" id="iaK-Fs-sgv"/>
+                        <outlet property="registerButton" destination="DLD-5O-9Qp" id="Ykd-vG-juV"/>
+                        <outlet property="signInButton" destination="B1I-56-KUt" id="WVj-F5-AgO"/>
+                        <segue destination="gFh-4s-Fro" kind="unwind" identifier="SignInToHome" unwindAction="unwindToHome:" id="FlR-VM-xrv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="gFh-4s-Fro" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1900" y="-2.1126760563380285"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Sign Up Table View Controller-->
         <scene sceneID="ds5-rV-xuO">
             <objects>
-                <tableViewController id="7dm-T2-rOw" sceneMemberID="viewController">
+                <tableViewController id="7dm-T2-rOw" customClass="SignUpTableViewController" customModule="Refur" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="SfV-Zo-7Ps">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,6 +173,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="FieldChanged:" destination="7dm-T2-rOw" eventType="editingChanged" id="IJL-n7-mRW"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2L-2R-1pM">
                                                     <rect key="frame" x="30" y="311.33333333333331" width="333" height="40"/>
@@ -168,6 +184,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="FieldChanged:" destination="7dm-T2-rOw" eventType="editingChanged" id="9ao-n9-Tjk"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="giI-cx-bCe">
                                                     <rect key="frame" x="30" y="403" width="333" height="40"/>
@@ -176,6 +195,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="FieldChanged:" destination="7dm-T2-rOw" eventType="editingChanged" id="Cg7-Og-SeX"/>
+                                                    </connections>
                                                 </textField>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="07M-tf-XKf">
                                                     <rect key="frame" x="30" y="559.66666666666663" width="333" height="40"/>
@@ -193,6 +215,9 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                             </state>
                                                             <state key="selected" image="checkmark.circle.fill" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="agreeButtonPressed:" destination="7dm-T2-rOw" eventType="touchUpInside" id="WW6-DV-QbF"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="248" horizontalCompressionResistancePriority="745" verticalCompressionResistancePriority="745" text="I agree to the terms and conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tp5-Wy-vL8">
                                                             <rect key="frame" x="60" y="0.0" width="273" height="40"/>
@@ -211,6 +236,9 @@
                                                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                                         <color key="baseBackgroundColor" red="0.40405815839999998" green="0.84568005800000001" blue="0.56065398450000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="registerButtonPressed:" destination="7dm-T2-rOw" eventType="touchUpInside" id="zoM-Ks-k9N"/>
+                                                    </connections>
                                                 </button>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm your password.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AcI-gT-Ado">
                                                     <rect key="frame" x="30" y="494.66666666666674" width="333" height="40"/>
@@ -219,6 +247,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="FieldChanged:" destination="7dm-T2-rOw" eventType="editingChanged" id="tvM-Jg-nnw"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -270,10 +301,28 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="rxB-rT-dIj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="aggrementButton" destination="ogp-dr-fCa" id="bQL-hW-0Xi"/>
+                        <outlet property="eamilTextField" destination="XPc-oT-Gnq" id="YYo-wc-hf7"/>
+                        <outlet property="passwordTextField" destination="giI-cx-bCe" id="DNh-kz-ZDI"/>
+                        <outlet property="reEnterPasswordTextField" destination="AcI-gT-Ado" id="z7K-Nn-jt1"/>
+                        <outlet property="registerButton" destination="vGq-Tw-jcJ" id="avB-Bu-RqG"/>
+                        <outlet property="usernameTextField" destination="f2L-2R-1pM" id="HD2-Ns-3no"/>
+                        <segue destination="FE5-7e-2Pn" kind="unwind" identifier="SignUpToHome" unwindAction="unwindToHome:" id="tJY-jt-xoI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZ5-Cl-Pmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="FE5-7e-2Pn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2878.6259541984732" y="-2.1126760563380285"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="eUs-4v-BHJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="IYJ-Cx-KGA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1y3-mO-6Ym" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3376" y="-58"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Oeb-nz-rZD">

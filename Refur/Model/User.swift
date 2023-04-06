@@ -6,6 +6,7 @@ import Firebase
 // this class will privately init,
 // and should be only used with User.user to access the user instance
 
+typealias CompletionHandler = (_ wasSuccessful:Bool) -> Void
 
 // TODO: make user login persistent
 // the user might inherit from profile class
@@ -21,17 +22,19 @@ class User {
 
     var uid: String? { return FirebaseAuth.Auth.auth().currentUser?.uid }
 
-    func signOut() {
+    func signOut(completionHandler: CompletionHandler = {(_) -> Void in ()}) {
         do {
             try FirebaseAuth.Auth.auth().signOut()
+            completionHandler(true)
             // UserDefaults.standard.removeObject(forKey: "user_uid_key")
         } catch {
             print("Error signing out")
+            completionHandler(false)
         }
     }
 
     // TODO: Add more login methods
-    func signIn(email: String, password: String) {
+    func signIn(email: String, password: String, completionHandler: @escaping CompletionHandler = {(_) -> Void in ()}) {
         FirebaseAuth.Auth.auth().signIn(
                 withEmail: email,
                 password: password,
@@ -40,47 +43,30 @@ class User {
                     guard error == nil else {
 
                         print("invalid credentials ", error ?? "")
-
-                        /*
-                        let alert = UIAlertController(
-                                title: "Invalid Credentials",
-                                message: "Invalid Credentials, please tryy again",
-                                preferredStyle: .alert)
-
-                        alert.addAction(UIAlertAction(title: "ok", style: .cancel))
-
-                        self.present(alert, animated: true)
-                        */
+                        
+                        completionHandler(false)
                         return
                     }
 
-                    // UserDefaults.standard.set(Auth.auth().currentUser!.uid, forKey: "user_uid_key")
-                    // self.performSegue(withIdentifier: "home", sender: sender)
+                    completionHandler(true)
         })
     }
     
-    func signUp(email: String, password: String) -> Bool {
-        
-        var ret = true
+    func signUp(email: String, password: String, completionHandler: @escaping CompletionHandler = {(_) -> Void in ()}) {
         
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] result, error in
-            
-            //guard let self = self else {return}
             
             guard error == nil else {
                 
                 print("SignUp failed ", error ?? "")
-                ret = false
+                
+                completionHandler(false)
                 return
             }
-            
-            let ref = FirebaseDatabase.Database.database(url: "https://refur-2a2f0-default-rtdb.firebaseio.com/").reference()
-            let uid = Auth.auth().currentUser?.uid
-            ref.child("users").child(uid!).setValue(["Email" : email, "Name" : password, "TYpe": "user"])
-            
+
+            completionHandler(true)
         })
         
-        return ret
     }
         
 

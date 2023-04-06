@@ -23,7 +23,8 @@ class Profile {
     var contactInfo: ContactInfo
     
     init(name: String, handle: String,
-         picture: String, bio: String, contact: ContactInfo,
+         picture: String = "", bio: String = "",
+         contact: ContactInfo = ContactInfo(address: "", email: "", phoneNumber: 0),
          soldItems: Int = 0, posts: [String] = [], likes: [String] = []) {
         
         self.name = name

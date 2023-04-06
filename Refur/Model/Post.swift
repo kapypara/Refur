@@ -81,8 +81,11 @@ class Post {
             size = clothingSize.rawValue
         } else if let doubleSize = post.item.size as? Double {
             size = doubleSize
+        } else if let sizeUnwarpped = post.item.size {
+            size = sizeUnwarpped
         } else {
-            size = post.item.size
+            print("[Post.savePost] cant do size!")
+            return postUuid
         }
         
         if let clothingType = post.item.type as? ClothingType {

@@ -10,12 +10,23 @@ import UIKit
 class HomePageViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
-        if !User.user.isLoggedIn {
-            
-            print("before seg")
-            performSegue(withIdentifier: "LoginSegue", sender: nil)
-            print("after seg")
+        // debug
+        
+        User.user.signOut() { state in
+            if state {
+                print("we just logged out")
+                
+                if !User.user.isLoggedIn || true {
+                    
+                    performSegue(withIdentifier: "LoginSegue", sender: nil)
+                }
+                
+            } else {
+                print("we did not")
+            }
         }
+        
+        
     }
     
     override func viewDidLoad() {
@@ -28,14 +39,12 @@ class HomePageViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
+        //let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
     }
-    */
+
 
 }

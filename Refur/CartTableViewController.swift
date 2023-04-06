@@ -12,7 +12,7 @@ class CartTableViewController: UITableViewController {
     
 
     var allSelected = false
-    var items = Item.dummy()
+    var items = [Item.Clothing(name: "", description: "", condition: .BrandNew, price: 1.2, type: .Shoes, brnad: " ", size: .XL)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
