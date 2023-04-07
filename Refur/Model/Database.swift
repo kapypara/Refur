@@ -14,7 +14,7 @@ class Database {
         
         static var users = DataBaseRef.child("users")
         
-        static var currentUser: DatabaseReference { DataBaseRef.child(User.user.uid!) }
+        static var currentUser: DatabaseReference { DataBaseRef.child(User.uid!) }
         
         static subscript (uuid: String) -> DatabaseReference {
             return Database.Users.users.child(uuid)

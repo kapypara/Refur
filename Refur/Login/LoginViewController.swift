@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         emailTextField.setupLeftImageView(image: UIImage(systemName: "envelope")!)
         passwordTextField.setupLeftImageView(image: UIImage(systemName: "lock")!)
@@ -51,7 +50,7 @@ class LoginViewController: UIViewController {
         registerButton.isEnabled = false
         signInButton.isEnabled = false
         
-        User.user.signIn(email: email, password: password) { wasSucsseful in
+        User.signIn(email: email, password: password) { wasSucsseful in
             
             self.registerButton.isEnabled = true
             self.signInButton.isEnabled = true

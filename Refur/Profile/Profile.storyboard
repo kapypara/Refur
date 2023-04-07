@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="ProfileViewController" customModule="Refur" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,12 @@
                                     <navigationItem id="4r2-eI-48s">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="bell" catalog="system" id="syY-ox-NYV"/>
                                         <rightBarButtonItems>
-                                            <barButtonItem title="Item" image="gearshape" catalog="system" id="lqn-Tb-jSd"/>
+                                            <barButtonItem title="signOut" image="arrow.right.square" catalog="system" id="lqn-Tb-jSd">
+                                                <connections>
+                                                    <action selector="signOut:" destination="Y6W-OH-hqX" id="VyU-RL-H9F"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Item" image="gearshape" catalog="system" id="iZo-jx-PiN"/>
                                             <barButtonItem image="qrcode.viewfinder" catalog="system" id="QaG-qA-h4k"/>
                                         </rightBarButtonItems>
                                     </navigationItem>
@@ -122,17 +127,31 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="MjT-rf-yL2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="YPe-mp-2XI" kind="presentation" identifier="LoginSegue" id="t7r-mZ-EfL"/>
+                        <segue destination="QQG-3G-Kuh" kind="unwind" identifier="Home" unwindAction="unwindToHome:" id="55q-He-ZHp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="QQG-3G-Kuh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1743" y="-504"/>
         </scene>
+        <!--Login-->
+        <scene sceneID="A7L-3O-Hr2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="YPe-mp-2XI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yli-ve-KoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2419" y="-504"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="arrow.right.square" catalog="system" width="128" height="114"/>
         <image name="bell" catalog="system" width="125" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="person" catalog="system" width="128" height="121"/>
-        <image name="person.circle" catalog="system" width="128" height="123"/>
+        <image name="person.circle" catalog="system" width="32" height="32"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">

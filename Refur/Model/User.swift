@@ -12,17 +12,16 @@ typealias CompletionHandler = (_ wasSuccessful:Bool) -> Void
 // the user might inherit from profile class
 class User {
 
-    static let user = User()
-
-    //private override init() { }
     private init() { }
     
     // TODO: check if user this work
-    var isLoggedIn: Bool { return FirebaseAuth.Auth.auth().currentUser != nil }
+    static var isLoggedIn: Bool { return FirebaseAuth.Auth.auth().currentUser != nil }
+    
+    static var isLoggedOut: Bool { return FirebaseAuth.Auth.auth().currentUser == nil }
 
-    var uid: String? { return FirebaseAuth.Auth.auth().currentUser?.uid }
+    static var uid: String? { return FirebaseAuth.Auth.auth().currentUser?.uid }
 
-    func signOut(completionHandler: CompletionHandler = {(_) -> Void in ()}) {
+    static func signOut(completionHandler: CompletionHandler = {(_) -> Void in ()}) {
         do {
             try FirebaseAuth.Auth.auth().signOut()
             completionHandler(true)
@@ -34,11 +33,11 @@ class User {
     }
 
     // TODO: Add more login methods
-    func signIn(email: String, password: String, completionHandler: @escaping CompletionHandler = {(_) -> Void in ()}) {
+    static func signIn(email: String, password: String, completionHandler: @escaping CompletionHandler = {(_) -> Void in ()}) {
         FirebaseAuth.Auth.auth().signIn(
                 withEmail: email,
                 password: password,
-                completion: { [weak self] result, error in
+                completion: { [self] result, error in
             
                     guard error == nil else {
 
@@ -52,9 +51,9 @@ class User {
         })
     }
     
-    func signUp(email: String, password: String, completionHandler: @escaping CompletionHandler = {(_) -> Void in ()}) {
+    static func signUp(email: String, password: String, completionHandler: @escaping CompletionHandler = {(_) -> Void in ()}) {
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] result, error in
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [self] result, error in
             
             guard error == nil else {
                 
@@ -68,6 +67,7 @@ class User {
         })
         
     }
-        
+    
+    
 
 }

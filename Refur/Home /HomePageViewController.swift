@@ -10,23 +10,10 @@ import UIKit
 class HomePageViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
-        // debug
         
-        User.user.signOut() { state in
-            if state {
-                print("we just logged out")
-                
-                if !User.user.isLoggedIn || true {
-                    
-                    performSegue(withIdentifier: "LoginSegue", sender: nil)
-                }
-                
-            } else {
-                print("we did not")
-            }
+        if !LoginPresented {
+            prompatToLoginIfNeeded(segueIdentifier: "LoginSegue")
         }
-        
-        
     }
     
     override func viewDidLoad() {

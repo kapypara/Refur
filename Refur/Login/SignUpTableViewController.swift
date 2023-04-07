@@ -83,7 +83,7 @@ class SignUpTableViewController: UITableViewController {
         
         registerButton.isEnabled = false
         
-        User.user.signUp(email: email, password: password) { signUpWasSucessful in
+        User.signUp(email: email, password: password) { signUpWasSucessful in
             
             self.registerButton.isEnabled = true
             self.reEnterPasswordTextField.text = ""
@@ -91,12 +91,12 @@ class SignUpTableViewController: UITableViewController {
             
             if signUpWasSucessful {
                 
-                User.user.signIn(email: email, password: password) { loginWasSucessful in
+                User.signIn(email: email, password: password) { loginWasSucessful in
                     
                     if loginWasSucessful {
                         
                         let newUserProfile = Profile(name: username, handle: username)
-                        Profile.saveProfile(uuid: User.user.uid ?? "Gust", profile: newUserProfile)
+                        Profile.saveProfile(uuid: User.uid ?? "Gust", profile: newUserProfile)
                         
                         self.performSegue(withIdentifier: "SignUpToHome", sender: self)
                         
