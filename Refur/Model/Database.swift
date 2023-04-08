@@ -3,6 +3,9 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 
+
+typealias PostCompletionHandler = (_ loadedPost: Post?) -> Void
+
 class Database {
     
     static let DataBaseRef = FirebaseDatabase.Database.database(url: "https://refur-2a2f0-default-rtdb.firebaseio.com/").reference()
@@ -27,6 +30,25 @@ class Database {
         
         static subscript (uuid: String) -> DatabaseReference {
             return Database.Posts.posts.child(uuid)
+        }
+        
+        static func observePost(post: String, completionHandler: @escaping PostCompletionHandler = {(_) -> Void in ()},_ eventType: DataEventType = .value) {
+            
+            Database.Posts[post].observe(eventType) { snapshot in
+                
+                guard
+                    snapshot.value != nil,
+                    let result = snapshot.value! as? [String: Any]
+                else {
+                    
+                    completionHandler(nil)
+                    return
+                }
+                
+                let loadedPost = Post.loadPost(uuid: post, dictionary: result)
+                
+                completionHandler(loadedPost)
+            }
         }
     }
     

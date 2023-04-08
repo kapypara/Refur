@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aoO-nH-a8u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YQW-16-KQF">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -72,6 +72,7 @@
                                 <connections>
                                     <outlet property="cellImageView" destination="85b-Iu-KNS" id="UhF-Lz-cLd"/>
                                     <outlet property="cellLabel" destination="4ps-JM-V8n" id="umM-dN-Qzz"/>
+                                    <segue destination="tau-wD-fgx" kind="show" id="K5B-ez-So8"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -80,13 +81,41 @@
                             <outlet property="delegate" destination="aoO-nH-a8u" id="xFS-LW-gJZ"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" selectedImage="heart.fill" id="wZg-Y9-En4"/>
                     <navigationItem key="navigationItem" id="Cwq-56-Tvg"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MbG-sb-m9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4356" y="787"/>
+            <point key="canvasLocation" x="5281.679389312977" y="786.61971830985919"/>
+        </scene>
+        <!--ItemDetails-->
+        <scene sceneID="sEV-fW-IM9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItemDetails" id="tau-wD-fgx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HNn-Ma-tMU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q52-Av-Zu2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6029.0076335877857" y="786.61971830985919"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="P3W-FH-Tcd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YQW-16-KQF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" selectedImage="heart.fill" id="wZg-Y9-En4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lhg-me-81I">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aoO-nH-a8u" kind="relationship" relationship="rootViewController" id="Ss6-cS-agU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ecs-Vc-w6U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4354.9618320610689" y="786.61971830985919"/>
         </scene>
     </scenes>
     <resources>

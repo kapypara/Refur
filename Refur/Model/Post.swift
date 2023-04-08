@@ -64,7 +64,7 @@ class Post {
         let datePosted = Date(timeIntervalSince1970: datePostedDouble)
         
         
-        print(datePosted, dateModified, images, likes, item, likes, postUuid, userUuid)
+        //print(datePosted, dateModified, images, likes, item, likes, postUuid, userUuid)
         
         return Post.init(postUuid: postUuid, userUuid: userUuid, datePosted: datePosted, dateModified: dateModified, item: item, images: images, likes: likes)
     }
