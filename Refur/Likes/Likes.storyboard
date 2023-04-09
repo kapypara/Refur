@@ -72,7 +72,7 @@
                                 <connections>
                                     <outlet property="cellImageView" destination="85b-Iu-KNS" id="UhF-Lz-cLd"/>
                                     <outlet property="cellLabel" destination="4ps-JM-V8n" id="umM-dN-Qzz"/>
-                                    <segue destination="tau-wD-fgx" kind="show" id="K5B-ez-So8"/>
+                                    <segue destination="tau-wD-fgx" kind="show" identifier="showDetails" id="K5B-ez-So8"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

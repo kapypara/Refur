@@ -11,16 +11,28 @@ private let reuseIdentifier = "Cell"
 
 class LikesCollectionViewController: UICollectionViewController {
 
-    let arrayLikes: [Post] = [
-        Post(item: Item.Clothing(name: "Hello", description: "des", condition: .Used, price: 33.3, type: .TShirt, brnad: "Hee", size: .Medium), images: ["clothes1.jpeg"])
-    ]
+    var arrayLikes: [Post] = []
    
+    let profile = Profile(name: "big man", handle: "BigStuff", picture: "bday.png")
 
      
      override func viewDidLoad() {
          super.viewDidLoad()
          collectionView.delegate = self
          collectionView.dataSource = self
+         
+         Database.Users.observeUser(user: "Gigi") { userProfile in
+             guard let userProfile = userProfile else { return }
+             
+             for post in userProfile.posts {
+                 Database.Posts.observePost(post: post) { post in
+                     if let post = post {
+                         self.arrayLikes.append(post)
+                         self.collectionView.reloadData()
+                     }
+                 }
+             }
+         }
      }
 
 
@@ -40,16 +52,14 @@ class LikesCollectionViewController: UICollectionViewController {
          return cell
      }
 
-    /*
-     struct booksItems {
-         let booksLabel : String
-         
-         // debug
-         let uuid: String
-     }
-*/
-
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            guard let viewController = segue.destination as? ItemDetailsViewController else { return }
+            
+            viewController.userProfile = profile
+            viewController.userPost = arrayLikes[0]
+        }
+    }
 
 
 }

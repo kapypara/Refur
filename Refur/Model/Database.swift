@@ -5,6 +5,8 @@ import FirebaseStorage
 
 
 typealias PostCompletionHandler = (_ loadedPost: Post?) -> Void
+typealias ProfileCompletionHandler = (_ loadedPost: Profile?) -> Void
+
 
 class Database {
     
@@ -21,6 +23,25 @@ class Database {
         
         static subscript (uuid: String) -> DatabaseReference {
             return Database.Users.users.child(uuid)
+        }
+        
+        static func observeUser(user: String, completionHandler: @escaping ProfileCompletionHandler = {(_) -> Void in ()},_ eventType: DataEventType = .value) {
+            
+            Database.Users[user].observe(eventType) { snapshot in
+                
+                guard
+                    snapshot.value != nil,
+                    let result = snapshot.value! as? [String: Any]
+                else {
+                    
+                    completionHandler(nil)
+                    return
+                }
+                
+                let loadedProfile = Profile.loadProfile(dictionary: result)
+                
+                completionHandler(loadedProfile)
+            }
         }
     }
     
