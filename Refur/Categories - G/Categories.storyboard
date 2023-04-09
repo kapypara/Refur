@@ -31,7 +31,7 @@
                                                     <constraint firstAttribute="height" constant="122" id="fUe-9u-DXB"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="ClothingCategory" imagePlacement="trailing" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="clothingCategory 1" imagePlacement="trailing" title="Button"/>
                                                 <connections>
                                                     <segue destination="b1F-Qo-Ytv" kind="show" id="b8O-8j-EUB"/>
                                                 </connections>
@@ -58,7 +58,7 @@
                                                     <constraint firstAttribute="width" constant="393" id="yn7-yb-W9u"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="Books" imagePlacement="trailing" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="booksCategory" imagePlacement="leading" title="Button"/>
                                                 <connections>
                                                     <segue destination="46D-kB-HzE" kind="show" id="gu4-ja-i6l"/>
                                                 </connections>
@@ -85,7 +85,7 @@
                                                     <constraint firstAttribute="height" constant="122" id="mfA-Ez-LGw"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="others" imagePlacement="top" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="others 1" imagePlacement="top" title="Button"/>
                                                 <connections>
                                                     <segue destination="dJ8-GV-6lw" kind="show" id="0Fq-uA-oz4"/>
                                                 </connections>
@@ -151,7 +151,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKw-Dz-Gya">
                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.30370190740000003" green="0.1809886694" blue="0.1175929084" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFH-b9-WG9">
@@ -251,7 +251,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeB-dn-Jhw">
                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.30370190740000003" green="0.1809886694" blue="0.1175929084" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDB-Og-oLC">
@@ -327,7 +327,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oe-Vb-LSL">
                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.30370190740000003" green="0.1809886694" blue="0.1175929084" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDK-oq-vuM">
@@ -374,11 +374,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Books" width="1080" height="1080"/>
-        <image name="ClothingCategory" width="626" height="417"/>
         <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="booksCategory" width="640" height="640"/>
+        <image name="clothingCategory 1" width="736" height="774"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
-        <image name="others" width="612" height="408"/>
+        <image name="others 1" width="612" height="408"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
