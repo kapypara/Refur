@@ -72,7 +72,6 @@
                                 <connections>
                                     <outlet property="cellImageView" destination="85b-Iu-KNS" id="UhF-Lz-cLd"/>
                                     <outlet property="cellLabel" destination="4ps-JM-V8n" id="umM-dN-Qzz"/>
-                                    <segue destination="tau-wD-fgx" kind="show" identifier="showDetails" id="K5B-ez-So8"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -83,10 +82,23 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="Cwq-56-Tvg"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="tau-wD-fgx" kind="show" identifier="showDetails" id="Lzy-CG-6ub"/>
+                        <segue destination="G3R-nH-DHo" kind="unwind" identifier="toHome" unwindAction="unwindToHome:" id="ORP-ZR-D10"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MbG-sb-m9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="G3R-nH-DHo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5281.679389312977" y="786.61971830985919"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="lFm-ue-ehS">
+            <objects>
+                <viewControllerPlaceholder id="1D8-YZ-wqR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HEq-Nl-kkZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5972" y="711"/>
         </scene>
         <!--ItemDetails-->
         <scene sceneID="sEV-fW-IM9">
@@ -96,7 +108,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q52-Av-Zu2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6029.0076335877857" y="786.61971830985919"/>
+            <point key="canvasLocation" x="6020" y="787"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P3W-FH-Tcd">
