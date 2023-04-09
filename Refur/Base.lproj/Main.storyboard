@@ -17,10 +17,10 @@
             </objects>
             <point key="canvasLocation" x="2827" y="1277"/>
         </scene>
-        <!--Home-->
+        <!--Home2-->
         <scene sceneID="5oo-Yh-hWe">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="tZ5-Z0-def" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Home2" id="tZ5-Z0-def" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="6hM-an-Trm"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhq-Cs-zig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
