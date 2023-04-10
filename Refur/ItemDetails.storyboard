@@ -253,6 +253,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="8vm-GH-Gg5"/>
                     <connections>
+                        <outlet property="ClothesStack" destination="ShU-As-hQK" id="eRD-dq-BRA"/>
                         <outlet property="itemBrand" destination="oOc-ku-Ncv" id="OUc-pe-wDE"/>
                         <outlet property="itemCondition" destination="6Yd-Zi-9la" id="2hx-lh-ASw"/>
                         <outlet property="itemDescription" destination="nGc-zL-M5i" id="uVZ-YK-CKZ"/>

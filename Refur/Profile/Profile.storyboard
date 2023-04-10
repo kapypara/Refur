@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z8L-hh-Vd1">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -163,7 +163,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DjN-pF-18K" secondAttribute="trailing" constant="16" id="z4o-Nc-wfS"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="MjT-rf-yL2"/>
+                    <navigationItem key="navigationItem" id="Zbn-2y-VAh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profilePostsCollectionView" destination="7Py-mJ-ghw" id="gmd-uh-y9a"/>
@@ -174,12 +174,13 @@
                         <outlet property="username" destination="Q5Y-VJ-lNn" id="JNj-gg-2jJ"/>
                         <segue destination="YPe-mp-2XI" kind="presentation" identifier="LoginSegue" id="t7r-mZ-EfL"/>
                         <segue destination="QQG-3G-Kuh" kind="unwind" identifier="Home" unwindAction="unwindToHome:" id="55q-He-ZHp"/>
+                        <segue destination="zwm-jm-CMV" kind="show" identifier="showDetails" id="DYN-H3-xIE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="QQG-3G-Kuh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1742.7480916030534" y="-504.22535211267609"/>
+            <point key="canvasLocation" x="2669.4656488549617" y="-504.22535211267609"/>
         </scene>
         <!--Login-->
         <scene sceneID="A7L-3O-Hr2">
@@ -187,7 +188,36 @@
                 <viewControllerPlaceholder storyboardName="Login" id="YPe-mp-2XI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yli-ve-KoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2419" y="-504"/>
+            <point key="canvasLocation" x="3344.2748091603053" y="-504.22535211267609"/>
+        </scene>
+        <!--ItemDetails-->
+        <scene sceneID="opn-Yf-4WS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItemDetails" id="zwm-jm-CMV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="41V-7Q-sSH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUx-h0-QhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3301.5267175572517" y="-416.19718309859155"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cWs-PD-OB5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z8L-hh-Vd1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="MjT-rf-yL2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ie-I7-wyj">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="qfQ-rp-nF5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UH2-ix-EPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1742.7480916030534" y="-504.22535211267609"/>
         </scene>
     </scenes>
     <resources>

@@ -18,6 +18,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var observeHandle: UInt = 0
     
+    var postArray: [Post] = [] {
+        didSet {
+            profilePostsCollectionView.reloadData()
+        }
+    }
+    var profileDict: [String: Profile] = [:]
+    
+    var selectedPostIndex: Int = 0
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,6 +44,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             unwindIfNotLoggedIn(segueIdentifier: "Home")
         } else {
             loadUser()
+            loadPosts()
         }
     }
     
@@ -76,30 +86,74 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     // MARK: POSTS
-    
-    
     @IBOutlet weak var profilePostsCollectionView: UICollectionView!
     
-    var postsArray: [profilePosts] = [
-      profilePosts(uuid: "books1.jpeg"),
-      profilePosts(uuid: "books5.jpeg")
-    ]
-    
-    struct profilePosts {
-        let uuid: String
+    func loadPosts() {
+        
+        Database.Users[User.uid! + "/Posts"].observe(.value) { snapshot in
+            
+            guard let posts = snapshot.value as? [String] else { return }
+            print(posts)
+            
+            self.postArray.removeAll()
+            //print(self.postArray.count)
+            
+            //print(userProfile.posts)
+            
+            for post in posts {
+                Database.Posts.observePost(post: post) { post in
+                    guard let post = post else { return }
+                    
+                    // at this step we have a newe post to display
+                    self.postArray.append(post)
+                    
+                    
+                    // if we find a new user that is not in the dict we added to it
+                    guard self.profileDict[post.userUuid] == nil else { return }
+                    Database.Users.observeUser(user: post.userUuid) { loadedProfile in
+                        if let profile = loadedProfile {
+                            
+                            self.profileDict[post.userUuid] = profile
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return postsArray.count
+        return postArray.count
    }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profilePostCell", for: indexPath) as! ProfilePostsCollectionViewCell
-        let posts = postsArray[indexPath.row]
-        cell.setupCell(uuid: posts.uuid)
-        return cell
-   }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedPostIndex = indexPath.row
+        performSegue(withIdentifier: "showDetails", sender: self)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profilePostCell", for: indexPath) as! ProfilePostsCollectionViewCell
+        
+        // Configure the cell
+        let likes = postArray[indexPath.row]
+        
+        cell.setupCall(post: likes)
+        return cell
+    }
+    
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            guard let viewController = segue.destination as? ItemDetailsViewController else { return }
+            
+            let post = postArray[selectedPostIndex]
+            
+            viewController.userPost = post
+            viewController.userProfile = profileDict[post.userUuid]
+        }
+        
+    }
 
 }

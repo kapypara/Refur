@@ -32,6 +32,9 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var itemSize: UILabel!
         
     
+    @IBOutlet weak var ClothesStack: UIStackView!
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -69,10 +72,15 @@ class ItemDetailsViewController: UIViewController {
         
         itemDescription.text = userProfile.name + " " + userPost.item.description
         itemPrice.text = "BHD " + String(userPost.item.price)
-        itemBrand.text = userPost.item.brand
         
-        // this will break in the future
-        itemSize.text = (userPost.item.size as! ClothingSize).rawValue
+        switch userPost.item.category {
+        case .Clothing:
+            itemSize.text = (userPost.item.size as! ClothingSize).rawValue
+            itemBrand.text = userPost.item.brand
+            
+        default:
+            ClothesStack.isHidden = true
+        }
         
         itemCondition.text = userPost.item.condition.rawValue
         
