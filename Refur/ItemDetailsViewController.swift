@@ -31,9 +31,19 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var itemBrand: UILabel!
     @IBOutlet weak var itemSize: UILabel!
         
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let post = userPost {
+            Database.Posts[post.postUuid + "/Likes"].setValue(post.likes+1)
+        }
+        updateView()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView()
     }
     
     func updateView() {
