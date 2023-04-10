@@ -15,6 +15,10 @@ class Database {
     static let StorageRef = FirebaseStorage.Storage.storage(url: "gs://refur-2a2f0.appspot.com/").reference()
 
     
+    static func removeObserver(withHandle: UInt) {
+        Database.DataBaseRef.removeObserver(withHandle: withHandle)
+    }
+    
     class Users {
         
         static var users = DataBaseRef.child("users")
@@ -25,9 +29,9 @@ class Database {
             return Database.Users.users.child(uuid)
         }
         
-        static func observeUser(user: String, completionHandler: @escaping ProfileCompletionHandler = {(_) -> Void in ()},_ eventType: DataEventType = .value) {
+        static func observeUser(user: String, completionHandler: @escaping ProfileCompletionHandler = {(_) -> Void in ()},_ eventType: DataEventType = .value) -> UInt {
             
-            Database.Users[user].observe(eventType) { snapshot in
+            return Database.Users[user].observe(eventType) { snapshot in
                 
                 guard
                     snapshot.value != nil,
@@ -53,7 +57,7 @@ class Database {
             return Database.Posts.posts.child(uuid)
         }
         
-        static func observePost(post: String, completionHandler: @escaping PostCompletionHandler = {(_) -> Void in ()},_ eventType: DataEventType = .value) {
+        static func observePost(post: String, completionHandler: @escaping PostCompletionHandler = {(_) -> Void in ()}, eventType: DataEventType = .value) {
             
             Database.Posts[post].observe(eventType) { snapshot in
                 

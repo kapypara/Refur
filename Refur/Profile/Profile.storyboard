@@ -68,16 +68,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sapien in diam rutrum tempor id et ipsum. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjN-pF-18K">
-                                <rect key="frame" x="16" y="204" width="361" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sapien in diam rutrum tempor id et ipsum. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjN-pF-18K">
+                                <rect key="frame" x="16" y="203.33333333333334" width="361" height="31.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDQ-LY-PXb">
-                                <rect key="frame" x="32" y="253" width="329" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDQ-LY-PXb">
+                                <rect key="frame" x="32" y="268.66666666666669" width="329" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit Your Profile">
                                     <backgroundConfiguration key="background">
@@ -107,9 +105,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sold:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riA-qM-k6Z">
-                                <rect key="frame" x="322" y="120" width="39" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riA-qM-k6Z">
+                                <rect key="frame" x="322" y="119.99999999999999" width="39" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -118,16 +115,31 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="qDQ-LY-PXb" firstAttribute="top" secondItem="DjN-pF-18K" secondAttribute="bottom" constant="34" id="3CL-aH-tmv"/>
                             <constraint firstItem="T9k-fB-FQ7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="6vy-nv-W7r"/>
+                            <constraint firstItem="riA-qM-k6Z" firstAttribute="leading" relation="lessThanOrEqual" secondItem="z4b-Vt-F0D" secondAttribute="trailing" constant="137" id="CSS-4v-isM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qDQ-LY-PXb" secondAttribute="trailing" constant="32" id="Cqs-1x-tEY"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="z4b-Vt-F0D" secondAttribute="bottom" constant="573" id="OWa-6W-fmQ"/>
+                            <constraint firstItem="qDQ-LY-PXb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="SbN-t2-Ulb"/>
+                            <constraint firstItem="DjN-pF-18K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Vzc-j8-TJO"/>
                             <constraint firstItem="T9k-fB-FQ7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="XDl-Yo-JEA"/>
                             <constraint firstItem="z4b-Vt-F0D" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ZmY-6l-WKc"/>
+                            <constraint firstItem="DjN-pF-18K" firstAttribute="top" secondItem="z4b-Vt-F0D" secondAttribute="bottom" constant="7.3300000000000001" id="cim-qt-Tfe"/>
                             <constraint firstItem="z4b-Vt-F0D" firstAttribute="top" secondItem="T9k-fB-FQ7" secondAttribute="bottom" constant="10" id="fdk-3R-hgd"/>
+                            <constraint firstItem="riA-qM-k6Z" firstAttribute="top" secondItem="T9k-fB-FQ7" secondAttribute="bottom" constant="17" id="rCQ-qC-GEP"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="riA-qM-k6Z" secondAttribute="trailing" constant="32" id="sxt-xp-Dfr"/>
+                            <constraint firstItem="DjN-pF-18K" firstAttribute="top" secondItem="riA-qM-k6Z" secondAttribute="bottom" constant="63" id="xyb-Ob-vd5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DjN-pF-18K" secondAttribute="trailing" constant="16" id="z4o-Nc-wfS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="MjT-rf-yL2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="soldItems" destination="riA-qM-k6Z" id="n7X-Zk-xWk"/>
+                        <outlet property="userBio" destination="DjN-pF-18K" id="LrA-4Z-fCo"/>
+                        <outlet property="userHnadle" destination="6dR-mS-z0L" id="g9o-kp-12c"/>
+                        <outlet property="userImage" destination="wvm-xY-r32" id="S07-4t-BwN"/>
+                        <outlet property="username" destination="Q5Y-VJ-lNn" id="JNj-gg-2jJ"/>
                         <segue destination="YPe-mp-2XI" kind="presentation" identifier="LoginSegue" id="t7r-mZ-EfL"/>
                         <segue destination="QQG-3G-Kuh" kind="unwind" identifier="Home" unwindAction="unwindToHome:" id="55q-He-ZHp"/>
                     </connections>

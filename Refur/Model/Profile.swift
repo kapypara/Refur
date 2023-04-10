@@ -46,31 +46,32 @@ class Profile {
         
         guard
             let name = dictionary["Name"] as? String,
-            let handle = dictionary["Handle"] as? String,
-              
-            let picture = dictionary["Image"] as? String,
-            let bio = dictionary["Bio"] as? String,
-            
-            let soldItems = dictionary["SoldItems"] as? Int,
-            
-            let contactDict = dictionary["ContactInfo"] as? [String: Any],
-            
-            let address = contactDict["Address"] as? String,
-            let email = contactDict["Email"] as? String,
-            let phoneNumber = contactDict["PhoneNumber"] as? Int,
-            
-                
-            let posts = dictionary["Posts"] as? [String],
-                
-            let likes = dictionary["Likes"] as? [String]
+            let handle = dictionary["Handle"] as? String
         else {
             print("[Profile.loadProfile] error parsing Poast, dumping dict", dictionary)
             return nil
         }
         
+        let picture = dictionary["Image"] as? String ?? ""
+        let bio = dictionary["Bio"] as? String ?? "insert Descripition"
+        
+        let soldItems = dictionary["SoldItems"] as? Int ?? 0
+        
+        let contactDict = dictionary["ContactInfo"] as? [String: Any] ?? [:]
+        
+        let address = contactDict["Address"] as? String ?? ""
+        let email = contactDict["Email"] as? String ?? ""
+        let phoneNumber = contactDict["PhoneNumber"] as? Int ?? 0
+        
+            
+        let posts = dictionary["Posts"] as? [String] ?? []
+            
+        let likes = dictionary["Likes"] as? [String] ?? []
+        
         let contactInfo = ContactInfo(address: address, email: email, phoneNumber: phoneNumber)
         
-        print(name, handle, picture, bio, contactInfo, posts, posts, likes)
+        //print(dictionary)
+        //print(name, handle, picture, bio, contactInfo, posts, posts, likes)
         
         return Profile(name: name, handle: handle, picture: picture, bio: bio, contact: contactInfo, soldItems: soldItems, posts: posts, likes: likes)
     }

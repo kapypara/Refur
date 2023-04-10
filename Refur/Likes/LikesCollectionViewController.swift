@@ -11,9 +11,15 @@ private let reuseIdentifier = "Cell"
 
 private var loadedPost = false
 
+private let LikesQueue = DispatchQueue(label: "Likes.serial.queue")
+
 class LikesCollectionViewController: UICollectionViewController {
     
-    var postArray: [Post] = []
+    var postArray: [Post] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     var profileDict: [String: Profile] = [:]
     
     var selectedPostIndex: Int = 0
@@ -42,29 +48,34 @@ class LikesCollectionViewController: UICollectionViewController {
         guard !loadedPost else { return }
         loadedPost = true
         
-        Database.Users.observeUser(user: User.uid!) { userProfile in
-            guard let userProfile = userProfile else { return }
+        Database.Users[User.uid! + "/Likes"].observe(.value) { snapshot in
             
-            self.postArray = []
+            guard let likes = snapshot.value as? [String] else { return }
+            print(likes)
             
-            for post in userProfile.posts {
+            
+            self.postArray.removeAll()
+            print(self.postArray.count)
+            
+            //print(userProfile.posts)
+            
+            for post in likes {
                 Database.Posts.observePost(post: post) { post in
-                    if let post = post {
-                        
-                        // at this step we have a newe post to display
-                        self.postArray.append(post)
-                        self.collectionView.reloadData()
-                        
-                        
-                        // if we find a new user that is not in the dict we added to it
-                        guard self.profileDict[post.userUuid] == nil else { return }
-                        Database.Users.observeUser(user: post.userUuid) { loadedProfile in
-                            if let profile = loadedProfile {
-                                
-                                self.profileDict[post.userUuid] = profile
-                            }
+                    guard let post = post else { return }
+                    
+                    // at this step we have a newe post to display
+                    self.postArray.append(post)
+                    
+                    
+                    // if we find a new user that is not in the dict we added to it
+                    guard self.profileDict[post.userUuid] == nil else { return }
+                    Database.Users.observeUser(user: post.userUuid) { loadedProfile in
+                        if let profile = loadedProfile {
+                            
+                            self.profileDict[post.userUuid] = profile
                         }
                     }
+                    
                 }
             }
         }
