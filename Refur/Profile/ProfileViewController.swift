@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     
     @IBOutlet weak var userImage: UIImageView!
@@ -44,6 +44,9 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profilePostsCollectionView.delegate = self
+        profilePostsCollectionView.dataSource = self
 
     }
     
@@ -71,6 +74,32 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: POSTS
+    
+    
+    @IBOutlet weak var profilePostsCollectionView: UICollectionView!
+    
+    var postsArray: [profilePosts] = [
+      profilePosts(uuid: "books1.jpeg"),
+      profilePosts(uuid: "books5.jpeg")
+    ]
+    
+    struct profilePosts {
+        let uuid: String
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return postsArray.count
+   }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profilePostCell", for: indexPath) as! ProfilePostsCollectionViewCell
+        let posts = postsArray[indexPath.row]
+        cell.setupCell(uuid: posts.uuid)
+        return cell
+   }
     
 
 }
