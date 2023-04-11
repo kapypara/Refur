@@ -60,7 +60,7 @@ class LikesCollectionViewController: UICollectionViewController {
             //print(userProfile.posts)
             
             for post in likes {
-                Database.Posts.observePost(post: post) { post in
+                Database.Posts.getPost(post: post) { post in
                     guard let post = post else { return }
                     
                     // at this step we have a newe post to display
@@ -69,7 +69,7 @@ class LikesCollectionViewController: UICollectionViewController {
                     
                     // if we find a new user that is not in the dict we added to it
                     guard self.profileDict[post.userUuid] == nil else { return }
-                    Database.Users.observeUser(user: post.userUuid) { loadedProfile in
+                    Database.Users.getUser(user: post.userUuid) { loadedProfile in
                         if let profile = loadedProfile {
                             
                             self.profileDict[post.userUuid] = profile
@@ -96,10 +96,16 @@ class LikesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikesCell", for: indexPath) as! CategoriesCollectionViewCell
         
-        // Configure the cell
-        let likes = postArray[indexPath.row]
+        let likedPost = postArray[indexPath.row]
         
-        cell.setupCall(post: likes)
+        guard
+            let LikedPostPoster = self.profileDict[likedPost.userUuid]
+        else {
+            cell.setupCall(post: likedPost)
+            return cell
+        }
+        
+        cell.setupCall(post: likedPost, profile: LikedPostPoster)
         return cell
     }
     

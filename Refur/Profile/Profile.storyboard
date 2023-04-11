@@ -17,23 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9k-fB-FQ7">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <items>
-                                    <navigationItem id="4r2-eI-48s">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="bell" catalog="system" id="syY-ox-NYV"/>
-                                        <rightBarButtonItems>
-                                            <barButtonItem title="signOut" image="arrow.right.square" catalog="system" id="lqn-Tb-jSd">
-                                                <connections>
-                                                    <action selector="signOut:" destination="Y6W-OH-hqX" id="VyU-RL-H9F"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem title="Item" image="gearshape" catalog="system" id="iZo-jx-PiN"/>
-                                            <barButtonItem image="qrcode.viewfinder" catalog="system" id="QaG-qA-h4k"/>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="z4b-Vt-F0D">
                                 <rect key="frame" x="16" y="113" width="169" height="83"/>
                                 <subviews>
@@ -84,7 +67,7 @@
                                     <color key="baseForegroundColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Py-mJ-ghw" customClass="profilePosts" customModule="Refur" customModuleProvider="target">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Py-mJ-ghw" customClass="profilePosts" customModule="Refur" customModuleProvider="target">
                                 <rect key="frame" x="16" y="296" width="361" height="473"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -147,23 +130,30 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qDQ-LY-PXb" firstAttribute="top" secondItem="DjN-pF-18K" secondAttribute="bottom" constant="15" id="3CL-aH-tmv"/>
-                            <constraint firstItem="T9k-fB-FQ7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="6vy-nv-W7r"/>
                             <constraint firstItem="riA-qM-k6Z" firstAttribute="leading" relation="lessThanOrEqual" secondItem="z4b-Vt-F0D" secondAttribute="trailing" constant="137" id="CSS-4v-isM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qDQ-LY-PXb" secondAttribute="trailing" constant="32" id="Cqs-1x-tEY"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="z4b-Vt-F0D" secondAttribute="bottom" constant="573" id="OWa-6W-fmQ"/>
                             <constraint firstItem="qDQ-LY-PXb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="SbN-t2-Ulb"/>
                             <constraint firstItem="DjN-pF-18K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Vzc-j8-TJO"/>
-                            <constraint firstItem="T9k-fB-FQ7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="XDl-Yo-JEA"/>
                             <constraint firstItem="z4b-Vt-F0D" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ZmY-6l-WKc"/>
                             <constraint firstItem="DjN-pF-18K" firstAttribute="top" secondItem="z4b-Vt-F0D" secondAttribute="bottom" constant="7.3300000000000001" id="cim-qt-Tfe"/>
-                            <constraint firstItem="z4b-Vt-F0D" firstAttribute="top" secondItem="T9k-fB-FQ7" secondAttribute="bottom" constant="10" id="fdk-3R-hgd"/>
-                            <constraint firstItem="riA-qM-k6Z" firstAttribute="top" secondItem="T9k-fB-FQ7" secondAttribute="bottom" constant="17" id="rCQ-qC-GEP"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="riA-qM-k6Z" secondAttribute="trailing" constant="32" id="sxt-xp-Dfr"/>
                             <constraint firstItem="DjN-pF-18K" firstAttribute="top" secondItem="riA-qM-k6Z" secondAttribute="bottom" constant="63" id="xyb-Ob-vd5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DjN-pF-18K" secondAttribute="trailing" constant="16" id="z4o-Nc-wfS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Zbn-2y-VAh"/>
+                    <navigationItem key="navigationItem" id="4r2-eI-48s">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="bell" catalog="system" id="syY-ox-NYV"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="signOut" image="arrow.right.square" catalog="system" id="lqn-Tb-jSd">
+                                <connections>
+                                    <action selector="signOut:" destination="Y6W-OH-hqX" id="VyU-RL-H9F"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="gearshape" catalog="system" id="iZo-jx-PiN"/>
+                            <barButtonItem image="qrcode.viewfinder" catalog="system" id="QaG-qA-h4k"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profilePostsCollectionView" destination="7Py-mJ-ghw" id="gmd-uh-y9a"/>
@@ -203,6 +193,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cWs-PD-OB5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UH2-ix-EPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z8L-hh-Vd1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="MjT-rf-yL2"/>
                     <toolbarItems/>
@@ -215,7 +206,6 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="qfQ-rp-nF5"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UH2-ix-EPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1742.7480916030534" y="-504.22535211267609"/>
         </scene>

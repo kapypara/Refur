@@ -29,4 +29,9 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         cellLabel.text = post.item.name
     }
     
+    func setupCall(post: Post, profile: Profile) {
+        Database.Storage.loadImage(view: cellImageView, uuid: post.images[0])
+        cellLabel.text = "@" + profile.handle
+    }
+    
 }
