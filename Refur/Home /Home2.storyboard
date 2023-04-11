@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Home Table View Controller-->
         <scene sceneID="gbe-hS-0Nh">
             <objects>
                 <tableViewController id="4Qy-Tr-iea" customClass="homeTableViewController" customModule="Refur" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,11 +30,11 @@
                         <sections>
                             <tableViewSection id="dIF-DS-5D5">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="805" id="2DE-Em-cYt">
-                                        <rect key="frame" x="0.0" y="62" width="393" height="805"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="700" id="2DE-Em-cYt">
+                                        <rect key="frame" x="0.0" y="62" width="393" height="700"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2DE-Em-cYt" id="fka-Wf-skw">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="805"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="2YI-f4-BAh">
@@ -284,7 +284,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="doU-T5-igF">
+                    <navigationItem key="navigationItem" id="doU-T5-igF">
                         <barButtonItem key="rightBarButtonItem" image="bag" catalog="system" id="BYb-Mq-4Fx">
                             <connections>
                                 <segue destination="Ipy-ob-Qi2" kind="show" id="4Ve-pS-gzb"/>

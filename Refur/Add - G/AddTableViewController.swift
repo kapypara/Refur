@@ -243,6 +243,23 @@ class AddTableViewController: UITableViewController {
         
     }
     
+    @IBAction func priceTextField(_ sender: Any) {
+        
+        guard
+            let priceField = priceTextField.text,
+            !priceField.isEmpty,
+            let price = Double(priceField)
+        else {
+            return
+            
+        }
+        
+        let total = price + (price * 0.1)
+        
+        stepperLabel.text = String(total)
+    }
+    
+    
 }
 
 
