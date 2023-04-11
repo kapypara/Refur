@@ -7,6 +7,9 @@
 
 import UIKit
 
+private var loadedProfile = false
+private var loadedPosts = false
+
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     
@@ -16,7 +19,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var userBio: UILabel!
     @IBOutlet weak var soldItems: UILabel!
     
-    var observeHandle: UInt = 0
     
     var postArray: [Post] = [] {
         didSet {
@@ -26,13 +28,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var profileDict: [String: Profile] = [:]
     
     var selectedPostIndex: Int = 0
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //prompatToLoginIfNeeded(segueIdentifier: "LoginSegue")
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -48,10 +43,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        Database.removeObserver(withHandle: observeHandle)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +52,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func loadUser() {
-        observeHandle = Database.Users.observeUser(user: User.uid!) { loadedProfile in
+        
+        guard !loadedProfile else { return }
+        loadedProfile = true
+        
+        Database.Users.observeUser(user: User.uid!) { loadedProfile in
             
             guard let profile = loadedProfile else { return }
             
@@ -90,6 +85,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func loadPosts() {
         
+        guard !loadedPosts else { return }
+        loadedPosts = true
+        
         Database.Users[User.uid! + "/Posts"].observe(.value) { snapshot in
             
             guard let posts = snapshot.value as? [String] else { return }
@@ -101,7 +99,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             //print(userProfile.posts)
             
             for post in posts {
-                Database.Posts.observePost(post: post) { post in
+                Database.Posts.getPost(post: post) { post in
                     guard let post = post else { return }
                     
                     // at this step we have a newe post to display
@@ -110,7 +108,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                     
                     // if we find a new user that is not in the dict we added to it
                     guard self.profileDict[post.userUuid] == nil else { return }
-                    Database.Users.observeUser(user: post.userUuid) { loadedProfile in
+                    Database.Users.getUser(user: post.userUuid) { loadedProfile in
                         if let profile = loadedProfile {
                             
                             self.profileDict[post.userUuid] = profile

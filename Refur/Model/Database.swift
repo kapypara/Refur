@@ -47,6 +47,28 @@ class Database {
                 completionHandler(loadedProfile)
             }
         }
+        
+        static func getUser(user: String, completionHandler: @escaping ProfileCompletionHandler = {(_) -> Void in ()},_ eventType: DataEventType = .value) {
+            
+            Database.Users[user].getData { error, snapshot in
+                
+                guard error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                guard
+                    let result = snapshot?.value as? [String: Any]
+                else {
+                    completionHandler(nil)
+                    return
+                }
+                
+                let loadedProfile = Profile.loadProfile(dictionary: result)
+                
+                completionHandler(loadedProfile)
+            }
+        }
     }
     
     class Posts {
@@ -75,6 +97,29 @@ class Database {
                 completionHandler(loadedPost)
             }
         }
+        
+        static func getPost(post: String, completionHandler: @escaping PostCompletionHandler = {(_) -> Void in ()}) {
+            
+            Database.Posts[post].getData { error, snapshot in
+                
+                guard error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                  }
+                
+                guard
+                    let result = snapshot?.value as? [String: Any]
+                else {
+                    completionHandler(nil)
+                    return
+                }
+                
+                let loadedPost = Post.loadPost(uuid: post, dictionary: result)
+                
+                completionHandler(loadedPost)
+            }
+        }
+        
     }
     
     
