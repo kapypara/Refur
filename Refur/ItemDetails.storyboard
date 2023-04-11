@@ -61,7 +61,7 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4TN-Y2-Dau">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4TN-Y2-Dau">
                                         <rect key="frame" x="0.0" y="45" width="393" height="393"/>
                                         <color key="backgroundColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -116,7 +116,7 @@
                                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="3xo-Sq-7Zk"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.30370190740000003" green="0.1809886694" blue="0.1175929084" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bap-Fh-cfk">
@@ -212,7 +212,7 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
-                                                            <color key="baseForegroundColor" red="0.40405815839999998" green="0.84568005800000001" blue="0.56065398450000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="baseForegroundColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                     </button>
                                                 </subviews>

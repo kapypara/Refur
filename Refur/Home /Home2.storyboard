@@ -291,7 +291,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="Zgt-6M-m02" id="eJd-mY-PLb"/>
                         <outlet property="featuredCollectionView" destination="Mwu-gX-CLH" id="uvt-G2-n4L"/>
@@ -326,7 +326,7 @@
         <scene sceneID="YZa-SW-XNn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6cZ-Qz-L2w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="P7E-Q4-K94"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="P7E-Q4-K94"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wx2-Nz-mvT">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -345,6 +345,7 @@
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -49,6 +49,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="n60-eV-IU9"/>
                                                     </constraints>
+                                                    <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain">
                                                         <imageReference key="image" image="heart.fill" catalog="system" symbolScale="medium"/>
