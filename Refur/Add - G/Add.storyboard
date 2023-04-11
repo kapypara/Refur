@@ -104,39 +104,35 @@
                                                                 <constraint firstAttribute="width" constant="353" id="wYY-cU-b3F"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            <connections>
+                                                                <action selector="priceTextField:" destination="bMQ-YI-TFh" eventType="editingChanged" id="ypv-5e-mh3"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lGf-rY-DkF" userLabel="Quantity">
                                                     <rect key="frame" x="20" y="228.33333333333334" width="353" height="62.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAb-Gq-2L9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="64.666666666666671" height="20.333333333333332"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAb-Gq-2L9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="3Hn-Cx-RIj">
                                                             <rect key="frame" x="0.0" y="30.333333333333343" width="353" height="32"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiX-ZB-OkK">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="32"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 10%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiX-ZB-OkK">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="32"/>
                                                                     <color key="backgroundColor" red="0.94523876910000004" green="0.94463765619999995" blue="0.93791359659999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="32" id="aIe-AY-DC3"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xwX-oi-1Uj">
-                                                                    <rect key="frame" x="259" y="0.0" width="94" height="32"/>
-                                                                    <color key="backgroundColor" red="0.94523876910000004" green="0.94463765619999995" blue="0.93791359659999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <connections>
-                                                                        <action selector="quantityStepper:" destination="bMQ-YI-TFh" eventType="valueChanged" id="0o2-JC-nhI"/>
-                                                                    </connections>
-                                                                </stepper>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
@@ -175,9 +171,9 @@
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOL-yE-cze">
                                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                    <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                    <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="Clothes"/>
                                                                     <connections>
@@ -186,9 +182,9 @@
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLb-Ad-RGp">
                                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                    <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                    <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="Books"/>
                                                                     <connections>
@@ -197,9 +193,9 @@
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuS-HN-mWF">
                                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                    <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                    <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="Others"/>
                                                                     <connections>
@@ -262,9 +258,9 @@
                                                                         </button>
                                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-2i-1ro">
                                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                            <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                            <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                             <state key="normal" title="Small"/>
                                                                             <connections>
@@ -273,9 +269,9 @@
                                                                         </button>
                                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4m-cX-OzM">
                                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                            <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                            <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                             <state key="normal" title="Medium"/>
                                                                             <connections>
@@ -284,9 +280,9 @@
                                                                         </button>
                                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pye-g3-bi2">
                                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                            <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                            <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                             <state key="normal" title=" Large"/>
                                                                             <connections>
@@ -353,9 +349,9 @@
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtp-hz-EZw">
                                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                    <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                    <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="Brand New"/>
                                                                     <connections>
@@ -364,9 +360,9 @@
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqc-IF-HQY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                    <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                    <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="As Good As New"/>
                                                                     <connections>
@@ -375,9 +371,9 @@
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxr-hQ-acg">
                                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                    <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                    <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="Good Condition"/>
                                                                     <connections>
@@ -386,9 +382,9 @@
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8N-1B-BdE">
                                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="0.0"/>
-                                                                    <color key="backgroundColor" red="0.98684710259999997" green="0.97557181120000003" blue="0.95533651109999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" red="0.94507890939999994" green="0.94518762830000003" blue="0.93725150820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                                    <color key="tintColor" red="0.37527285649999997" green="0.2474690128" blue="0.18659074919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="tintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="Used"/>
                                                                     <connections>

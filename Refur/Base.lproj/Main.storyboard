@@ -21,7 +21,7 @@
         <scene sceneID="5oo-Yh-hWe">
             <objects>
                 <viewControllerPlaceholder storyboardName="Home2" id="tZ5-Z0-def" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="6hM-an-Trm"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="6hM-an-Trm"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fhq-Cs-zig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,7 +66,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.1058823529" green="0.85882352939999995" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="tZ5-Z0-def" kind="relationship" relationship="viewControllers" id="b7Y-OW-s3u"/>
@@ -81,4 +81,8 @@
             <point key="canvasLocation" x="2007" y="856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+    </resources>
 </document>
