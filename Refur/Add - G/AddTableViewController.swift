@@ -7,86 +7,21 @@
 
 import UIKit
 
-class AddTableViewController: UITableViewController {
+class AddTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var stepperLabel: UILabel!
-    @IBOutlet weak var selectCategoryButton: UIButton!
-    @IBOutlet var categoriesButtons: [UIButton]!
-    @IBOutlet weak var selectConditionButton: UIButton!
-    @IBOutlet var conditionsButtons: [UIButton]!
-    @IBOutlet weak var itemDetailsTextField: UITextField!
-    @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var selectSizeButton: UIButton!
-    @IBOutlet var sizeButtons: [UIButton]!
-    @IBOutlet weak var brandTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var postButton: UIButton!
+    var itemImage: UIImage = UIImage(systemName: "photo.fill.on.rectangle.fill")!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let userUUID = "Gigi"
-        // for debuging
-        Database.Users[userUUID].observe(.value) { snapshot in
-            
-            //let userName = snapshot.value as? String ?? "Unknown";
-            
-            guard
-                snapshot.value != nil,
-                let result = snapshot.value! as? [String: Any]
-            else {
-                return
-            }
-            
-            let gigiProfile = Profile.loadProfile(dictionary: result)
-            
-            print(gigiProfile)
-            
-            gigiProfile?.name = "Liquid G"
-            gigiProfile?.handle = "NotG"
-             
-            Profile.saveProfile(uuid: "NG", profile: gigiProfile!)
-            
-        }
-            
-        return
-        
-        let postUUID = "test"
-        // for debuging
-        Database.Posts[postUUID].observe(.value) { snapshot in
-            
-            //let userName = snapshot.value as? String ?? "Unknown";
-            
-            guard
-                snapshot.value != nil,
-                let result = snapshot.value! as? [String: Any]
-            else {
-                return
-            }
-            
-            let post = Post.loadPost(uuid: postUUID, dictionary: result)
-            
-            print(post, post?.postUuid, post?.item)
-            
-            
-            if let post = post {
-                //post.postUuid = "Hello-from-swift"
-                
-                Post.savePost(post: post, postUuid: post.postUuid)
-            }
-        }
+       
     }
-    
-    
-    var seletedCatgegory: ItemCategory = .Clothing
-    var selectedCondition: ItemCondition = .GoodCondition
-    var selectedSize: ClothingSize = .Small
     
     @IBAction func newItem() {
         // TODO: add safety meausrs
         
-        let price = Double(priceTextField.text!)!
+        /*
+        //let price = Double(priceTextField.text!)!
         
         let item = Item.Clothing(name: itemDetailsTextField.text!,
                                  description: descriptionTextField.text!,
@@ -97,11 +32,40 @@ class AddTableViewController: UITableViewController {
                                  size: selectedSize
         )
         print(item.name)
-        
+        */
     }
     
     
-// MARK: Image Picker Button
+    // MARK: tableView function
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        print(indexPath)
+        
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemHeadCell", for: indexPath) as! ItemHeadCell
+            
+            cell.setupCell(image: itemImage)
+            
+            return cell
+            
+        default:
+            break
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+        
+        return cell
+    }
+    
+    
+    
+    // MARK: Image Picker Button
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let viewController = UIImagePickerController()
         viewController.sourceType = .photoLibrary
@@ -109,165 +73,12 @@ class AddTableViewController: UITableViewController {
         viewController.allowsEditing = true
         present(viewController, animated: true)
     }
-    
-    // MARK: Quantity Stepper
-    @IBAction func quantityStepper(_ sender: UIStepper) {
-        stepperLabel.text = String(Int(sender.value))
 
-    }
-    
-    // MARK: Category Selection
-    // If category (books) button clicked
-    
-    
-    func categoryButtonsVisibility() {
-        categoriesButtons.forEach { button in
-            UIView.animate(withDuration: 0.20) {
-                button.isHidden = !button.isHidden
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    @IBAction func categoryButtonClicked(_ sender: Any) {
-        categoryButtonsVisibility()
-        
-    }
-    
-    @IBAction func categoriesButtonsClicked(_ sender: UIButton) {
-        categoryButtonsVisibility()
-        print(sender.titleLabel!.text!)
-        switch sender.currentTitle {
-        case "Clothes":
-            seletedCatgegory = .Clothing
-            selectCategoryButton.setTitle("Clothes", for: .normal)
-            selectCategoryButton.setImage(nil, for: .normal)
-            
-        case "Books":
-            seletedCatgegory = .Book
-            selectCategoryButton.setTitle("Books", for: .normal)
-            selectCategoryButton.setImage(nil, for: .normal)
-            
-        case "Others":
-            seletedCatgegory = .Other
-            selectCategoryButton.setTitle("Others", for: .normal)
-            selectCategoryButton.setImage(nil, for: .normal)
-        default:
-            return
-        }
-        
-    }
-    
-    // MARK: Condition Selection
-    
-    func conditionsButtonsVisibility() {
-        conditionsButtons.forEach { button in
-            UIView.animate(withDuration: 0.2) {
-                button.isHidden = !button.isHidden
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    @IBAction func conditionButtonClicked(_ sender: UIButton) {
-        conditionsButtonsVisibility()
-    }
-    
-    
-    @IBAction func conditionStateSelected(_ sender: UIButton){
-        conditionsButtonsVisibility()
-        print(sender.titleLabel!.text!)
-        switch sender.currentTitle {
-        case "Brand New":
-            selectedCondition = .BrandNew
-            selectConditionButton.setTitle("Brand New", for: .normal)
-            selectConditionButton.setImage(nil, for: .normal)
-            
-        case "As Good As New":
-            selectedCondition = .AsGoodAsNew
-            selectConditionButton.setTitle("As Good As New", for: .normal)
-            selectConditionButton.setImage(nil, for: .normal)
-            
-        case "Good Condition":
-            selectedCondition = .GoodCondition
-            selectConditionButton.setTitle("Good Condition", for: .normal)
-            selectConditionButton.setImage(nil, for: .normal)
-            
-        case "Used":
-            selectedCondition = .Used
-            selectConditionButton.setTitle("Used", for: .normal)
-            selectConditionButton.setImage(nil, for: .normal)
-            
-        default:
-            return
-        }
-        
-    }
-    
-    // MARK: Size Selection
-    func sizeButtonsVisibility() {
-        sizeButtons.forEach { button in
-            UIView.animate(withDuration: 0.2) {
-                button.isHidden = !button.isHidden
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    @IBAction func sizeButtonClicked(_ sender: UIButton) {
-        sizeButtonsVisibility()
-    }
-    
-    
-    @IBAction func sizeStateSelected(_ sender: UIButton){
-        sizeButtonsVisibility()
-        print(sender.titleLabel!.text!)
-        switch sender.currentTitle {
-        case "Small":
-            selectedSize = .Small
-            selectSizeButton.setTitle("Small", for: .normal)
-            selectSizeButton.setImage(nil, for: .normal)
-            
-        case "Medium":
-            selectedSize = .Medium
-            selectSizeButton.setTitle("Medium", for: .normal)
-            selectSizeButton.setImage(nil, for: .normal)
-            
-        case "Large":
-            selectedSize = .Large
-            selectSizeButton.setTitle("Large", for: .normal)
-            selectSizeButton.setImage(nil, for: .normal)
-        default:
-            return
-        }
-        
-    }
-    
-    @IBAction func priceTextField(_ sender: Any) {
-        
-        guard
-            let priceField = priceTextField.text,
-            !priceField.isEmpty,
-            let price = Double(priceField)
-        else {
-            return
-            
-        }
-        
-        let total = price + (price * 0.1)
-        
-        stepperLabel.text = String(total)
-    }
-    
-    
-}
-
-
-// MARK: Image Picker delegate and functionality
-extension AddTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // MARK: Image Picker delegate and functionality
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            imageView.image = image
+            itemImage = image
+            tableView.reloadData()
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -276,3 +87,4 @@ extension AddTableViewController: UIImagePickerControllerDelegate, UINavigationC
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
