@@ -69,7 +69,7 @@ class Post {
         return Post.init(postUuid: postUuid, userUuid: userUuid, datePosted: datePosted, dateModified: dateModified, item: item, images: images, likes: likes)
     }
     
-    static func savePost(post: Post, postUuid: String = UUID().uuidString) -> String {
+    static func savePost(post: Post) {
         
         let dateModified: Double = post.dateModified.timeIntervalSince1970
         let datePosted: Double = post.datePosted.timeIntervalSince1970
@@ -84,8 +84,7 @@ class Post {
         } else if let sizeUnwarpped = post.item.size {
             size = sizeUnwarpped
         } else {
-            print("[Post.savePost] cant do size!")
-            return postUuid
+            size = ""
         }
         
         if let clothingType = post.item.type as? ClothingType {
@@ -96,12 +95,12 @@ class Post {
             type = (post.item.type as? OtherType)?.rawValue ?? ClothingType.TShirt.rawValue
         }
         
-        Database.Posts[postUuid].setValue([
+        Database.Posts[post.postUuid].setValue([
             "DateModified": dateModified,
             "DatePosted": datePosted,
             "Images": post.images,
             "Likes": post.likes,
-            "UserId": post.postUuid,
+            "UserId": post.userUuid,
             "Item": [
                 "Brand": post.item.brand ?? " ",
                 "Category": post.item.category.rawValue,
@@ -113,9 +112,6 @@ class Post {
                 "Type": type
             ]
         ])
-        
-        
-        return postUuid
     }
     
 }

@@ -212,6 +212,7 @@ class FieldCell: UITableViewCell {
         }
         
         fieldName.text = "Brand"
+        FieldInput.placeholder = "Brand name..."
     }
     
     @IBAction func fieldChanged(_ sender: Any) {
@@ -241,6 +242,10 @@ class DescriptionCell: UITableViewCell {
 
 class PostCell: UITableViewCell {
 
-
+    @IBOutlet weak var postButton: UIButton!
+    
+    func setupCell(_ enabled: Bool) {
+        postButton.isEnabled = enabled
+    }
 }
 
