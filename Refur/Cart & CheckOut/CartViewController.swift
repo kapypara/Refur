@@ -8,48 +8,73 @@
 import UIKit
 
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var cartTableView: UITableView!
+    @IBOutlet weak var emptyCartMessage: UILabel!
+
+    @IBOutlet weak var selectAllButton: UIBarButtonItem!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        emptyCartMessage.isHidden = Cart.cart.isEmpty ? false : true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         cartTableView.delegate = self
         cartTableView.dataSource = self
+        
     }
     
-
-    var allSelected = false
-    var items = [Item.Clothing(name: "", description: "", condition: .BrandNew, price: 1.2, type: .Shoes, brnad: " ", size: .XL)]
-    
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return items.count
-    }
-
-    @IBAction func selectAllPressed(_ sender: Any) {
-        allSelected = true
+    @objc func updateSelectionButton() {
+        allSelected.toggle()
         cartTableView.reloadData()
+        
+        let newTitle = allSelected ? "Deselect All" : "Select All"
+        let barButton = UIBarButtonItem(title: newTitle,
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(updateSelectionButton))
+        
+        self.navigationItem.leftBarButtonItem = barButton
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as! CartTableViewCell
-            
-            // Configure the cell...
-            let item = items[indexPath.row]
-            cell.itemNameLbl.text = item.name
-            cell.usernameLbl.text = "@JohnDoe"
-            cell.priceLabel.text = "BD" + String(item.price)
-            if allSelected {
-                cell.isChosen.isSelected = true
+    var allSelected: Bool = false {
+        didSet {
+            for i in 0 ..< Cart.cart.count {
+                Cart.cart[i].selected = allSelected
             }
-            return cell
+            
+            //updateSelectionButton()
+        }
         
     }
     
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return Cart.cart.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as! CartTableViewCell
+        
+        cell.setupCell(post: Cart.cart[indexPath.row].cartItem, selection: Cart.cart[indexPath.row].selected)
+        
+        return cell
+        
+    }
+    
+    @IBAction func selectAllPressed(_ sender: Any) {
+        //allSelected.toggle()
+        //cartTableView.reloadData()
+        updateSelectionButton()
+    }
+    
+    
     // MARK: - Navigation
-
+    
 }

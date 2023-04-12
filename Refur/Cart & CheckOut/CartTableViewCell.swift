@@ -8,42 +8,48 @@
 import UIKit
 
 
-protocol ToDoCellDelegate: AnyObject  {
-    func checkmarkTapped(sender: CartTableViewCell)
-}
-
 class CartTableViewCell: UITableViewCell {
     
     
     @IBOutlet var isChosen: UIButton!
     @IBOutlet var itemImage: UIImageView!
     
-    @IBOutlet var itemNameLbl: UILabel!
-    @IBOutlet var usernameLbl: UILabel!
-    @IBOutlet var priceLabel: UILabel!
-
-    @IBOutlet var quantityLbl: UILabel!
-    @IBOutlet var quantityStepper: UIStepper!
+    @IBOutlet var itemName: UILabel!
+    @IBOutlet var username: UILabel!
+    @IBOutlet var price: UILabel!
     
-    func updateQuantity()  {
-        quantityLbl.text = "\(Int(quantityStepper.value))"
+    var cartItemIndex: Int = 0
+    var itemSelected: Bool = true {
+        didSet {
+            isChosen.isSelected = itemSelected
+            Cart.cart[cartItemIndex].selected = itemSelected
+        }
     }
-    
     
     @IBAction func checkmarkBtnTapped(_ sender: UIButton) {
+        itemSelected.toggle()
+    }
+    
+    
+    func setupCell(post: Post, selection: Bool) {
         
-        isChosen.isSelected.toggle()
+        itemSelected = selection
+        
+        if let image = post.images.first {
+            Database.Storage.loadImage(view: itemImage, uuid: image)
+        }
+        
+        itemName.text = post.item.description
+        
+        price.text = "BD\(post.item.price)"
+        
+        Database.Users.getUser(user: post.userUuid) { loadedProfile in
+            
+            guard let username = loadedProfile?.name else { return }
+            
+            self.username.text = username
+        }
     }
-    
-
-    
-    
-    @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        updateQuantity()
-    }
-    
-    
-    
     
     
     override func awakeFromNib() {

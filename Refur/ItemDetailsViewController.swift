@@ -34,6 +34,14 @@ class ItemDetailsViewController: UIViewController {
     
     @IBOutlet weak var ClothesStack: UIStackView!
     
+    @IBOutlet weak var addToCartButton: UIButton!
+    
+    var isItemAdded: Bool = false {
+        didSet {
+            addToCartButton.isEnabled = isItemAdded
+            addToCartButton.setTitle(isItemAdded ? "ADD TO CART" : "ADDED TO CART", for: .normal)
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,6 +50,7 @@ class ItemDetailsViewController: UIViewController {
             Database.Posts[post.postUuid + "/Likes"].setValue(post.likes+1)
         }
         updateView()
+        updateAddButton()
     }
     
     
@@ -86,4 +95,29 @@ class ItemDetailsViewController: UIViewController {
         
     }
 
+    func updateAddButton() {
+        
+        guard let userPost = userPost else { return }
+        
+        for i in Cart.cart {
+            if userPost.postUuid == i.cartItem.postUuid {
+                isItemAdded = false
+                return
+            }
+        }
+        
+        isItemAdded = true
+    }
+    
+    @IBAction func addToCart(_ sender: UIButton) {
+        
+        guard let userPost = userPost else { return }
+
+        
+        Cart.addToCart(itemPost: userPost)
+        
+        updateAddButton()
+    }
+    
+    
 }

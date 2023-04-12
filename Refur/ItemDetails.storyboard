@@ -230,6 +230,9 @@
                                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                                             <color key="baseForegroundColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="addToCart:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="W6S-IC-uxJ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -255,6 +258,7 @@
                     <navigationItem key="navigationItem" title="Title" id="8vm-GH-Gg5"/>
                     <connections>
                         <outlet property="ClothesStack" destination="ShU-As-hQK" id="eRD-dq-BRA"/>
+                        <outlet property="addToCartButton" destination="89d-Is-BnM" id="DUs-8B-1kI"/>
                         <outlet property="itemBrand" destination="oOc-ku-Ncv" id="OUc-pe-wDE"/>
                         <outlet property="itemCondition" destination="6Yd-Zi-9la" id="2hx-lh-ASw"/>
                         <outlet property="itemDescription" destination="nGc-zL-M5i" id="uVZ-YK-CKZ"/>
