@@ -79,6 +79,9 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="nameChanged:" destination="ql4-ub-azb" eventType="editingChanged" id="N2V-tg-yad"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -211,7 +214,7 @@
                                                                 <imageReference key="image" image="arrow.down" catalog="system" symbolScale="medium"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="categoryButtonClicked:" destination="1p3-q7-G1U" eventType="touchUpInside" id="yRt-pH-AGV"/>
+                                                                <action selector="menuButtonClicked:" destination="1p3-q7-G1U" eventType="touchUpInside" id="jEz-6a-IX2"/>
                                                             </connections>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syS-MM-vVn">
@@ -222,7 +225,7 @@
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="selection1"/>
                                                             <connections>
-                                                                <action selector="categoriesButtonsClicked:" destination="1p3-q7-G1U" eventType="touchUpInside" id="nUH-vT-N6d"/>
+                                                                <action selector="menuButtonsClicked:" destination="1p3-q7-G1U" eventType="touchUpInside" id="4l6-DT-mFi"/>
                                                             </connections>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RT8-Qb-anT">
@@ -233,7 +236,7 @@
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="selection2"/>
                                                             <connections>
-                                                                <action selector="categoriesButtonsClicked:" destination="1p3-q7-G1U" eventType="touchUpInside" id="YHP-WQ-r30"/>
+                                                                <action selector="menuButtonsClicked:" destination="1p3-q7-G1U" eventType="touchUpInside" id="yKb-wj-ZmX"/>
                                                             </connections>
                                                         </button>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nda-Vl-za0">
@@ -244,7 +247,7 @@
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="selection3"/>
                                                             <connections>
-                                                                <action selector="categoriesButtonsClicked:" destination="1p3-q7-G1U" eventType="touchUpInside" id="xoQ-0H-QQT"/>
+                                                                <action selector="menuButtonsClicked:" destination="1p3-q7-G1U" eventType="touchUpInside" id="GZl-NZ-Tyk"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -297,6 +300,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="fieldChanged:" destination="Tvm-KB-dES" eventType="editingChanged" id="Bx5-uc-LPa"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -354,6 +360,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="fieldChanged:" destination="reG-yX-K6h" eventType="editingChanged" id="CiL-kA-0QD"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -377,8 +386,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5Y-Th-TdY">
-                                            <rect key="frame" x="20" y="11" width="353" height="35.666666666666629"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5Y-Th-TdY">
+                                            <rect key="frame" x="20" y="10" width="353" height="40"/>
                                             <color key="backgroundColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
@@ -392,8 +401,10 @@
                                     </subviews>
                                     <viewLayoutGuide key="safeArea" id="SS4-rt-kdT"/>
                                     <constraints>
-                                        <constraint firstItem="SS4-rt-kdT" firstAttribute="trailing" secondItem="Q5Y-Th-TdY" secondAttribute="trailing" constant="20" id="EJz-A3-xcZ"/>
-                                        <constraint firstItem="Q5Y-Th-TdY" firstAttribute="leading" secondItem="SS4-rt-kdT" secondAttribute="leading" constant="20" id="ocg-YD-hQX"/>
+                                        <constraint firstItem="Q5Y-Th-TdY" firstAttribute="top" secondItem="XNY-fh-gfQ" secondAttribute="top" constant="10" id="0S5-Mr-LFH"/>
+                                        <constraint firstAttribute="trailing" secondItem="Q5Y-Th-TdY" secondAttribute="trailing" constant="20" id="EJz-A3-xcZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="Q5Y-Th-TdY" secondAttribute="bottom" constant="10" id="Ukc-2o-LHQ"/>
+                                        <constraint firstItem="Q5Y-Th-TdY" firstAttribute="leading" secondItem="XNY-fh-gfQ" secondAttribute="leading" constant="20" id="ocg-YD-hQX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -406,6 +417,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="plus.circle" catalog="system" selectedImage="plus.circle.fill" id="OcZ-vP-YP6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="qM6-MT-g67" kind="show" identifier="dummy" id="Zrt-Fv-3NQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ku-Te-rse" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -416,7 +430,7 @@
             <objects>
                 <tableViewController id="qM6-MT-g67" customClass="AddTableViewController" customModule="Refur" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="lgt-o4-C8a">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -829,6 +843,7 @@
                         </sections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="plus.circle" catalog="system" selectedImage="plus.circle.fill" id="rsD-Pq-IHf"/>
+                    <navigationItem key="navigationItem" id="SJ3-kP-LlQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zv8-Of-OxI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
