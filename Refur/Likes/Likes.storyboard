@@ -103,14 +103,6 @@
             </objects>
             <point key="canvasLocation" x="5281.679389312977" y="786.61971830985919"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="lFm-ue-ehS">
-            <objects>
-                <viewControllerPlaceholder id="1D8-YZ-wqR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HEq-Nl-kkZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5972" y="711"/>
-        </scene>
         <!--ItemDetails-->
         <scene sceneID="sEV-fW-IM9">
             <objects>

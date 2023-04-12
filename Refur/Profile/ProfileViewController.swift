@@ -56,7 +56,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         guard !loadedProfile else { return }
         loadedProfile = true
         
-        Database.Users.observeUser(user: User.uid!) { loadedProfile in
+        let _ = Database.Users.observeUser(user: User.uid!) { loadedProfile in
             
             guard let profile = loadedProfile else { return }
             

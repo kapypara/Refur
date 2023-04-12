@@ -11,18 +11,33 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var emptyCartMessage: UILabel!
-
-    @IBOutlet weak var selectAllButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var checkoutButton: UIButton!
     
+
+    var allSelected: Bool = false {
+        didSet {
+            for i in 0 ..< Cart.cart.count {
+                Cart.cart[i].selected = allSelected
+            }
+        }
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         emptyCartMessage.isHidden = Cart.cart.isEmpty ? false : true
         checkoutButton.isHidden = Cart.cart.isEmpty ? true : false
+        
+        if Cart.cart.isEmpty {
+            emptyCartMessage.isHidden = false
+            checkoutButton.isHidden = true
+            self.navigationItem.leftBarButtonItem = nil
+        } else {
+            emptyCartMessage.isHidden = true
+            checkoutButton.isHidden = false
+            updateSelectionButton()
+        }
     }
     
     override func viewDidLoad() {
@@ -33,28 +48,21 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    @objc func updateSelectionButton() {
-        allSelected.toggle()
-        cartTableView.reloadData()
+    func updateSelectionButton() {
         
         let newTitle = allSelected ? "Deselect All" : "Select All"
         let barButton = UIBarButtonItem(title: newTitle,
                                         style: .plain,
                                         target: self,
-                                        action: #selector(updateSelectionButton))
+                                        action: #selector(selectAllButton))
         
         self.navigationItem.leftBarButtonItem = barButton
     }
     
-    var allSelected: Bool = false {
-        didSet {
-            for i in 0 ..< Cart.cart.count {
-                Cart.cart[i].selected = allSelected
-            }
-            
-            //updateSelectionButton()
-        }
-        
+    @objc func selectAllButton() {
+            allSelected.toggle()
+            cartTableView.reloadData()
+            updateSelectionButton()
     }
     
     
@@ -72,13 +80,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
         
     }
-    
-    @IBAction func selectAllPressed(_ sender: Any) {
-        //allSelected.toggle()
-        //cartTableView.reloadData()
-        updateSelectionButton()
-    }
-    
     
     // MARK: - Navigation
     
