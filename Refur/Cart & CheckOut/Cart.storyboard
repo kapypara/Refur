@@ -137,7 +137,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cart" id="QBs-V3-aqo">
-                        <barButtonItem key="leftBarButtonItem" title="selectAll" id="Jti-1D-s1B">
+                        <barButtonItem key="leftBarButtonItem" title="Select All" id="Jti-1D-s1B">
                             <connections>
                                 <action selector="selectAllPressed:" destination="Mg0-lA-yyv" id="WBd-h3-l9o"/>
                             </connections>
@@ -145,6 +145,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cartTableView" destination="jEg-Iv-NHy" id="Qs8-5a-Bn0"/>
+                        <outlet property="checkoutButton" destination="WRV-r3-mEQ" id="Aub-SO-tAG"/>
                         <outlet property="emptyCartMessage" destination="ETG-CB-y5b" id="D2a-qh-Fbo"/>
                         <outlet property="selectAllButton" destination="Jti-1D-s1B" id="jZk-Rm-5gm"/>
                     </connections>

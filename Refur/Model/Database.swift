@@ -105,7 +105,7 @@ class Database {
                 guard error == nil else {
                     print(error!.localizedDescription)
                     return
-                  }
+                }
                 
                 guard
                     let result = snapshot?.value as? [String: Any]
@@ -124,7 +124,7 @@ class Database {
     
     
     class Storage {
-                
+
         static func saveImage(image: UIImage) -> String? {
             
             guard let imageData = image.pngData() else { return nil }
@@ -144,19 +144,28 @@ class Database {
             return imageUuid
         }
         
+        static var imageCache: [String: UIImage] = [:]
+        
         static func loadImage(view: UIImageView, uuid: String) {
             
-            StorageRef.child("images/\(uuid)").getData(maxSize:(104857666), completion: { (data, error) in
+            if let image = Database.Storage.imageCache[uuid] {
+                view.image = image
+                return
+            }
+            
+            StorageRef.child("images/\(uuid)").getData(maxSize: 104857666) { (data, error) in
                 
                 guard error == nil else {
                     print("Failed to download", error ?? "")
                     return
                 }
                 
-                if let image = data {
-                    view.image = UIImage(data: image)
+                if let imageData = data, let image = UIImage(data: imageData) {
+                    view.image = image
+                    
+                    Database.Storage.imageCache[uuid] = image
                 }
-            })
+            }
         }
     }
     

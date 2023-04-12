@@ -14,10 +14,15 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var selectAllButton: UIBarButtonItem!
     
-    override func viewDidAppear(_ animated: Bool) {
+    
+    @IBOutlet weak var checkoutButton: UIButton!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         emptyCartMessage.isHidden = Cart.cart.isEmpty ? false : true
+        checkoutButton.isHidden = Cart.cart.isEmpty ? true : false
     }
     
     override func viewDidLoad() {
