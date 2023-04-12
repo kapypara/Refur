@@ -35,6 +35,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="fieldModified:" destination="Y6W-OH-hqX" eventType="editingChanged" id="ssK-qi-C50"/>
+                                            <action selector="nextField:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="90a-dl-42M"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4a2-Ev-2a8" customClass="CustomTextField" customModule="Refur" customModuleProvider="target">
@@ -49,6 +50,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="fieldModified:" destination="Y6W-OH-hqX" eventType="editingChanged" id="tk4-fj-e01"/>
+                                            <action selector="nextField:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="1pE-g1-DZu"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1I-56-KUt">
@@ -175,6 +177,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="FieldChanged:" destination="7dm-T2-rOw" eventType="editingChanged" id="IJL-n7-mRW"/>
+                                                        <action selector="nextField:" destination="7dm-T2-rOw" eventType="primaryActionTriggered" id="TyR-BN-5n4"/>
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2L-2R-1pM">
@@ -186,6 +189,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="FieldChanged:" destination="7dm-T2-rOw" eventType="editingChanged" id="9ao-n9-Tjk"/>
+                                                        <action selector="nextField:" destination="7dm-T2-rOw" eventType="primaryActionTriggered" id="6aC-IC-ivx"/>
                                                     </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="giI-cx-bCe">
@@ -194,9 +198,10 @@
                                                         <constraint firstAttribute="height" constant="40" id="EN3-eQ-wkh"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
                                                         <action selector="FieldChanged:" destination="7dm-T2-rOw" eventType="editingChanged" id="Cg7-Og-SeX"/>
+                                                        <action selector="nextField:" destination="7dm-T2-rOw" eventType="primaryActionTriggered" id="leK-KW-gUb"/>
                                                     </connections>
                                                 </textField>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="07M-tf-XKf">
@@ -246,9 +251,10 @@
                                                         <constraint firstAttribute="height" constant="40" id="q4H-Lk-mIs"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
                                                         <action selector="FieldChanged:" destination="7dm-T2-rOw" eventType="editingChanged" id="tvM-Jg-nnw"/>
+                                                        <action selector="nextField:" destination="7dm-T2-rOw" eventType="primaryActionTriggered" id="QsQ-kv-T0x"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

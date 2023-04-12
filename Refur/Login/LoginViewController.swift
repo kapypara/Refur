@@ -22,6 +22,34 @@ class LoginViewController: UIViewController {
         passwordTextField.setupLeftImageView(image: UIImage(systemName: "lock")!)
         
         updateSignInButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 140 //keyboardSize.height
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func updateSignInButton() {
@@ -80,5 +108,14 @@ class LoginViewController: UIViewController {
     }
     
     
+    @IBAction func nextField(_ sender: UITextField) {
+        switch sender {
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+            
+        default:
+            sender.resignFirstResponder()
+        }
+    }
     
 }

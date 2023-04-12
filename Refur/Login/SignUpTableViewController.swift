@@ -26,8 +26,36 @@ class SignUpTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         updateRegisterButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 100 //keyboardSize.height
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func updateRegisterButton() {
@@ -58,6 +86,8 @@ class SignUpTableViewController: UITableViewController {
         didAgree.toggle()
         updateRegisterButton()
     }
+    
+    
     
     @IBAction func registerButtonPressed(_ sender: Any) {
         guard
@@ -125,5 +155,22 @@ class SignUpTableViewController: UITableViewController {
         }
     }
     
+    
+    @IBAction func nextField(_ sender: UITextField) {
+        
+        switch sender {
+        case eamilTextField:
+            usernameTextField.becomeFirstResponder()
+            
+        case usernameTextField:
+            passwordTextField.becomeFirstResponder()
+            
+        case passwordTextField:
+            reEnterPasswordTextField.becomeFirstResponder()
+            
+        default: //reEnterPasswordTextField
+            sender.resignFirstResponder()
+        }
+    }
     
 }
