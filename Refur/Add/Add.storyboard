@@ -156,9 +156,6 @@
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                            <connections>
-                                                                <action selector="priceTextField:" destination="bMQ-YI-TFh" eventType="editingChanged" id="spb-WU-TYM"/>
-                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>

@@ -17,19 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="z4b-Vt-F0D">
-                                <rect key="frame" x="16" y="113" width="169" height="83"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="z4b-Vt-F0D">
+                                <rect key="frame" x="16" y="113" width="192" height="83"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wvm-xY-r32">
                                         <rect key="frame" x="0.0" y="1" width="83" height="81.666666666666671"/>
                                         <color key="tintColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="83" id="0cY-cG-geH"/>
+                                            <constraint firstAttribute="width" secondItem="wvm-xY-r32" secondAttribute="height" multiplier="1:1" id="1xC-dv-whF"/>
                                             <constraint firstAttribute="height" constant="83" id="h1n-jr-3I9"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="p5r-TN-43u">
-                                        <rect key="frame" x="84" y="22.333333333333346" width="85" height="38.333333333333343"/>
+                                        <rect key="frame" x="92" y="22.333333333333346" width="100" height="38.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5Y-VJ-lNn">
                                                 <rect key="frame" x="0.0" y="0.0" width="78.333333333333329" height="20.333333333333332"/>
@@ -46,19 +46,25 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38.329999999999998" id="FKd-6Y-LZL"/>
-                                            <constraint firstAttribute="width" constant="85" id="uXF-WZ-AIv"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="uXF-WZ-AIv"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sapien in diam rutrum tempor id et ipsum. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjN-pF-18K">
-                                <rect key="frame" x="16" y="203.33333333333334" width="361" height="31.333333333333343"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riA-qM-k6Z">
+                                <rect key="frame" x="310.33333333333331" y="118.99999999999999" width="50.666666666666686" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.090196078431372548" green="0.062745098039215685" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sapien in diam rutrum tempor id et ipsum." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjN-pF-18K">
+                                <rect key="frame" x="16" y="201" width="361" height="31.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.090196078431372548" green="0.062745098039215685" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDQ-LY-PXb">
-                                <rect key="frame" x="32" y="249.66666666666666" width="329" height="29.666666666666657"/>
+                                <rect key="frame" x="32" y="247.33333333333334" width="329" height="29.666666666666657"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit Your Profile">
                                     <backgroundConfiguration key="background">
@@ -104,26 +110,19 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riA-qM-k6Z">
-                                <rect key="frame" x="322" y="119.99999999999999" width="39" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qDQ-LY-PXb" firstAttribute="top" secondItem="DjN-pF-18K" secondAttribute="bottom" constant="15" id="3CL-aH-tmv"/>
-                            <constraint firstItem="riA-qM-k6Z" firstAttribute="leading" relation="lessThanOrEqual" secondItem="z4b-Vt-F0D" secondAttribute="trailing" constant="137" id="CSS-4v-isM"/>
+                            <constraint firstItem="riA-qM-k6Z" firstAttribute="top" secondItem="wvm-xY-r32" secondAttribute="top" constant="6" id="959-ff-SKq"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qDQ-LY-PXb" secondAttribute="trailing" constant="32" id="Cqs-1x-tEY"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="z4b-Vt-F0D" secondAttribute="bottom" constant="573" id="OWa-6W-fmQ"/>
                             <constraint firstItem="qDQ-LY-PXb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="SbN-t2-Ulb"/>
                             <constraint firstItem="DjN-pF-18K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Vzc-j8-TJO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="riA-qM-k6Z" secondAttribute="trailing" constant="32" id="Ya9-fR-me2"/>
                             <constraint firstItem="z4b-Vt-F0D" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ZmY-6l-WKc"/>
-                            <constraint firstItem="DjN-pF-18K" firstAttribute="top" secondItem="z4b-Vt-F0D" secondAttribute="bottom" constant="7.3300000000000001" id="cim-qt-Tfe"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="riA-qM-k6Z" secondAttribute="trailing" constant="32" id="sxt-xp-Dfr"/>
-                            <constraint firstItem="DjN-pF-18K" firstAttribute="top" secondItem="riA-qM-k6Z" secondAttribute="bottom" constant="63" id="xyb-Ob-vd5"/>
+                            <constraint firstItem="DjN-pF-18K" firstAttribute="top" secondItem="z4b-Vt-F0D" secondAttribute="bottom" constant="5" id="cim-qt-Tfe"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DjN-pF-18K" secondAttribute="trailing" constant="16" id="z4o-Nc-wfS"/>
                         </constraints>
                     </view>
@@ -147,7 +146,6 @@
                         <outlet property="userHnadle" destination="6dR-mS-z0L" id="g9o-kp-12c"/>
                         <outlet property="userImage" destination="wvm-xY-r32" id="S07-4t-BwN"/>
                         <outlet property="username" destination="Q5Y-VJ-lNn" id="JNj-gg-2jJ"/>
-                        <segue destination="YPe-mp-2XI" kind="presentation" identifier="LoginSegue" id="t7r-mZ-EfL"/>
                         <segue destination="QQG-3G-Kuh" kind="unwind" identifier="Home" unwindAction="unwindToHome:" id="55q-He-ZHp"/>
                         <segue destination="zwm-jm-CMV" kind="show" identifier="showDetails" id="DYN-H3-xIE"/>
                     </connections>
@@ -157,14 +155,6 @@
             </objects>
             <point key="canvasLocation" x="2669.4656488549617" y="-504.22535211267609"/>
         </scene>
-        <!--Login-->
-        <scene sceneID="A7L-3O-Hr2">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="YPe-mp-2XI" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yli-ve-KoK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3344.2748091603053" y="-504.22535211267609"/>
-        </scene>
         <!--ItemDetails-->
         <scene sceneID="opn-Yf-4WS">
             <objects>
@@ -173,7 +163,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUx-h0-QhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3301.5267175572517" y="-416.19718309859155"/>
+            <point key="canvasLocation" x="3318" y="-504"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cWs-PD-OB5">

@@ -56,6 +56,8 @@ class PirceCell: UITableViewCell {
             priceTextField.text = String(price)
         }
         
+        totalTextField.isUserInteractionEnabled = false
+        
         updateCell()
     }
     

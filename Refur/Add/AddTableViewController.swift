@@ -82,36 +82,18 @@ class AddTableViewController: UITableViewController, UIImagePickerControllerDele
             item = Item.Other(name: name, description: description, condition: condition, price: price, type: .Other)
         }
         
-        guard
-            let image = itemImage,
-            let postUuid = Database.Storage.saveImage(image: image)
-        else {
-            
-            let alert = UIAlertController(
-                title: "No Image",
-                message: "please input a Image",
-                preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "ok", style: .cancel))
-            
-            self.present(alert, animated: true)
-            
-            self.postButtonEnabled = true
-            return
-        }
+
+        guard let image = itemImage else { return }
         
-        let newPost = Post(item: item, images: [postUuid])
-        
-        Post.savePost(post: newPost)
-        
-        Database.Users.getUser(user: User.uid!) { loadedProfile in
-        
+        Database.Storage.saveImage(image: image) { loadedString in
+
             guard
-                var posts = loadedProfile?.posts
+                let postUuid = loadedString
             else {
+                
                 let alert = UIAlertController(
-                    title: "Post Submation Failed",
-                    message: "please retry again",
+                    title: "No Image",
+                    message: "please input a Image",
                     preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "ok", style: .cancel))
@@ -122,34 +104,56 @@ class AddTableViewController: UITableViewController, UIImagePickerControllerDele
                 return
             }
             
-            posts.insert(newPost.postUuid, at: 0)
+            let newPost = Post(item: item, images: [postUuid])
             
-            Database.Users[User.uid! + "/Posts"].setValue(posts)
+            Post.savePost(post: newPost)
             
-            
-            let alert = UIAlertController(
-                title: "Post Submation succesed",
-                message: "your post is now viewable",
-                preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "ok", style: .cancel))
-            
-            self.present(alert, animated: true)
-            
-            
-            // clearing data
-            self.postButtonEnabled = true
-            
-            self.fields = AddItems()
-            self.fields.controller = self
-            
-            self.clear = 0
-            self.tableView.reloadData()
-            self.clear = 1
-            self.tableView.reloadData()
-            
+            Database.Users.getUser(user: User.uid!) { loadedProfile in
+                
+                guard
+                    var posts = loadedProfile?.posts
+                else {
+                    let alert = UIAlertController(
+                        title: "Post Submation Failed",
+                        message: "please retry again",
+                        preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "ok", style: .cancel))
+                    
+                    self.present(alert, animated: true)
+                    
+                    self.postButtonEnabled = true
+                    return
+                }
+                
+                posts.insert(newPost.postUuid, at: 0)
+                
+                Database.Users[User.uid! + "/Posts"].setValue(posts)
+                
+                
+                let alert = UIAlertController(
+                    title: "Post Submation succesed",
+                    message: "your post is now viewable",
+                    preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "ok", style: .cancel))
+                
+                self.present(alert, animated: true)
+                
+                
+                // clearing data
+                self.postButtonEnabled = true
+                
+                self.fields = AddItems()
+                self.fields.controller = self
+                
+                self.clear = 0
+                self.tableView.reloadData()
+                self.clear = 1
+                self.tableView.reloadData()
+                
+            }
         }
-        
         
         //print(item.name)
         
@@ -247,9 +251,9 @@ class AddTableViewController: UITableViewController, UIImagePickerControllerDele
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        picker.dismiss(animated: true, completion: nil)
+//    }
     
     @IBAction func unwindToAddPage(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source

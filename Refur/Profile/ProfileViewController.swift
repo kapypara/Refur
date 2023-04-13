@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 private var loadedProfile = false
 private var loadedPosts = false
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class ProfileViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var username: UILabel!
@@ -19,12 +20,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var userBio: UILabel!
     @IBOutlet weak var soldItems: UILabel!
     
+    var cameraAuthorization: AVAuthorizationStatus {
+        return AVCaptureDevice.authorizationStatus(for: .video)
+    }
     
     var postArray: [Post] = [] {
         didSet {
             profilePostsCollectionView.reloadData()
         }
     }
+
     var profileDict: [String: Profile] = [:]
     
     var selectedPostIndex: Int = 0
@@ -48,9 +53,77 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         profilePostsCollectionView.delegate = self
         profilePostsCollectionView.dataSource = self
-
+        
+        let profileImageTap = UITapGestureRecognizer(target: self, action: #selector(changeProfilePicture))
+        
+        userImage.addGestureRecognizer(profileImageTap)
+        userImage.isUserInteractionEnabled = true
     }
     
+    // MARK: Profile Picture
+    @objc func changeProfilePicture() {
+        
+        Task {
+            if cameraAuthorization == .notDetermined {
+                await AVCaptureDevice.requestAccess(for: .video)
+            }
+            
+            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            if cameraAuthorization == .authorized {
+                actionSheet.addAction(UIAlertAction(title: "Camera", style: .default) { alert in
+                    self.present(self.cameraPickerController, animated: true)
+                })
+            }
+            
+            actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default) { alert in
+                self.present(self.photoLibraryPickerController, animated: true)
+            })
+            
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            
+            present(actionSheet, animated: true, completion: nil)
+        }
+    }
+    
+    var cameraPickerController: UIImagePickerController {
+        let controller = UIImagePickerController()
+        controller.delegate = self;
+        controller.sourceType = .camera
+        controller.allowsEditing = true
+        
+        return controller
+    }
+    
+    var photoLibraryPickerController: UIImagePickerController {
+        let controller = UIImagePickerController()
+        controller.delegate = self;
+        controller.sourceType = .photoLibrary
+        controller.allowsEditing = true
+        
+        return controller
+    }
+
+    func saveProfilePicture() {
+        Database.Storage.saveImage(image: userImage.image!) { imageUid in
+            
+            guard let imageUid = imageUid else { return }
+            
+            Database.Users[User.uid! + "/Image"].setValue(imageUid)
+        }
+    }
+    
+
+    @IBAction func signOut(_ sender: Any) {
+        User.signOut() { wasSuccessful in
+            if wasSuccessful {
+                self.unwindIfNotLoggedIn(segueIdentifier: "Home")
+            }
+        }
+    }
+    
+    
+    // MARK: Loading Data
     func loadUser() {
         
         guard !loadedProfile else { return }
@@ -70,16 +143,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
-    
-    
-    @IBAction func signOut(_ sender: Any) {
-        User.signOut() { wasSuccessful in
-            if wasSuccessful {
-                self.unwindIfNotLoggedIn(segueIdentifier: "Home")
-            }
-        }
-    }
-    
     // MARK: POSTS
     @IBOutlet weak var profilePostsCollectionView: UICollectionView!
     
@@ -91,12 +154,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         Database.Users[User.uid! + "/Posts"].observe(.value) { snapshot in
             
             guard let posts = snapshot.value as? [String] else { return }
-            print(posts)
             
             self.postArray.removeAll()
-            //print(self.postArray.count)
-            
-            //print(userProfile.posts)
             
             for post in posts {
                 Database.Posts.getPost(post: post) { post in
@@ -104,7 +163,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                     
                     // at this step we have a newe post to display
                     self.postArray.append(post)
-                    
                     
                     // if we find a new user that is not in the dict we added to it
                     guard self.profileDict[post.userUuid] == nil else { return }
@@ -114,17 +172,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                             self.profileDict[post.userUuid] = profile
                         }
                     }
-                    
                 }
             }
         }
-        
     }
     
+    // MARK: Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return postArray.count
-   }
-
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedPostIndex = indexPath.row
         performSegue(withIdentifier: "showDetails", sender: self)
@@ -134,12 +191,23 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profilePostCell", for: indexPath) as! ProfilePostsCollectionViewCell
         
         // Configure the cell
-        let likes = postArray[indexPath.row]
+        cell.setupCall(post: postArray[indexPath.item])
         
-        cell.setupCall(post: likes)
         return cell
     }
     
+    // MARK: Picker Controller
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")]
+            
+        if let image = image as? UIImage {
+            userImage.image = image
+        }
+        
+        saveProfilePicture()
+        picker.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -153,5 +221,5 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         
     }
-
+    
 }

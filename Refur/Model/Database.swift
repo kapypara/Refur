@@ -6,7 +6,8 @@ import FirebaseStorage
 
 typealias PostCompletionHandler = (_ loadedPost: Post?) -> Void
 typealias ProfileCompletionHandler = (_ loadedPost: Profile?) -> Void
-
+typealias StringCompletionHandler = (_ loadedString: String?) -> Void
+typealias UIImageCompletionHandler = (_ loadedString: UIImage?) -> Void
 
 class Database {
     
@@ -98,7 +99,7 @@ class Database {
             }
         }
         
-        static func getPost(post: String, completionHandler: @escaping PostCompletionHandler = {(_) -> Void in ()}) {
+        static func getPost(post: String, completionHandler: @escaping PostCompletionHandler) {
             
             Database.Posts[post].getData { error, snapshot in
                 
@@ -125,23 +126,29 @@ class Database {
     
     class Storage {
 
-        static func saveImage(image: UIImage) -> String? {
+        // MARK: Images
+        static func saveImage(image: UIImage, completionHandler: @escaping StringCompletionHandler) {
             
-            guard let imageData = image.pngData() else { return nil }
+            guard
+                let imageData = image.jpegData(compressionQuality: 0.95)
+            else {
+                completionHandler(nil)
+                return
+            }
             
-            var imageUuid: String? = UUID().uuidString
+            let imageUuid = UUID().uuidString
             
-            StorageRef.child("images/\(imageUuid!)").putData(imageData, metadata: nil, completion: { _, error in
+            StorageRef.child("images/\(imageUuid)").putData(imageData, metadata: nil) { _, error in
                 
                 guard error == nil else {
                     print("Failed to upload", error ?? "")
                     
-                    imageUuid = nil
+                    completionHandler(nil)
                     return
                 }
-            })
-            
-            return imageUuid
+
+                completionHandler(imageUuid)
+            }
         }
         
         static var imageCache: [String: UIImage] = [:]

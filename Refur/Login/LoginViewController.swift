@@ -115,6 +115,7 @@ class LoginViewController: UIViewController {
             
         default:
             sender.resignFirstResponder()
+            signIn(sender)
         }
     }
     
