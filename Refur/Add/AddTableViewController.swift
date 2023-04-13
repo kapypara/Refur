@@ -41,6 +41,7 @@ class AddTableViewController: UITableViewController, UIImagePickerControllerDele
         //tableView.usesAutomaticRowHeights = true
     }
     
+    // MARK: Add item function
     @IBAction func newItem() {
         // TODO: add safety meausrs
         
@@ -121,7 +122,7 @@ class AddTableViewController: UITableViewController, UIImagePickerControllerDele
                 return
             }
             
-            posts.append(newPost.postUuid)
+            posts.insert(newPost.postUuid, at: 0)
             
             Database.Users[User.uid! + "/Posts"].setValue(posts)
             
