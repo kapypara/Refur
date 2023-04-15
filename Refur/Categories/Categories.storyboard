@@ -196,6 +196,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="cAj-Ke-nHJ"/>
+                    <connections>
+                        <segue destination="qje-2u-bki" kind="show" identifier="showDetails" id="z8t-vg-rO5"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ss-w6-72P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -291,6 +294,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="b0g-Lo-785"/>
+                    <connections>
+                        <segue destination="qje-2u-bki" kind="show" identifier="showDetails" id="l1V-mw-jaq"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i9Z-5H-Cex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -367,12 +373,28 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="kVY-f3-sPV"/>
+                    <connections>
+                        <segue destination="qje-2u-bki" kind="show" identifier="showDetails" id="gxT-H4-pDq"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1M-86-TmI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3631" y="787"/>
         </scene>
+        <!--ItemDetails-->
+        <scene sceneID="FfV-Qy-nug">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItemDetails" id="qje-2u-bki" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lCk-Xh-edD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2AQ-R7-7hW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3631" y="1292"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="l1V-mw-jaq"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="booksCategory" width="640" height="640"/>

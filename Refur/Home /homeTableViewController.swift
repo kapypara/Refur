@@ -16,21 +16,6 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
     
     var selectedPost = ""
     
-    var posts: [String: Post] = [:]
-    var profileDict: [String: Profile] = [:]
-    
-    func cachePost(post: Post) {
-        posts[post.postUuid] = post
-        
-        // if we find a new user that is not in the dict we added to it
-        guard profileDict[post.userUuid] == nil else { return }
-        Database.Users.getUser(user: post.userUuid) { loadedProfile in
-            if let profile = loadedProfile {
-                self.profileDict[post.userUuid] = profile
-            }
-        }
-    }
-    
     let categoriesArray = [
       "other1",
       "book1",
@@ -127,10 +112,10 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
                 guard let post = loadedPost else { return }
                 cell.setupCell(post: post)
                 
-                self.cachePost(post: post)
+                AppCache.cachePost(post: post)
             }
             
-            return cell
+        return cell
             
         case featuredCollectionView:
             
@@ -142,7 +127,7 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
                 guard let post = loadedPost else { return }
                 cell.setupCell(post: post)
                 
-                self.cachePost(post: post)
+                AppCache.cachePost(post: post)
             }
             
             return cell
@@ -157,7 +142,7 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
                 guard let post = loadedPost else { return }
                 cell.setupCell(post: post)
                 
-                self.cachePost(post: post)
+                AppCache.cachePost(post: post)
             }
             
             return cell
@@ -175,10 +160,16 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
         if segue.identifier == "showDetails" {
             guard let viewController = segue.destination as? ItemDetailsViewController else { return }
             
-            guard let post = posts[selectedPost] else { return }
+            guard
+                let post = AppCache.getPost(postUuid: selectedPost),
+                let profile = AppCache.getProfile(profileUuid: post.userUuid)
+            else {
+                return
+                
+            }
             
             viewController.userPost = post
-            viewController.userProfile = profileDict[post.userUuid]
+            viewController.userProfile = profile
         }
         
     }

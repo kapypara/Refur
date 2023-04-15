@@ -10,52 +10,91 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class BooksCategoryCollectionViewController: UICollectionViewController {
-
     
-      var arrayBooks: [booksItems] = [
-        booksItems(booksLabel: "@hash", uuid: "books1.jpeg"),
-        booksItems(booksLabel: "@hash", uuid: "book2.jpeg"),
-        booksItems(booksLabel: "@hash", uuid: "books3.jpeg"),
-        booksItems(booksLabel: "@hash", uuid: "books4.jpeg"),
-        booksItems(booksLabel: "@hash", uuid: "books5.jpeg"),
-        booksItems(booksLabel: "@hash", uuid: "books7.jpeg"),
-        booksItems(booksLabel: "@hash", uuid: "books8.jpeg"),
-        booksItems(booksLabel: "@hash", uuid: "books9.jpeg"),
-        booksItems(booksLabel: "@hash", uuid: "books10.jpeg"),
-       
+    let arrayBooks = [
+        "book1",
+        "book2",
+        "book3",
+        "book4",
+        "book5",
+        "book6",
+        "book7",
+        "book8",
+        "book9",
+        "book10"
+    ]
+    
+    
+    var selectedPost = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return arrayBooks.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-      ]
-     
-
-       
-       override func viewDidLoad() {
-           super.viewDidLoad()
-           collectionView.delegate = self
-           collectionView.dataSource = self
-       }
-
-
-
-       override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           // #warning Incomplete implementation, return the number of items
-           return arrayBooks.count
-       }
-
-       override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BooksCell", for: indexPath) as! CategoriesCollectionViewCell
-       
-           // Configure the cell
-           let books = arrayBooks[indexPath.row]
-           cell.setupCell(uuid: books.uuid, label: books.booksLabel)
-           return cell
-       }
-
-       struct booksItems {
-           let booksLabel : String
-           
-           // debug
-           let uuid: String
-       }
-
-
+        selectedPost = arrayBooks[indexPath.row]
+        performSegue(withIdentifier: "showDetails", sender: self)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BooksCell", for: indexPath) as! CategoriesCollectionViewCell
+        
+        let book = arrayBooks[indexPath.row]
+        
+        guard
+            let post = AppCache.getPost(postUuid: book),
+            let profile = AppCache.getProfile(profileUuid: post.postUuid)
+        else {
+            
+            Database.Posts.getPost(post: book) { loadedPost in
+                
+                guard let post = loadedPost else { return }
+                
+                AppCache.cachePost(post: post, postOnly: true)
+                
+                Database.Users.getUser(user: post.userUuid) { loadedProfile in
+                    
+                    guard let profile = loadedProfile else { return }
+                    
+                    AppCache.cacheProfile(profile: profile, uuid: post.userUuid)
+                    
+                    cell.setupCell(post: post, profile: profile)
+                }
+            }
+            
+            return cell
+        }
+        
+        
+        cell.setupCell(post: post, profile: profile)
+        
+        return cell
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            guard let viewController = segue.destination as? ItemDetailsViewController else { return }
+            
+            guard
+                let post = AppCache.getPost(postUuid: selectedPost),
+                let profile = AppCache.getProfile(profileUuid: post.userUuid)
+            else {
+                return
+                
+            }
+            
+            viewController.userPost = post
+            viewController.userProfile = profile
+        }
+        
+    }
+    
 }

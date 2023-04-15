@@ -10,57 +10,79 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ClothingCategoryCollectionViewController: UICollectionViewController {
- 
-   var arrayClothes: [clothingItems] = [
+    
+    var selectedPost = ""
+    var arrayClothes = [
+        "clothes1",
+        "clothes2",
+        "clothes3",
+        "clothes4",
+        "clothes5",
+        "clothes6",
+    ]
     
     
-    clothingItems(clothingLabel: "@sThrifts", uuid: "clothes1.jpeg"),
-    clothingItems(clothingLabel: "@Kapy", uuid: "clothes2.webp"),
-    clothingItems(clothingLabel: "@thriftG", uuid: "clothes3.avif"),
-    clothingItems(clothingLabel: "@yhs", uuid: "clothes4.jpeg"),
-    clothingItems(clothingLabel: "@Gigi", uuid: "clothes5.jpeg"),
-    clothingItems(clothingLabel: "@Ahmed", uuid: "clothes6.jpeg")
-    
-   ]
-  
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return arrayClothes.count
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClothesCell", for: indexPath) as! CategoriesCollectionViewCell
     
-        // Configure the cell
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        selectedPost = arrayClothes[indexPath.row]
+        performSegue(withIdentifier: "showDetails", sender: self)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClothesCell", for: indexPath) as! CategoriesCollectionViewCell
+        
         let clothes = arrayClothes[indexPath.row]
         
+        guard
+            let post = AppCache.getPost(postUuid: clothes),
+            let profile = AppCache.getProfile(profileUuid: post.postUuid)
+        else {
+            
+            Database.Posts.getPost(post: clothes) { loadedPost in
+                
+                guard let post = loadedPost else { return }
+                
+                AppCache.cachePost(post: post, postOnly: true)
+                
+                Database.Users.getUser(user: post.userUuid) { loadedProfile in
+                    
+                    guard let profile = loadedProfile else { return }
+                    
+                    AppCache.cacheProfile(profile: profile, uuid: post.userUuid)
+                    
+                    cell.setupCell(post: post, profile: profile)
+                }
+            }
+            
+            return cell
+        }
         
         
-        //let image = Database.Storage.loadImage(view: <#T##UIImageView#>, uuid: <#T##String#>)
-        
-        //cell.setupCell(image: clothes.clothingImage.image!, label: clothes.clothingLabel)
-        cell.setupCell(uuid: clothes.uuid, label: clothes.clothingLabel)
+        cell.setupCell(post: post, profile: profile)
         
         return cell
     }
-
-    struct clothingItems {
-        //let clothingImage : UIImageView
-        
-        let clothingLabel : String
-        
-        // debug
-        let uuid: String
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            guard let viewController = segue.destination as? ItemDetailsViewController else { return }
+            
+            guard
+                let post = AppCache.getPost(postUuid: selectedPost),
+                let profile = AppCache.getProfile(profileUuid: post.userUuid)
+            else {
+                return
+                
+            }
+            
+            viewController.userPost = post
+            viewController.userProfile = profile
+        }
     }
-
 }

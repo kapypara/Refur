@@ -80,7 +80,7 @@ class ItemDetailsViewController: UIViewController {
         postLikes.setTitle("\(userPost.likes) Likes", for: .normal)
         
         itemDescription.text = userProfile.name + " " + userPost.item.description
-        itemPrice.text = "BHD " + String(userPost.item.price)
+        itemPrice.text = String(format: "BHD %.2f", userPost.item.price)
         
         switch userPost.item.category {
         case .Clothing:

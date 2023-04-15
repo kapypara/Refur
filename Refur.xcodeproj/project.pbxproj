@@ -43,6 +43,7 @@
 		6A9D143E29E886560011CE00 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9D143D29E886560011CE00 /* ItemDetailsViewController.swift */; };
 		6A9D144029E887570011CE00 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9D143F29E887560011CE00 /* CustomTextField.swift */; };
 		6A9D4DAB29EAA85B006E788E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6A9D4DAA29EAA85B006E788E /* Kingfisher */; };
+		6A9D4DAD29EAF87B006E788E /* AppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9D4DAC29EAF87B006E788E /* AppCache.swift */; };
 		6AA6FDBE29DEF59800D005C1 /* LikesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA6FDBD29DEF59800D005C1 /* LikesCollectionViewController.swift */; };
 		6AA6FDC129DEF5E300D005C1 /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA6FDC029DEF5E300D005C1 /* LikesCollectionViewCell.swift */; };
 		6AA8077829DB0D790099CAD4 /* BooksCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8077729DB0D790099CAD4 /* BooksCategoryCollectionViewController.swift */; };
@@ -93,6 +94,7 @@
 		6A9D143B29E886490011CE00 /* ItemDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemDetails.storyboard; sourceTree = "<group>"; };
 		6A9D143D29E886560011CE00 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		6A9D143F29E887560011CE00 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		6A9D4DAC29EAF87B006E788E /* AppCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCache.swift; sourceTree = "<group>"; };
 		6AA6FDBD29DEF59800D005C1 /* LikesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewController.swift; sourceTree = "<group>"; };
 		6AA6FDC029DEF5E300D005C1 /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
 		6AA8077729DB0D790099CAD4 /* BooksCategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCategoryCollectionViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				6A9D143729E719320011CE00 /* AddItems.swift */,
+				6A9D4DAC29EAF87B006E788E /* AppCache.swift */,
 				6A9D142729E61C870011CE00 /* Cart.swift */,
 				6AE6883B29E0C7EC007E15C8 /* Controller.swift */,
 				6A9D143F29E887560011CE00 /* CustomTextField.swift */,
@@ -394,6 +397,7 @@
 				6A9D142829E61C870011CE00 /* Cart.swift in Sources */,
 				6A9D142629E5CBF50011CE00 /* CartViewController.swift in Sources */,
 				6A517A5D29CB357E00C2929B /* SceneDelegate.swift in Sources */,
+				6A9D4DAD29EAF87B006E788E /* AppCache.swift in Sources */,
 				6AE6883C29E0C7EC007E15C8 /* Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

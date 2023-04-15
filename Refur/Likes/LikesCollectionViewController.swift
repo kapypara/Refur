@@ -101,11 +101,11 @@ class LikesCollectionViewController: UICollectionViewController {
         guard
             let LikedPostPoster = self.profileDict[likedPost.userUuid]
         else {
-            cell.setupCall(post: likedPost)
+            cell.setupCell(post: likedPost)
             return cell
         }
         
-        cell.setupCall(post: likedPost, profile: LikedPostPoster)
+        cell.setupCell(post: likedPost, profile: LikedPostPoster)
         return cell
     }
     
