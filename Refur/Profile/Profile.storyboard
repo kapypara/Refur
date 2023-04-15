@@ -73,6 +73,9 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="13"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="editProfile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7gf-l3-l2J"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Py-mJ-ghw" customClass="profilePosts" customModule="Refur" customModuleProvider="target">
                                 <rect key="frame" x="16" y="296" width="361" height="473"/>
@@ -146,6 +149,7 @@
                         <outlet property="userHnadle" destination="6dR-mS-z0L" id="g9o-kp-12c"/>
                         <outlet property="userImage" destination="wvm-xY-r32" id="S07-4t-BwN"/>
                         <outlet property="username" destination="Q5Y-VJ-lNn" id="JNj-gg-2jJ"/>
+                        <outlet property="usernameStack" destination="p5r-TN-43u" id="I7i-k2-AVX"/>
                         <segue destination="QQG-3G-Kuh" kind="unwind" identifier="Home" unwindAction="unwindToHome:" id="55q-He-ZHp"/>
                         <segue destination="zwm-jm-CMV" kind="show" identifier="showDetails" id="DYN-H3-xIE"/>
                     </connections>

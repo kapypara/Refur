@@ -20,6 +20,8 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
     @IBOutlet weak var userBio: UILabel!
     @IBOutlet weak var soldItems: UILabel!
     
+    @IBOutlet weak var usernameStack: UIStackView!
+    
     var cameraAuthorization: AVAuthorizationStatus {
         return AVCaptureDevice.authorizationStatus(for: .video)
     }
@@ -58,6 +60,32 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
         
         userImage.addGestureRecognizer(profileImageTap)
         userImage.isUserInteractionEnabled = true
+        
+        let usernameTap = UITapGestureRecognizer(target: self, action: #selector(changeUsername))
+        
+        usernameStack.addGestureRecognizer(usernameTap)
+        usernameStack.isUserInteractionEnabled = true
+    }
+    
+    @objc func changeUsername() {
+        var alert = UIAlertController(title: "Edit Name", message: "Enter new Your Name", preferredStyle: .alert)
+        
+        
+        alert.addTextField() { (textField) -> Void in
+            textField.text = self.username.text!
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak alert] (action) -> Void in
+            if let text = alert?.textFields?.first?.text as? String {
+                //print("Text field: \(textField.text!)")
+                
+                Database.Users[User.uid! + "/Name"].setValue(text)
+            }
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alert, animated: true)
     }
     
     // MARK: Profile Picture
@@ -112,14 +140,50 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
             Database.Users[User.uid! + "/Image"].setValue(imageUid)
         }
     }
+
+    
+    @IBAction func editProfile(_ sender: UIButton) {
+        
+        var alert = UIAlertController(title: "Edit Profile", message: "Enter new Your Bio", preferredStyle: .alert)
+        
+        
+        alert.addTextField() { (textField) -> Void in
+            textField.text = self.userBio.text!
+            
+            //let heightConstraint = NSLayoutConstraint(item: textField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+            //textField.addConstraint(heightConstraint)
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak alert] (action) -> Void in
+            if let text = alert?.textFields?.first?.text as? String {
+                //print("Text field: \(textField.text!)")
+                
+                Database.Users[User.uid! + "/Bio"].setValue(text)
+            }
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alert, animated: true)
+    }
+    
     
 
     @IBAction func signOut(_ sender: Any) {
-        User.signOut() { wasSuccessful in
-            if wasSuccessful {
-                self.unwindIfNotLoggedIn(segueIdentifier: "Home")
+        
+        var alert = UIAlertController(title: "Logout", message: "are you sure you want to logout", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
+            User.signOut() { wasSuccessful in
+                if wasSuccessful {
+                    self.unwindIfNotLoggedIn(segueIdentifier: "Home")
+                }
             }
-        }
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alert, animated: true)
     }
     
     
