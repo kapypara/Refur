@@ -131,7 +131,7 @@ class Database {
         static func saveImage(image: UIImage, completionHandler: @escaping StringCompletionHandler) {
             
             guard
-                let imageData = image.jpegData(compressionQuality: 0.95)
+                let imageData = image.jpegData(compressionQuality: 0.90)
             else {
                 completionHandler(nil)
                 return
