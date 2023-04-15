@@ -21,7 +21,7 @@ class ProfilePostsCollectionViewCell: UICollectionViewCell {
         Database.Storage.loadImage(view: cellImageView, uuid: uuid)
     }
     
-    func setupCall(post: Post) {
+    func setupCell(post: Post) {
         Database.Storage.loadImage(view: cellImageView, uuid: post.images[0])
     }
     

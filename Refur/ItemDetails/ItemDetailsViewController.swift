@@ -68,7 +68,7 @@ class ItemDetailsViewController: UIViewController {
         Database.Storage.loadImage(view: userImage, uuid: userProfile.picture)
         
         userName.text = userProfile.name
-        userHandle.text = userProfile.handle
+        userHandle.text = "@" + userProfile.handle
         
         userNameInPost.setTitle(userProfile.name, for: .normal)
         

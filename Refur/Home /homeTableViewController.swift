@@ -7,85 +7,62 @@
 
 import UIKit
 
-class homeTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class homeTableViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-// MARK: Home Collection View
+    // MARK: Outlets
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var featuredCollectionView: UICollectionView!
     @IBOutlet weak var picked4uCollectionView: UICollectionView!
     
+    var selectedPost = ""
     
-    var categoriesArray: [categoriesItems] = [
-      categoriesItems(uuid: "others1.jpeg"),
-      categoriesItems(uuid: "books1.jpeg"),
-      categoriesItems(uuid: "others3.jpeg"),
-      categoriesItems(uuid: "clothes1.jpeg"),
-      categoriesItems(uuid: "others5.jpeg"),
-      categoriesItems(uuid: "clothes4.jpeg"),
-      categoriesItems(uuid: "books7.jpeg"),
-      categoriesItems(uuid: "clothes6.jpeg"),
-      categoriesItems(uuid: "others9.jpeg"),
-      categoriesItems(uuid: "others10.jpeg"),
+    var posts: [String: Post] = [:]
+    var profileDict: [String: Profile] = [:]
+    
+    func cachePost(post: Post) {
+        posts[post.postUuid] = post
+        
+        // if we find a new user that is not in the dict we added to it
+        guard profileDict[post.userUuid] == nil else { return }
+        Database.Users.getUser(user: post.userUuid) { loadedProfile in
+            if let profile = loadedProfile {
+                self.profileDict[post.userUuid] = profile
+            }
+        }
+    }
+    
+    let categoriesArray = [
+      "other1",
+      "book1",
+      "other3",
+      "clothes1",
+      "other5",
+      "clothes4",
+      "book7",
+      "clothes6",
+      "other9",
+      "other10",
     ]
     
-    var featuredArray: [featuredItems] = [
-      featuredItems(uuid: "clothes6.jpeg"),
-      featuredItems(uuid: "others8.jpeg"),
-      featuredItems(uuid: "others2.png"),
-      featuredItems(uuid: "books7.jpeg"),
-      featuredItems(uuid: "clothes4.jpeg"),
+    let featuredArray = [
+      "clothes6",
+      "other8",
+      "other2",
+      "book7",
+      "clothes4",
     ]
     
-    var pickedArray: [pickedItems] = [
-      pickedItems(uuid: "books1.jpeg"),
-      pickedItems(uuid: "books5.jpeg"),
-      pickedItems(uuid: "books3.jpeg"),
-      pickedItems(uuid: "books8.jpeg"),
-      pickedItems(uuid: "books10.jpeg"),
-      pickedItems(uuid: "book2.jpeg"),
-      pickedItems(uuid: "books4.jpeg"),
-      pickedItems(uuid: "books7.jpeg"),
-      pickedItems(uuid: "books9.jpeg")
+    let pickedArray = [
+      "book1",
+      "book5",
+      "book3",
+      "book8",
+      "book10",
+      "book2",
+      "book4",
+      "book7",
+      "book9",
     ]
-    
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         if (collectionView == categoriesCollectionView){
-             return categoriesArray.count
-         } else if (collectionView == featuredCollectionView) {
-             return featuredArray.count
-         }
-         return pickedArray.count
-    }
-
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         if (collectionView == categoriesCollectionView) {
-             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCell", for: indexPath) as! HomeCollectionViewCell
-             let categorieslet = categoriesArray[indexPath.row]
-             cell.setupCell(uuid: categorieslet.uuid)
-             return cell
-         }
-         else if (collectionView == featuredCollectionView ){
-             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCell", for: indexPath) as! HomeCollectionViewCell
-             let featured = featuredArray[indexPath.row]
-             cell.setupCell(uuid: featured.uuid)
-             return cell }
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Picked4UCell", for: indexPath) as! HomeCollectionViewCell
-         let picked = pickedArray[indexPath.row]
-         cell.setupCell(uuid: picked.uuid)
-         return cell
-    }
-
-    struct categoriesItems {
-        let uuid: String
-    }
-    
-    struct featuredItems {
-        let uuid: String
-    }
-    
-    struct pickedItems {
-        let uuid: String
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -106,13 +83,104 @@ class homeTableViewController: UITableViewController, UICollectionViewDelegate, 
     }
     
 
-    // MARK: - Navigation
+    // MARK: Collection View
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        switch collectionView {
+        case categoriesCollectionView:
+            return categoriesArray.count
+            
+        case featuredCollectionView:
+            return featuredArray.count
+            
+        default: //picked4uCollectionView
+            return pickedArray.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        switch collectionView {
+        case categoriesCollectionView:
+            selectedPost = categoriesArray[indexPath.row]
+            
+        case featuredCollectionView:
+            selectedPost = featuredArray[indexPath.row]
+            
+        default: //picked4uCollectionView
+            selectedPost = pickedArray[indexPath.row]
+        }
+        
+        
+        performSegue(withIdentifier: "showDetails", sender: self)
+    }
 
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch collectionView {
+        case categoriesCollectionView:
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCell", for: indexPath) as! HomeCollectionViewCell
+            
+            let categorieslet = categoriesArray[indexPath.row]
+            Database.Posts.getPost(post: categorieslet) { loadedPost in
+                
+                guard let post = loadedPost else { return }
+                cell.setupCell(post: post)
+                
+                self.cachePost(post: post)
+            }
+            
+            return cell
+            
+        case featuredCollectionView:
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCell", for: indexPath) as! HomeCollectionViewCell
+            
+            let featured = featuredArray[indexPath.row]
+            Database.Posts.getPost(post: featured) { loadedPost in
+                
+                guard let post = loadedPost else { return }
+                cell.setupCell(post: post)
+                
+                self.cachePost(post: post)
+            }
+            
+            return cell
+            
+        default: //picked4uCollectionView
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Picked4UCell", for: indexPath) as! HomeCollectionViewCell
+            
+            let picked = pickedArray[indexPath.row]
+            Database.Posts.getPost(post: picked) { loadedPost in
+                
+                guard let post = loadedPost else { return }
+                cell.setupCell(post: post)
+                
+                self.cachePost(post: post)
+            }
+            
+            return cell
+        }
+    }
+    
+    
+    // MARK: - Navigation
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            guard let viewController = segue.destination as? ItemDetailsViewController else { return }
+            
+            guard let post = posts[selectedPost] else { return }
+            
+            viewController.userPost = post
+            viewController.userProfile = profileDict[post.userUuid]
+        }
+        
+    }
 
 }

@@ -191,7 +191,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profilePostCell", for: indexPath) as! ProfilePostsCollectionViewCell
         
         // Configure the cell
-        cell.setupCall(post: postArray[indexPath.item])
+        cell.setupCell(post: postArray[indexPath.item])
         
         return cell
     }
