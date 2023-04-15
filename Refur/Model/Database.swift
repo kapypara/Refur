@@ -3,6 +3,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 
+import Kingfisher
 
 typealias PostCompletionHandler = (_ loadedPost: Post?) -> Void
 typealias ProfileCompletionHandler = (_ loadedPost: Profile?) -> Void
@@ -151,27 +152,17 @@ class Database {
             }
         }
         
-        static var imageCache: [String: UIImage] = [:]
-        
         static func loadImage(view: UIImageView, uuid: String) {
             
-            if let image = Database.Storage.imageCache[uuid] {
-                view.image = image
-                return
-            }
-            
-            StorageRef.child("images/\(uuid)").getData(maxSize: 104857666) { (data, error) in
+            StorageRef.child("images/\(uuid)").downloadURL { url, error in
                 
                 guard error == nil else {
                     print("Failed to download", error ?? "")
                     return
                 }
                 
-                if let imageData = data, let image = UIImage(data: imageData) {
-                    view.image = image
-                    
-                    Database.Storage.imageCache[uuid] = image
-                }
+                guard let url = url else { return }
+                view.kf.setImage(with: url)
             }
         }
     }
