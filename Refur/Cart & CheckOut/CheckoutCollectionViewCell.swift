@@ -9,14 +9,9 @@ import UIKit
 
 class CheckoutCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet var itemImage: UIImageView!
-    
-    
     
     func setupCell(post : Post) {
         Database.Storage.loadImage(view: itemImage, uuid: post.images[0])
     }
-    
-    
 }

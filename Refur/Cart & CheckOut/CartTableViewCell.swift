@@ -22,47 +22,40 @@ class CartTableViewCell: UITableViewCell {
     var itemSelected: Bool = true {
         didSet {
             isChosen.isSelected = itemSelected
-            Cart.cart[cartItemIndex].selected = itemSelected
+            Cart.cart[cartItemIndex].selection = itemSelected
         }
     }
     
-    
-    
+
     @IBAction func checkmarkBtnTapped(_ sender: UIButton) {
         itemSelected.toggle()
     }
     
     
-    func setupCell(post: Post, selection: Bool) {
+    func setupCell(cartItemIndex: Int) {
         
-        itemSelected = selection
+        guard cartItemIndex < Cart.cart.count else { return }
         
-        if let image = post.images.first {
+        
+        self.cartItemIndex = cartItemIndex
+        
+        let cartItem = Cart.cart[cartItemIndex]
+        itemSelected = cartItem.selection
+        
+        if let image = cartItem.item.images.first {
             Database.Storage.loadImage(view: itemImage, uuid: image)
         }
         
-        itemName.text = post.item.description
+        itemName.text = cartItem.item.item.description
+        price.text = "BD\(cartItem.item.item.price)"
         
-        price.text = "BD\(post.item.price)"
         
-        Database.Users.getUser(user: post.userUuid) { loadedProfile in
+        Database.Users.getUser(user: cartItem.item.userUuid) { loadedProfile in
             
             guard let username = loadedProfile?.name else { return }
             
             self.username.text = username
         }
-    }
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

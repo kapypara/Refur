@@ -68,7 +68,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
     }
     
     @objc func changeUsername() {
-        var alert = UIAlertController(title: "Edit Name", message: "Enter new Your Name", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Edit Name", message: "Enter new Your Name", preferredStyle: .alert)
         
         
         alert.addTextField() { (textField) -> Void in
@@ -144,7 +144,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
     
     @IBAction func editProfile(_ sender: UIButton) {
         
-        var alert = UIAlertController(title: "Edit Profile", message: "Enter new Your Bio", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Edit Profile", message: "Enter new Your Bio", preferredStyle: .alert)
         
         
         alert.addTextField() { (textField) -> Void in
@@ -171,7 +171,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
 
     @IBAction func signOut(_ sender: Any) {
         
-        var alert = UIAlertController(title: "Logout", message: "are you sure you want to logout", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Logout", message: "are you sure you want to logout", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
             User.signOut() { wasSuccessful in

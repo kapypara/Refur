@@ -100,7 +100,7 @@ class ItemDetailsViewController: UIViewController {
         guard let userPost = userPost else { return }
         
         for i in Cart.cart {
-            if userPost.postUuid == i.cartItem.postUuid {
+            if userPost.postUuid == i.item.postUuid {
                 isItemAdded = false
                 return
             }

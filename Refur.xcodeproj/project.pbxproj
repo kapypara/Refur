@@ -158,8 +158,8 @@
 				6A9D142529E5CBF50011CE00 /* CartViewController.swift */,
 				81B3BB8629DEF30D00B434C8 /* CartTableViewCell.swift */,
 				81B3BB8F29DEFC3200B434C8 /* Checkout.storyboard */,
-				81DCC41C29EC2CAB00A43C10 /* CheckoutCollectionViewCell.swift */,
 				81DCC41A29EC1C9100A43C10 /* CheckoutTableViewController.swift */,
+				81DCC41C29EC2CAB00A43C10 /* CheckoutCollectionViewCell.swift */,
 				81B3BB8D29DEFA3B00B434C8 /* CartCheckoutBarTableViewCell.swift */,
 			);
 			path = "Cart & CheckOut";

@@ -141,7 +141,7 @@
                                                     <state key="normal" image="circle" catalog="system"/>
                                                     <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                                                     <connections>
-                                                        <action selector="debitBtnPressed:" destination="OKL-lP-iRY" eventType="touchUpInside" id="Sqg-Kv-oKC"/>
+                                                        <action selector="PaymentButtonPressed:" destination="OKL-lP-iRY" eventType="touchUpInside" id="YIE-Qv-xVu"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debit/Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEj-HG-UHl">
@@ -172,7 +172,7 @@
                                                     <state key="normal" image="circle" catalog="system"/>
                                                     <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                                                     <connections>
-                                                        <action selector="benefitBtnPressed:" destination="OKL-lP-iRY" eventType="touchUpInside" id="zSi-Hd-q9L"/>
+                                                        <action selector="PaymentButtonPressed:" destination="OKL-lP-iRY" eventType="touchUpInside" id="Zz2-Vp-lbp"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benefit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHv-9i-TAF">
@@ -209,7 +209,7 @@
                                                     <state key="normal" image="circle" catalog="system"/>
                                                     <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                                                     <connections>
-                                                        <action selector="appleBtnPressed:" destination="OKL-lP-iRY" eventType="touchUpInside" id="eej-Zv-3kZ"/>
+                                                        <action selector="PaymentButtonPressed:" destination="OKL-lP-iRY" eventType="touchUpInside" id="bCK-V2-0Wa"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

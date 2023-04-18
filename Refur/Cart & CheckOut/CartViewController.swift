@@ -13,13 +13,11 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var emptyCartMessage: UILabel!
     @IBOutlet weak var checkoutButton: UIButton!
     
-    
-    
 
     var allSelected: Bool = false {
         didSet {
             for i in 0 ..< Cart.cart.count {
-                Cart.cart[i].selected = allSelected
+                Cart.cart[i].selection = allSelected
             }
         }
         
@@ -28,9 +26,20 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        emptyCartMessage.isHidden = Cart.cart.isEmpty ? false : true
-        checkoutButton.isHidden = Cart.cart.isEmpty ? true : false
+        updateView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        
+        
+        cartTableView.delegate = self
+        cartTableView.dataSource = self
+        
+    }
+    
+    func updateView() {
         if Cart.cart.isEmpty {
             emptyCartMessage.isHidden = false
             checkoutButton.isHidden = true
@@ -40,14 +49,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             checkoutButton.isHidden = false
             updateSelectionButton()
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        cartTableView.delegate = self
-        cartTableView.dataSource = self
-        
     }
     
     func updateSelectionButton() {
@@ -77,25 +78,29 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as! CartTableViewCell
         
-        cell.setupCell(post: Cart.cart[indexPath.row].cartItem, selection: Cart.cart[indexPath.row].selected)
+        cell.setupCell(cartItemIndex: indexPath.item)
+        cell.selectionStyle = .none
         
         return cell
-        
-        
-        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "toCheckout" {
-            guard let viewController = segue.destination as? CheckoutTableViewController else {return}
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+         return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+           
+            Cart.removeFromCart(itemIdex: indexPath.row)
+            tableView.reloadData()
             
-            for i in 0 ..< Cart.cart.count {
-                if Cart.cart[i].selected {
-                    viewController.checkoutItems[i] = Cart.cart[i].cartItem
-                }
+            if Cart.cart.isEmpty {
+                updateView()
             }
-            
         }
     }
     

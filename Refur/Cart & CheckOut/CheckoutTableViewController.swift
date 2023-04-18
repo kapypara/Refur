@@ -9,85 +9,46 @@ import UIKit
 
 class CheckoutTableViewController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegate{
   
-    
-    
-    
-    var checkoutItems : [Post] = [] {
-        didSet {
-            checkoutCollection.reloadData()
-        }
-    }
-    
-    
-    
+    // MARK: Outlets
     @IBOutlet var addressLbl: UILabel!
-    
-    
     @IBOutlet var totalItemsLbl: UILabel!
-    
-    
     @IBOutlet var addressField: UITextField!
-    
-    
     @IBOutlet var addressBtnClicked: UIButton!
     
-    
-    
     @IBOutlet var creditChosen: UIButton!
-    
-    
     @IBOutlet var benefitChosen: UIButton!
-    
-    
-    
-    
     @IBOutlet var applePayChosen: UIButton!
-    
     
     @IBOutlet var completeBtn: UIButton!
     
-    
     @IBOutlet var checkoutCollection: UICollectionView!
     
+    // MARK: Vars
     
-    @IBAction func debitBtnPressed(_ sender: UIButton) {
-        
-        creditChosen.isSelected.toggle()
-        if benefitChosen.isSelected {
-            benefitChosen.isSelected.toggle()
-        }
-        if applePayChosen.isSelected {
-            applePayChosen.isSelected.toggle()
+    var checkoutItems: [CartItem] = []
+    
+
+    @IBAction func PaymentButtonPressed(_ sender: UIButton) {
+        switch sender {
+        case creditChosen:
+            creditChosen.isSelected = true
+            benefitChosen.isSelected = false
+            applePayChosen.isSelected = false
+            
+        case benefitChosen:
+            creditChosen.isSelected = false
+            benefitChosen.isSelected = true
+            applePayChosen.isSelected = false
+            
+        case applePayChosen:
+            creditChosen.isSelected = false
+            benefitChosen.isSelected = false
+            applePayChosen.isSelected = true
+            
+        default:
+            print("[CheckoutTableViewController.PaymentButtonPressed]: unkown button pressed")
         }
     }
-    
-    
-    @IBAction func benefitBtnPressed(_ sender: UIButton) {
-        
-        benefitChosen.isSelected.toggle()
-        if creditChosen.isSelected {
-            creditChosen.isSelected.toggle()
-        }
-        if applePayChosen.isSelected {
-            applePayChosen.isSelected.toggle()
-        }
-        
-    }
-    
-    
-    @IBAction func appleBtnPressed(_ sender: UIButton) {
-        
-        applePayChosen.isSelected.toggle()
-        if creditChosen.isSelected {
-            creditChosen.isSelected.toggle()
-        }
-        if benefitChosen.isSelected {
-            benefitChosen.isSelected.toggle()
-        }
-        
-        
-    }
-    
     
 
     @IBAction func AddressClicked(_ sender: Any) {
@@ -100,31 +61,10 @@ class CheckoutTableViewController: UITableViewController, UICollectionViewDataSo
             UIAlertAction in self.addressBtnClicked.setTitle(alert.textFields![0].text, for: .normal)
         })
         
-        
-        
         self.present(alert, animated: true)
-        
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        checkoutItems.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "checkoutCell", for: indexPath) as!
-        CheckoutCollectionViewCell
-        
-        cell.setupCell(post: checkoutItems[indexPath.row])
-        
-        
-        return cell
     }
     
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         checkoutCollection.delegate = self
@@ -136,56 +76,28 @@ class CheckoutTableViewController: UITableViewController, UICollectionViewDataSo
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
 
-    // MARK: - Table view data source
-
-
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+    // MARK: collection View functions
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        checkoutItems = Cart.cart.filter { return $0.selection }
+        
+        return checkoutItems.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "checkoutCell", for: indexPath) as!
+        CheckoutCollectionViewCell
+        
+        cell.setupCell(post: checkoutItems[indexPath.item].item)
+        
+        
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     /*
     // MARK: - Navigation
 

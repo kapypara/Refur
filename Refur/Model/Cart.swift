@@ -9,12 +9,12 @@ import Foundation
 
 struct CartItem {
     
-    let cartItem: Post
-    var selected: Bool
+    let item: Post
+    var selection: Bool
     
-    init(cartItem: Post, selected: Bool) {
-        self.cartItem = cartItem
-        self.selected = selected
+    init(item: Post, selection: Bool) {
+        self.item = item
+        self.selection = selection
     }
 }
 
@@ -24,9 +24,18 @@ class Cart {
     
     private init() { }
     
-    static func addToCart(itemPost: Post) {
-        
-        cart.append(CartItem(cartItem: itemPost, selected: true))
+    static subscript (index: Int) -> CartItem {
+        return Cart.cart[index]
     }
     
+    static func addToCart(itemPost: Post) {
+        
+        cart.append(CartItem(item: itemPost, selection: true))
+    }
+    
+    static func removeFromCart(itemIdex: Int) {
+        if itemIdex < Cart.cart.count {
+            Cart.cart.remove(at: itemIdex)
+        }
+    }
 }

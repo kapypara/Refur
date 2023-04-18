@@ -37,7 +37,7 @@ class User {
         FirebaseAuth.Auth.auth().signIn(
                 withEmail: email,
                 password: password,
-                completion: { [self] result, error in
+                completion: { result, error in
             
                     guard error == nil else {
 
@@ -53,7 +53,7 @@ class User {
     
     static func signUp(email: String, password: String, completionHandler: @escaping CompletionHandler = {(_) -> Void in ()}) {
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [self] result, error in
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { result, error in
             
             guard error == nil else {
                 
