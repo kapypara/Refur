@@ -26,6 +26,8 @@ class CartTableViewCell: UITableViewCell {
         }
     }
     
+    
+    
     @IBAction func checkmarkBtnTapped(_ sender: UIButton) {
         itemSelected.toggle()
     }

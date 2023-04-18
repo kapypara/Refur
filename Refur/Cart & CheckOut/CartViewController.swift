@@ -13,6 +13,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var emptyCartMessage: UILabel!
     @IBOutlet weak var checkoutButton: UIButton!
     
+    
+    
 
     var allSelected: Bool = false {
         didSet {
@@ -79,6 +81,22 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
         
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toCheckout" {
+            guard let viewController = segue.destination as? CheckoutTableViewController else {return}
+            
+            for i in 0 ..< Cart.cart.count {
+                if Cart.cart[i].selected {
+                    viewController.checkoutItems[i] = Cart.cart[i].cartItem
+                }
+            }
+            
+        }
     }
     
     // MARK: - Navigation
