@@ -126,6 +126,9 @@ class SignUpTableViewController: UITableViewController {
                     if loginWasSucessful {
                         
                         let newUserProfile = Profile(name: username, handle: username)
+                        
+                        newUserProfile.contactInfo.email = email
+                        
                         Profile.saveProfile(uuid: User.uid ?? "Gust", profile: newUserProfile)
                         
                         self.performSegue(withIdentifier: "SignUpToHome", sender: self)

@@ -12,8 +12,8 @@ private let reuseIdentifier = "Cell"
 class BooksCategoryCollectionViewController: UICollectionViewController {
     
     let arrayBooks = [
-        "book1",
         "book2",
+        "book10",
         "book3",
         "book4",
         "book5",
@@ -21,7 +21,8 @@ class BooksCategoryCollectionViewController: UICollectionViewController {
         "book7",
         "book8",
         "book9",
-        "book10"
+        "book1"
+
     ]
     
     
