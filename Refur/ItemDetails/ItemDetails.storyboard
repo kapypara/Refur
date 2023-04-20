@@ -214,6 +214,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
                                                             <color key="baseForegroundColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="likePost:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JeI-NN-fde"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -264,6 +267,7 @@
                         <outlet property="itemDescription" destination="nGc-zL-M5i" id="uVZ-YK-CKZ"/>
                         <outlet property="itemPrice" destination="Ci9-Xj-OGo" id="O9B-CN-AUP"/>
                         <outlet property="itemSize" destination="vbs-wJ-eL7" id="SKj-1G-Odh"/>
+                        <outlet property="likeButton" destination="DfF-Wd-n2o" id="Ocu-Z3-f3L"/>
                         <outlet property="postImage" destination="4TN-Y2-Dau" id="5Di-Qy-yAt"/>
                         <outlet property="postLikes" destination="UzB-Tr-ZgV" id="4bg-8F-eff"/>
                         <outlet property="userHandle" destination="Smf-oj-QKf" id="aLk-Ug-2JI"/>
