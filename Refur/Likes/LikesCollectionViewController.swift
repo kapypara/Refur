@@ -24,40 +24,46 @@ class LikesCollectionViewController: UICollectionViewController {
     
     var selectedPostIndex: Int = 0
     
+    var userUid: String?
+    var likesHandler: UInt?
+    
+    
+    // MARK: ViewController Fucntions
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if User.isLoggedOut {
-            unwindIfNotLoggedIn(segueIdentifier: "toHome")
-        } else {
-            populatePostArray()
+        guard User.isLoggedIn else {
+            unwindIfNotLoggedIn(segueIdentifier: "Home")
+            return
+        }
+            
+        if let user = userUid, user != User.uid! {
+            Database.removeObserver(withHandle: likesHandler)
+            
+            userUid = nil
         }
         
+        guard userUid == nil else { return }
+        
+        userUid = User.uid!
+        
+        populatePostArray()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
     }
     
+    // MARK: Load Likes
     func populatePostArray() {
         
-        guard !loadedPost else { return }
-        loadedPost = true
-        
-        Database.Users[User.uid! + "/Likes"].observe(.value) { snapshot in
+        likesHandler = Database.Users[User.uid! + "/Likes"].observe(.value) { snapshot in
             
             guard let likes = snapshot.value as? [String] else { return }
-            print(likes)
-            
             
             self.postArray.removeAll()
-            print(self.postArray.count)
-            
-            //print(userProfile.posts)
             
             for post in likes {
                 Database.Posts.getPost(post: post) { post in
@@ -75,7 +81,6 @@ class LikesCollectionViewController: UICollectionViewController {
                             self.profileDict[post.userUuid] = profile
                         }
                     }
-                    
                 }
             }
         }

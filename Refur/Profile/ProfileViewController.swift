@@ -51,24 +51,24 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if User.isLoggedOut {
+        guard User.isLoggedIn else {
             unwindIfNotLoggedIn(segueIdentifier: "Home")
-        } else {
-            
-            if let user = userUid, user != User.uid! {
-                Database.removeObserver(withHandle: profileHandler)
-                Database.removeObserver(withHandle: postsHandler)
-                
-                userUid = nil
-            }
-            
-            guard userUid == nil else { return }
-            
-            userUid = User.uid!
-            
-            loadUser()
-            loadPosts()
+            return
         }
+            
+        if let user = userUid, user != User.uid! {
+            Database.removeObserver(withHandle: profileHandler)
+            Database.removeObserver(withHandle: postsHandler)
+            
+            userUid = nil
+        }
+        
+        guard userUid == nil else { return }
+        
+        userUid = User.uid!
+        
+        loadUser()
+        loadPosts()
     }
     
     override func viewDidLoad() {
