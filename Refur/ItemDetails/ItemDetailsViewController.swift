@@ -53,6 +53,7 @@ class ItemDetailsViewController: UIViewController {
     }
     
     var likesHandler: UInt?
+    var likesArray: [String] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -130,6 +131,8 @@ class ItemDetailsViewController: UIViewController {
             
             guard let result = snapshot.value as? [String] else { return }
             
+            likesArray = result
+            
             for i in result {
                 if i == userPost?.postUuid {
                     isItemLiked = true
@@ -155,22 +158,12 @@ class ItemDetailsViewController: UIViewController {
         
         isItemLiked.toggle()
         
-        Database.Users[uid + "/Likes"].getData() { [self] error, snapshot in
-            
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            guard let result = snapshot?.value as? [String] else { return }
-            
-            var filtered = result.filter() { userPost.postUuid != $0 }
-            
-            if isItemLiked {
-                filtered.append(userPost.postUuid)
-            }
-            
-            Database.Users[uid + "/Likes"].setValue(filtered)
+        var filtered = likesArray.filter() { userPost.postUuid != $0 }
+        
+        if isItemLiked {
+            filtered.append(userPost.postUuid)
         }
+        
+        Database.Users[uid + "/Likes"].setValue(filtered)
     }
 }
