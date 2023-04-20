@@ -34,6 +34,7 @@ class ItemDetailsViewController: UIViewController {
     
     @IBOutlet weak var ClothesStack: UIStackView!
     
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
     
     var isItemAdded: Bool = false {
@@ -43,6 +44,17 @@ class ItemDetailsViewController: UIViewController {
         }
     }
     
+    var isItemLiked: Bool = false {
+        didSet {
+            likeButton.setImage(
+                UIImage(systemName: (isItemLiked ? "heart.fill" : "heart"))!,
+                for: .normal)
+        }
+    }
+    
+    var likesHandler: UInt?
+    var likesArray: [String] = []
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -51,11 +63,13 @@ class ItemDetailsViewController: UIViewController {
         }
         updateView()
         updateAddButton()
+        updateLikeButton() // this only need to be called once
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        Database.removeObserver(withHandle: likesHandler)
     }
     
     func updateView() {
@@ -76,7 +90,7 @@ class ItemDetailsViewController: UIViewController {
             Database.Storage.loadImage(view: postImage, uuid: image)
         }
         
-        // why is this a button
+        // why is this a button... I Kinda know but I wont tell :P
         postLikes.setTitle("\(userPost.likes) Likes", for: .normal)
         
         itemDescription.text = userProfile.name + " " + userPost.item.description
@@ -92,7 +106,6 @@ class ItemDetailsViewController: UIViewController {
         }
         
         itemCondition.text = userPost.item.condition.rawValue
-        
     }
 
     func updateAddButton() {
@@ -109,15 +122,48 @@ class ItemDetailsViewController: UIViewController {
         isItemAdded = true
     }
     
+    func updateLikeButton() {
+        
+        guard let uid = User.uid else { likeButton.isEnabled = false; return }
+        
+        
+        likesHandler = Database.Users[uid + "/Likes"].observe(.value) { [self] snapshot in
+            
+            guard let result = snapshot.value as? [String] else { return }
+            
+            likesArray = result
+            
+            for i in result {
+                if i == userPost?.postUuid {
+                    isItemLiked = true
+                    return
+                }
+            }
+            
+            isItemLiked = false
+        }
+    }
+    
     @IBAction func addToCart(_ sender: UIButton) {
         
         guard let userPost = userPost else { return }
 
-        
         Cart.addToCart(itemPost: userPost)
-        
         updateAddButton()
     }
     
-    
+    @IBAction func likePost(_ sender: UIButton) {
+        
+        guard let uid = User.uid, let userPost = userPost else { return }
+        
+        isItemLiked.toggle()
+        
+        var filtered = likesArray.filter() { userPost.postUuid != $0 }
+        
+        if isItemLiked {
+            filtered.append(userPost.postUuid)
+        }
+        
+        Database.Users[uid + "/Likes"].setValue(filtered)
+    }
 }

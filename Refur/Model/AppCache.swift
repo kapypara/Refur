@@ -37,4 +37,14 @@ class AppCache {
     static func getProfile(profileUuid: String) -> Profile? {
         return profileDict.object(forKey: profileUuid as NSString)
     }
+    
+    static func allItems() -> [Post] {
+        guard
+            let all = posts.value(forKey: "allObjects") as? NSArray as? [Post]
+        else {
+            return []
+        }
+        
+        return all
+    }
 }

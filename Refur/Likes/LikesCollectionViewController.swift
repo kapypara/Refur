@@ -30,7 +30,7 @@ class LikesCollectionViewController: UICollectionViewController {
     
     // MARK: ViewController Fucntions
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         
         guard User.isLoggedIn else {
             unwindIfNotLoggedIn(segueIdentifier: "Home")
