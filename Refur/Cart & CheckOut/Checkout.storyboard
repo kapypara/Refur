@@ -83,31 +83,35 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iRa-q9-9yf">
-                                                        <size key="itemSize" width="107" height="103"/>
+                                                        <size key="itemSize" width="109" height="105"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="checkoutCell" id="nKN-Mn-a3x" customClass="CheckoutCollectionViewCell" customModule="Refur" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="107" height="103"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="109" height="105"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KkU-rz-GCE">
-                                                                <rect key="frame" x="0.0" y="0.0" width="107" height="103"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="109" height="105"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pjh-SY-spt">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="103"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pjh-SY-spt">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="105"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="105" id="nJd-D0-WTT"/>
+                                                                            <constraint firstAttribute="width" constant="80" id="nzq-DZ-Xiq"/>
+                                                                        </constraints>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="Pjh-SY-spt" firstAttribute="leading" secondItem="KkU-rz-GCE" secondAttribute="leading" id="GNS-53-gFU"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="Pjh-SY-spt" secondAttribute="trailing" id="KJb-j4-uC2"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="Pjh-SY-spt" secondAttribute="bottom" id="OJt-WL-hA9"/>
-                                                                    <constraint firstItem="Pjh-SY-spt" firstAttribute="top" secondItem="KkU-rz-GCE" secondAttribute="top" id="UBc-fx-nfM"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Pjh-SY-spt" secondAttribute="trailing" id="dui-bi-swY"/>
+                                                                    <constraint firstItem="Pjh-SY-spt" firstAttribute="top" secondItem="KkU-rz-GCE" secondAttribute="top" id="eAZ-I6-vIB"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Pjh-SY-spt" secondAttribute="bottom" id="tCF-oh-fHC"/>
+                                                                    <constraint firstItem="Pjh-SY-spt" firstAttribute="leading" secondItem="KkU-rz-GCE" secondAttribute="leading" id="znd-5n-cQX"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
-                                                            <size key="customSize" width="107" height="103"/>
+                                                            <size key="customSize" width="109" height="105"/>
                                                             <connections>
                                                                 <outlet property="itemImage" destination="Pjh-SY-spt" id="Qvl-Pu-mur"/>
                                                             </connections>
@@ -115,7 +119,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NVH-hW-dyu">
-                                                    <rect key="frame" x="316" y="2" width="50" height="18"/>
+                                                    <rect key="frame" x="273" y="2" width="100" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -307,7 +311,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="HTn-X0-nLS">
-                                <rect key="frame" x="56" y="253" width="280.66666666666669" height="206"/>
+                                <rect key="frame" x="56" y="253" width="280.66666666666663" height="206"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Purchase completed!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDK-ps-xMJ">
                                         <rect key="frame" x="20.333333333333329" y="0.0" width="240.33333333333337" height="30"/>

@@ -14,17 +14,20 @@ class OrderTableViewCell: UITableViewCell {
     
     @IBOutlet var dateLabel: UILabel!
     
-    @IBOutlet var handleLabel: UIView!
     
     @IBOutlet var statusLabel: UILabel!
     
     @IBOutlet var numberOfItems: UILabel!
     
     
-
+    @IBOutlet var handleLabel: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        statusLabel.layer.cornerRadius = 15
+        statusLabel.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -7,7 +7,12 @@
 
 import UIKit
 
+
+
+
 class CheckoutTableViewController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+    
+ 
   
     // MARK: Outlets
     @IBOutlet var addressLbl: UILabel!
@@ -26,7 +31,7 @@ class CheckoutTableViewController: UITableViewController, UICollectionViewDataSo
     // MARK: Vars
     
     var checkoutItems: [CartItem] = []
-    
+   
 
     @IBAction func PaymentButtonPressed(_ sender: UIButton) {
         switch sender {
@@ -64,11 +69,17 @@ class CheckoutTableViewController: UITableViewController, UICollectionViewDataSo
         self.present(alert, animated: true)
     }
     
+
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         checkoutCollection.delegate = self
         checkoutCollection.dataSource = self
+        totalItemsLbl.text = "Total items: " + String(checkoutItems.count) 
+        
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -90,6 +101,7 @@ class CheckoutTableViewController: UITableViewController, UICollectionViewDataSo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "checkoutCell", for: indexPath) as!
         CheckoutCollectionViewCell
+        
         
         cell.setupCell(post: checkoutItems[indexPath.item].item)
         

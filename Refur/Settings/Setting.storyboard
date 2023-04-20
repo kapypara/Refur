@@ -76,12 +76,23 @@
                         <segue destination="hPi-fa-vcL" kind="unwind" identifier="Home" unwindAction="unwindToHome:" id="lMp-eg-iTY"/>
                         <segue destination="pJM-Ln-beZ" kind="show" identifier="toTextPage" id="kAJ-Ja-EQl"/>
                         <segue destination="hPi-fa-vcL" kind="unwind" identifier="toProfile" unwindAction="unwindToProfile:" id="wbk-71-yyd"/>
+                        <segue destination="h1b-lB-bqg" kind="show" identifier="toOrders" id="swe-ff-k7r"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eym-Z3-ylp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="hPi-fa-vcL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1935.1145038167938" y="-63.380281690140848"/>
+        </scene>
+        <!--Orders-->
+        <scene sceneID="suX-jj-ST2">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Order" storyboardName="Orders" id="h1b-lB-bqg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6LM-01-AbX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Rq-o6-jrR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2555" y="-250"/>
         </scene>
         <!--Text Page View Controller-->
         <scene sceneID="4LU-EX-dfm">
@@ -134,7 +145,6 @@
         <!--Navigation Controller-->
         <scene sceneID="OM9-C8-t5r">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eNZ-8t-VIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9rY-Ki-yHr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N9K-O2-vGz">
@@ -146,6 +156,7 @@
                         <segue destination="hRM-ir-LfS" kind="relationship" relationship="rootViewController" id="E9e-WF-24U"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNZ-8t-VIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1008.3969465648854" y="-63.380281690140848"/>
         </scene>

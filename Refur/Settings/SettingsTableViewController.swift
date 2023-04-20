@@ -16,6 +16,8 @@ class SettingsTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0: // orders
+            
+            performSegue(withIdentifier: "toOrders", sender: self)
             break
             
         case 1: // privacy policy
