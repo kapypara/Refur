@@ -124,7 +124,7 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
             selectedPost = pickedArray[indexPath.row]
             
         default:
-            searchResult[indexPath.row]
+            selectedPost = searchResult[indexPath.row]
         }
         
         
