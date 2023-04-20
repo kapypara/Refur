@@ -7,12 +7,29 @@
 
 import UIKit
 
-class homeTableViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class homeTableViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     // MARK: Outlets
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var featuredCollectionView: UICollectionView!
     @IBOutlet weak var picked4uCollectionView: UICollectionView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var normalHome: UIStackView!
+    @IBOutlet weak var SeachCollectionView: UICollectionView!
+    
+    var isSearchMode: Bool = false {
+        didSet {
+            if isSearchMode {
+                SeachCollectionView.isHidden = false
+                normalHome.isHidden = true
+            } else {
+                SeachCollectionView.isHidden = true
+                normalHome.isHidden = false
+            }
+        }
+    }
     
     var selectedPost = ""
     
@@ -49,22 +66,30 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
       "book9",
     ]
     
+    var searchResult: [Post] = []
+    
     override func viewDidAppear(_ animated: Bool) {
-        
         if !LoginPresented {
             prompatToLoginIfNeeded(segueIdentifier: "LoginSegue")
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
         featuredCollectionView.delegate = self
         featuredCollectionView.dataSource = self
         picked4uCollectionView.delegate = self
         picked4uCollectionView.dataSource = self
+        
+        searchBar.delegate = self
+        
+        SeachCollectionView.delegate = self
+        SeachCollectionView.dataSource = self
+        
+        isSearchMode = false
     }
     
 
@@ -78,8 +103,11 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
         case featuredCollectionView:
             return featuredArray.count
             
-        default: //picked4uCollectionView
+        case picked4uCollectionView:
             return pickedArray.count
+            
+        default:
+            return searchResult.count
         }
     }
     
@@ -92,8 +120,11 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
         case featuredCollectionView:
             selectedPost = featuredArray[indexPath.row]
             
-        default: //picked4uCollectionView
+        case picked4uCollectionView:
             selectedPost = pickedArray[indexPath.row]
+            
+        default:
+            searchResult[indexPath.row]
         }
         
         
@@ -132,7 +163,7 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
             
             return cell
             
-        default: //picked4uCollectionView
+        case picked4uCollectionView:
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Picked4UCell", for: indexPath) as! HomeCollectionViewCell
             
@@ -146,9 +177,41 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
             }
             
             return cell
+            
+        default:
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Search", for: indexPath) as! HomeCollectionViewCell
+            
+            let picked = searchResult[indexPath.row]
+            
+            cell.setupCell(post: picked)
+            
+            return cell
         }
     }
     
+    // MARK: Search functoinality
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        isSearchMode = !searchText.isEmpty
+        
+        guard isSearchMode else { return }
+        
+        searchResult.removeAll()
+        
+        let _ = AppCache.allItems().map() {
+            if $0.item.description.lowercased().contains(searchText.lowercased()) {
+                searchResult.append($0)
+            }
+        }
+        
+        SeachCollectionView.reloadData()
+        print(searchResult)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+       view.endEditing(true)
+    }
     
     // MARK: - Navigation
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
@@ -171,7 +234,5 @@ class homeTableViewController: UIViewController, UICollectionViewDelegate, UICol
             viewController.userPost = post
             viewController.userProfile = profile
         }
-        
     }
-
 }

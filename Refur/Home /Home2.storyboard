@@ -52,6 +52,35 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AjJ-8y-345">
+                                <rect key="frame" x="16" y="164" width="361" height="590"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hc6-FA-MsM">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Search" id="cIu-OM-Myg" customClass="HomeCollectionViewCell" customModule="Refur" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5rQ-B8-k1r">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5E-1N-LCD">
+                                                    <rect key="frame" x="8" y="19" width="79" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellImageView" destination="U5E-1N-LCD" id="2Ln-I8-oVY"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="VTt-6O-4Fy">
                                 <rect key="frame" x="20" y="172.66666666666669" width="353" height="576.66666666666652"/>
                                 <subviews>
@@ -280,9 +309,13 @@
                         <viewLayoutGuide key="safeArea" id="1sN-Jn-ExA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1sN-Jn-ExA" firstAttribute="bottom" secondItem="AjJ-8y-345" secondAttribute="bottom" constant="15" id="AsY-8d-jSo"/>
+                            <constraint firstItem="1sN-Jn-ExA" firstAttribute="trailing" secondItem="AjJ-8y-345" secondAttribute="trailing" constant="16" id="PLG-5z-6aN"/>
                             <constraint firstItem="VTt-6O-4Fy" firstAttribute="centerY" secondItem="0qQ-TE-PiX" secondAttribute="centerY" constant="35" id="TZt-ar-5EY"/>
                             <constraint firstItem="VTt-6O-4Fy" firstAttribute="leading" secondItem="1sN-Jn-ExA" secondAttribute="leading" constant="20" id="Tk4-7d-mSO"/>
+                            <constraint firstItem="AjJ-8y-345" firstAttribute="top" secondItem="GtQ-xc-T1T" secondAttribute="bottom" constant="17" id="Wds-MJ-8Gd"/>
                             <constraint firstItem="1sN-Jn-ExA" firstAttribute="trailing" secondItem="VTt-6O-4Fy" secondAttribute="trailing" constant="20" id="foT-5M-xTt"/>
+                            <constraint firstItem="AjJ-8y-345" firstAttribute="leading" secondItem="1sN-Jn-ExA" secondAttribute="leading" constant="16" id="xhF-ZW-E7m"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -295,16 +328,19 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="SeachCollectionView" destination="AjJ-8y-345" id="ouf-2b-93K"/>
                         <outlet property="categoriesCollectionView" destination="728-7d-NXs" id="Wk1-C9-OtW"/>
                         <outlet property="featuredCollectionView" destination="iBH-Jy-Bjt" id="uVh-7X-1Sv"/>
+                        <outlet property="normalHome" destination="VTt-6O-4Fy" id="0KB-0J-M38"/>
                         <outlet property="picked4uCollectionView" destination="PgS-w1-0cE" id="UF6-8R-b8v"/>
+                        <outlet property="searchBar" destination="GtQ-xc-T1T" id="RvY-bk-dgd"/>
                         <segue destination="tlE-VG-kqU" kind="show" identifier="LoginSegue" id="8bb-EJ-DxV"/>
                         <segue destination="pM6-p8-BEa" kind="show" identifier="showDetails" id="wnd-kq-qvo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ohx-jf-jZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1770" y="763"/>
+            <point key="canvasLocation" x="1768.7022900763359" y="762.67605633802816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qyi-VS-cqW">
