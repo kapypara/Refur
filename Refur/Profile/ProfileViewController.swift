@@ -13,7 +13,6 @@ private var loadedPosts = false
 
 class ProfileViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userHnadle: UILabel!
@@ -26,6 +25,11 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
         return AVCaptureDevice.authorizationStatus(for: .video)
     }
     
+    var userUid: String?
+    var profileHandler: UInt?
+    var postsHandler: UInt?
+    
+    
     var postArray: [Post] = [] {
         didSet {
             profilePostsCollectionView.reloadData()
@@ -36,15 +40,32 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
     
     var selectedPostIndex: Int = 0
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         userImage.layer.cornerRadius = userImage.bounds.height / 2
         userImage.clipsToBounds = true
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         if User.isLoggedOut {
             unwindIfNotLoggedIn(segueIdentifier: "Home")
         } else {
+            
+            if let user = userUid, user != User.uid! {
+                Database.removeObserver(withHandle: profileHandler)
+                Database.removeObserver(withHandle: postsHandler)
+                
+                userUid = nil
+            }
+            
+            guard userUid == nil else { return }
+            
+            userUid = User.uid!
+            
             loadUser()
             loadPosts()
         }
@@ -195,10 +216,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
     // MARK: Loading Data
     func loadUser() {
         
-        guard !loadedProfile else { return }
-        loadedProfile = true
-        
-        let _ = Database.Users.observeUser(user: User.uid!) { loadedProfile in
+        profileHandler = Database.Users.observeUser(user: User.uid!) { loadedProfile in
             
             guard let profile = loadedProfile else { return }
             
@@ -217,10 +235,7 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
     
     func loadPosts() {
         
-        guard !loadedPosts else { return }
-        loadedPosts = true
-        
-        Database.Users[User.uid! + "/Posts"].observe(.value) { snapshot in
+        postsHandler = Database.Users[User.uid! + "/Posts"].observe(.value) { snapshot in
             
             guard let posts = snapshot.value as? [String] else { return }
             
@@ -288,7 +303,11 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
             viewController.userPost = post
             viewController.userProfile = profileDict[post.userUuid]
         }
-        
+    }
+    
+    @IBAction func unwindToProfile(_ unwindSegue: UIStoryboardSegue) {
+        // let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
     }
     
 }

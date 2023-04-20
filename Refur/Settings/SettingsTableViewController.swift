@@ -44,7 +44,7 @@ class SettingsTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
             User.signOut() { wasSuccessful in
                 if wasSuccessful {
-                    self.unwindIfNotLoggedIn(segueIdentifier: "Home")
+                    self.performSegue(withIdentifier: "toProfile", sender: self)
                 }
             }
         })

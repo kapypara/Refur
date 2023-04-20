@@ -21,6 +21,12 @@ class Database {
         Database.DataBaseRef.removeObserver(withHandle: withHandle)
     }
     
+    static func removeObserver(withHandle: UInt?) {
+        if let handler = withHandle {
+            Database.removeObserver(withHandle: handler)
+        }
+    }
+    
     class Users {
         
         static var users = DataBaseRef.child("users")
@@ -81,9 +87,9 @@ class Database {
             return Database.Posts.posts.child(uuid)
         }
         
-        static func observePost(post: String, completionHandler: @escaping PostCompletionHandler = {(_) -> Void in ()}, eventType: DataEventType = .value) {
+        static func observePost(post: String, completionHandler: @escaping PostCompletionHandler = {(_) -> Void in ()}, eventType: DataEventType = .value) -> UInt {
             
-            Database.Posts[post].observe(eventType) { snapshot in
+            return Database.Posts[post].observe(eventType) { snapshot in
                 
                 guard
                     snapshot.value != nil,
