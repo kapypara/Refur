@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z8L-hh-Vd1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z8L-hh-Vd1">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -137,7 +138,11 @@
                                     <action selector="signOut:" destination="Y6W-OH-hqX" id="VyU-RL-H9F"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="gearshape" catalog="system" id="iZo-jx-PiN"/>
+                            <barButtonItem title="Item" image="gearshape" catalog="system" id="iZo-jx-PiN">
+                                <connections>
+                                    <action selector="showSettings:" destination="Y6W-OH-hqX" id="cxB-zC-rpg"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="qrcode.viewfinder" catalog="system" id="QaG-qA-h4k"/>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -152,12 +157,23 @@
                         <outlet property="usernameStack" destination="p5r-TN-43u" id="I7i-k2-AVX"/>
                         <segue destination="QQG-3G-Kuh" kind="unwind" identifier="Home" unwindAction="unwindToHome:" id="55q-He-ZHp"/>
                         <segue destination="zwm-jm-CMV" kind="show" identifier="showDetails" id="DYN-H3-xIE"/>
+                        <segue destination="5dD-H1-Bkc" kind="show" identifier="toSetting" id="pxg-gi-Glh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="QQG-3G-Kuh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2669.4656488549617" y="-504.22535211267609"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="h4O-0i-gYT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" id="5dD-H1-Bkc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WC2-Ly-J9B"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7TR-hC-yXl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3298" y="-594"/>
         </scene>
         <!--ItemDetails-->
         <scene sceneID="opn-Yf-4WS">
@@ -172,6 +188,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cWs-PD-OB5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UH2-ix-EPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z8L-hh-Vd1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="MjT-rf-yL2"/>
                     <toolbarItems/>
@@ -184,7 +201,6 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="qfQ-rp-nF5"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UH2-ix-EPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1742.7480916030534" y="-504.22535211267609"/>
         </scene>

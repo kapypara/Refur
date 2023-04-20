@@ -142,6 +142,11 @@ class ProfileViewController: UIViewController ,UICollectionViewDelegate, UIColle
     }
 
     
+    @IBAction func showSettings(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toSetting", sender: self)
+    }
+    
+    
     @IBAction func editProfile(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Edit Profile", message: "Enter new Your Bio", preferredStyle: .alert)

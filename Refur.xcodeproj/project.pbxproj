@@ -59,6 +59,9 @@
 		81B3BB9029DEFC3200B434C8 /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81B3BB8F29DEFC3200B434C8 /* Checkout.storyboard */; };
 		81DCC41B29EC1C9100A43C10 /* CheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCC41A29EC1C9100A43C10 /* CheckoutTableViewController.swift */; };
 		81DCC41D29EC2CAB00A43C10 /* CheckoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCC41C29EC2CAB00A43C10 /* CheckoutCollectionViewCell.swift */; };
+		9CBF6A9629F0BED1009DE82D /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CBF6A9529F0BED1009DE82D /* Setting.storyboard */; };
+		9CBF6A9829F0BF49009DE82D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6A9729F0BF49009DE82D /* SettingsTableViewController.swift */; };
+		9CCDEDC529F0D4B8006A572E /* TextPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDEDC429F0D4B8006A572E /* TextPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +115,9 @@
 		81B3BB8F29DEFC3200B434C8 /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
 		81DCC41A29EC1C9100A43C10 /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
 		81DCC41C29EC2CAB00A43C10 /* CheckoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		9CBF6A9529F0BED1009DE82D /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		9CBF6A9729F0BF49009DE82D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		9CCDEDC429F0D4B8006A572E /* TextPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +210,7 @@
 				6652625F29DA6DCC006D8DC7 /* Add */,
 				6AA6FDBF29DEF5A000D005C1 /* Likes */,
 				6AB3841929E0B00700292C4D /* Profile */,
+				9CBF6A9429F0BEA0009DE82D /* Settings */,
 				6674CA6329E33AF7005AC6FF /* Cart & CheckOut */,
 				6674CA6429E33B10005AC6FF /* Orders */,
 				6A9D143A29E8863A0011CE00 /* ItemDetails */,
@@ -281,6 +288,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		9CBF6A9429F0BEA0009DE82D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9CBF6A9529F0BED1009DE82D /* Setting.storyboard */,
+				9CBF6A9729F0BF49009DE82D /* SettingsTableViewController.swift */,
+				9CCDEDC429F0D4B8006A572E /* TextPageViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -351,6 +368,7 @@
 			files = (
 				3FFAC64F29D47DD100BE739B /* Categories.storyboard in Resources */,
 				81B3BB8929DEF30D00B434C8 /* Cart.storyboard in Resources */,
+				9CBF6A9629F0BED1009DE82D /* Setting.storyboard in Resources */,
 				6A517A6729CB357F00C2929B /* LaunchScreen.storyboard in Resources */,
 				6A517A6429CB357F00C2929B /* Assets.xcassets in Resources */,
 				6A2D1DC929D06DAE004D48B0 /* GoogleService-Info.plist in Resources */,
@@ -377,8 +395,10 @@
 				6A9D143E29E886560011CE00 /* ItemDetailsViewController.swift in Sources */,
 				81B3BB8E29DEFA3B00B434C8 /* CartCheckoutBarTableViewCell.swift in Sources */,
 				6674CA6829E46530005AC6FF /* ProfilePostsCollectionViewCell.swift in Sources */,
+				9CCDEDC529F0D4B8006A572E /* TextPageViewController.swift in Sources */,
 				6623102129D8994F00CD0885 /* AddTableViewController.swift in Sources */,
 				81B3BB8829DEF30D00B434C8 /* OrderTableViewController.swift in Sources */,
+				9CBF6A9829F0BF49009DE82D /* SettingsTableViewController.swift in Sources */,
 				81B3BB8729DEF30D00B434C8 /* OrderTableViewCell.swift in Sources */,
 				6A9AFE7F29D1BCD000C4CFAB /* Profile.swift in Sources */,
 				6A517A5B29CB357E00C2929B /* AppDelegate.swift in Sources */,
