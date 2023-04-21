@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" id="GtQ-xc-T1T">
-                                <rect key="frame" x="0.0" y="103" width="393" height="44"/>
+                                <rect key="frame" x="-2" y="103" width="395" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -63,21 +63,40 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Search" id="cIu-OM-Myg" customClass="HomeCollectionViewCell" customModule="Refur" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="158" height="166"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5rQ-B8-k1r">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="158" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5E-1N-LCD">
-                                                    <rect key="frame" x="8" y="19" width="79" height="70"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U5E-1N-LCD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="158" height="166"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="165" id="AJq-Lj-re9"/>
+                                                        <constraint firstAttribute="width" constant="165" id="TID-55-mnS"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="U5E-1N-LCD" firstAttribute="leading" secondItem="5rQ-B8-k1r" secondAttribute="leading" id="6Qi-bE-EBj"/>
+                                                <constraint firstItem="U5E-1N-LCD" firstAttribute="top" secondItem="5rQ-B8-k1r" secondAttribute="top" id="IcC-ka-JKt"/>
+                                                <constraint firstAttribute="bottom" secondItem="U5E-1N-LCD" secondAttribute="bottom" id="Tny-fT-CNJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="U5E-1N-LCD" secondAttribute="trailing" id="uJy-Qz-RPU"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="158" height="166"/>
                                         <connections>
                                             <outlet property="cellImageView" destination="U5E-1N-LCD" id="2Ln-I8-oVY"/>
                                         </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SearchCell" id="iSy-Kz-YnZ">
+                                        <rect key="frame" x="168" y="10" width="193" height="146"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MZ0-l6-Euu">
+                                            <rect key="frame" x="0.0" y="0.0" width="193" height="146"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="193" height="146"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
