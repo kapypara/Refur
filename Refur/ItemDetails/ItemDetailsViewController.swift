@@ -58,12 +58,16 @@ class ItemDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let post = userPost {
-            Database.Posts[post.postUuid + "/Likes"].setValue(post.likes+1)
-        }
         updateView()
         updateAddButton()
         updateLikeButton() // this only need to be called once
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        userImage.layer.cornerRadius = userImage.bounds.height / 2
+        userImage.clipsToBounds = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,9 +77,6 @@ class ItemDetailsViewController: UIViewController {
     }
     
     func updateView() {
-
-        userImage.layer.cornerRadius = userImage.bounds.height / 2
-        userImage.clipsToBounds = true
         
         guard let userProfile = userProfile, let userPost = userPost else { return }
         
@@ -106,6 +107,21 @@ class ItemDetailsViewController: UIViewController {
         }
         
         itemCondition.text = userPost.item.condition.rawValue
+        
+        
+        Database.Posts[userPost.postUuid + "/Likes"].getData() { error, snapshot in
+
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let likes = snapshot?.value as? Int else { return }
+            
+            self.userPost?.likes = likes
+            print(likes)
+            self.postLikes.setTitle("\(self.userPost!.likes) Likes", for: .normal)
+        }
     }
 
     func updateAddButton() {
@@ -154,16 +170,23 @@ class ItemDetailsViewController: UIViewController {
     
     @IBAction func likePost(_ sender: UIButton) {
         
-        guard let uid = User.uid, let userPost = userPost else { return }
+        guard let uid = User.uid, userPost != nil else { return }
         
         isItemLiked.toggle()
         
-        var filtered = likesArray.filter() { userPost.postUuid != $0 }
+        var filtered = likesArray.filter() { userPost!.postUuid != $0 }
         
         if isItemLiked {
-            filtered.append(userPost.postUuid)
+            filtered.append(userPost!.postUuid)
+            
+            self.userPost!.likes += 1
+        } else {
+            self.userPost!.likes -= 1
         }
         
+        Database.Posts[userPost!.postUuid + "/Likes"].setValue(userPost!.likes)
         Database.Users[uid + "/Likes"].setValue(filtered)
+        
+        updateView()
     }
 }
