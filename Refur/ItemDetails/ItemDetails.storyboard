@@ -199,8 +199,8 @@
                                             <constraint firstAttribute="trailing" secondItem="Ci9-Xj-OGo" secondAttribute="trailing" constant="15" id="lLa-FY-Dnc"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="VFR-p2-3V4">
-                                        <rect key="frame" x="0.0" y="719" width="385" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFR-p2-3V4">
+                                        <rect key="frame" x="0.0" y="719" width="392" height="40"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BA4-Pv-oPn">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
@@ -221,17 +221,18 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Zj-Wp-WHP">
-                                                <rect key="frame" x="88" y="0.0" width="297" height="40"/>
+                                                <rect key="frame" x="70" y="0.0" width="322" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89d-Is-BnM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="322" height="40"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="297" id="rUG-qp-XwG"/>
+                                                            <constraint firstAttribute="width" constant="322" id="PrV-Tw-Nap"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="ADD TO CART">
                                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
-                                                            <color key="baseForegroundColor" red="0.083470590410000003" green="0.065643571319999997" blue="0.2588745952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="baseForegroundColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="addToCart:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="W6S-IC-uxJ"/>

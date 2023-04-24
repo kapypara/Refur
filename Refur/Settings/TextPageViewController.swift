@@ -68,7 +68,7 @@ We value your feedback and use it to guide our ongoing development efforts. Your
 
 let aboutUs = """
 
-Welcome to our Refur! We're a team of passionate thrifters who are committed to making secondhand shopping easier and more accessible for everyone. We believe that thrifting is not only a great way to save money, but also a sustainable choice that helps reduce waste and protect the environment. Our mission is to connect people who love thrift shopping with the best deals and most unique finds in their local area.
+Welcome to Refur! We're a team of passionate thrifters who are committed to making secondhand shopping easier and more accessible for everyone. We believe that thrifting is not only a great way to save money, but also a sustainable choice that helps reduce waste and protect the environment. Our mission is to connect people who love thrift shopping with the best deals and most unique finds in their local area.
 
 Our team is dedicated to providing a seamless experience for our users. We are constantly updating our app to improve its functionality and ensure that it meets the needs of our growing community. We also value your feedback and suggestions, so please don't hesitate to reach out to us if you have any ideas or questions.
 

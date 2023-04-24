@@ -19,10 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tTj-KH-dwQ">
-                                <rect key="frame" x="0.0" y="159" width="393" height="553"/>
+                                <rect key="frame" x="0.0" y="83" width="393" height="629"/>
                                 <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="NEL-TL-30a">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="PW7-rj-fej" id="geW-3m-kNd"/>
+                                        </connections>
+                                    </searchBar>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BWb-Gf-Rc7">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="171"/>
+                                        <rect key="frame" x="0.0" y="76" width="393" height="171"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhf-U5-UHB">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="122"/>
@@ -49,7 +56,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vn1-1A-v5M">
-                                        <rect key="frame" x="0.0" y="191" width="393" height="171"/>
+                                        <rect key="frame" x="0.0" y="267" width="393" height="171"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMA-eP-rwQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="122"/>
@@ -76,7 +83,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KWW-wp-lb1">
-                                        <rect key="frame" x="0.0" y="382" width="393" height="171"/>
+                                        <rect key="frame" x="0.0" y="458" width="393" height="171"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5Z-Wn-nO3">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="122"/>
