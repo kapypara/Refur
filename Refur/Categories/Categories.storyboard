@@ -167,6 +167,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="vFH-b9-WG9" firstAttribute="leading" secondItem="bKw-Dz-Gya" secondAttribute="trailing" constant="61" id="TBT-uj-xXb"/>
+                                                <constraint firstAttribute="height" constant="34.329999999999998" id="XdG-tM-fSV"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
@@ -393,7 +394,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="l1V-mw-jaq"/>
+        <segue reference="z8t-vg-rO5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>

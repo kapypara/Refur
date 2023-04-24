@@ -13,11 +13,11 @@ class ClothingCategoryCollectionViewController: UICollectionViewController {
     
     var selectedPost = ""
     var arrayClothes = [
-        "clothes1",
+        "clothes5",
         "clothes2",
         "clothes3",
         "clothes4",
-        "clothes5",
+        "clothes1",
         "clothes6",
     ]
     
