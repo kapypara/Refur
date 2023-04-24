@@ -15,11 +15,7 @@ private let LikesQueue = DispatchQueue(label: "Likes.serial.queue")
 
 class LikesCollectionViewController: UICollectionViewController {
     
-    var postArray: [Post] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var postArray: [Post] = []
     var profileDict: [String: Profile] = [:]
     
     var selectedPostIndex: Int = 0
@@ -81,10 +77,11 @@ class LikesCollectionViewController: UICollectionViewController {
                     
                     // if we find a new user that is not in the dict we added to it
                     guard self.profileDict[post.userUuid] == nil else { return }
-                    Database.Users.getUser(user: post.userUuid) { loadedProfile in
+                    Database.Users.getUser(user: post.userUuid) { [self] loadedProfile in
                         if let profile = loadedProfile {
                             
                             self.profileDict[post.userUuid] = profile
+                            collectionView.reloadData()
                         }
                     }
                 }
