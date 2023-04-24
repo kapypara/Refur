@@ -41,7 +41,7 @@ class SettingsTableViewController: UITableViewController {
     
     
     func prompatLogout() {
-        let alert = UIAlertController(title: "Logout", message: "are you sure you want to logout", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Sign-Out", message: "Are you sure you want to Sign out?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
             User.signOut() { wasSuccessful in

@@ -96,7 +96,7 @@ class LoginViewController: UIViewController {
                 self.present(alert, animated: true)
                 
             } else {
-                print("log in was susscful")
+                print("Log in was sucessfull")
                 self.performSegue(withIdentifier: "SignInToHome", sender: self)
             }
         }

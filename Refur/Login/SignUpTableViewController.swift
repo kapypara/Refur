@@ -101,11 +101,11 @@ class SignUpTableViewController: UITableViewController {
         
         guard password == passwordrebeat else {
             let alert = UIAlertController(
-                title: "passowrds does not matchs",
-                message: "please reinput password",
+                title: "Passowrds do not match",
+                message: "Please re-enter your password",
                 preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "ok", style: .cancel))
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
             
             self.present(alert, animated: true)
             return
@@ -136,7 +136,7 @@ class SignUpTableViewController: UITableViewController {
                     } else {
                         let alert = UIAlertController(
                             title: "Can't Login",
-                            message: "please try to Login speratly",
+                            message: "Please try to Login seperatly",
                             preferredStyle: .alert)
                         
                         alert.addAction(UIAlertAction(title: "ok", style: .cancel))
@@ -148,10 +148,10 @@ class SignUpTableViewController: UITableViewController {
                 // TODO: write a better message
                 let alert = UIAlertController(
                     title: "Invalid Credentials",
-                    message: "Invalid Credentials, please tryy again",
+                    message: "Invalid Credentials, please try again",
                     preferredStyle: .alert)
                 
-                alert.addAction(UIAlertAction(title: "ok", style: .cancel))
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
                 
                 self.present(alert, animated: true)
             }
