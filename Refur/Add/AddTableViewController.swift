@@ -39,6 +39,15 @@ class AddTableViewController: UITableViewController, UIImagePickerControllerDele
         fields.controller = self
         
         //tableView.usesAutomaticRowHeights = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     // MARK: Add item function
@@ -232,6 +241,10 @@ class AddTableViewController: UITableViewController, UIImagePickerControllerDele
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        view.endEditing(true)
+    }
     
     // MARK: Image Picker Button
     @IBAction func addButtonTapped(_ sender: UIButton) {

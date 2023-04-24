@@ -71,7 +71,7 @@
                                                             <color key="textColor" red="0.088602252300000003" green="0.063352525229999998" blue="0.26750004290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item Details..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EB4-HD-Ghm">
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Details..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EB4-HD-Ghm">
                                                             <rect key="frame" x="0.0" y="29" width="250" height="91"/>
                                                             <color key="backgroundColor" red="0.94523876910000004" green="0.94463765619999995" blue="0.93791359659999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -80,6 +80,7 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                             <connections>
+                                                                <action selector="editingEnded:" destination="ql4-ub-azb" eventType="primaryActionTriggered" id="Agi-II-mxj"/>
                                                                 <action selector="nameChanged:" destination="ql4-ub-azb" eventType="editingChanged" id="N2V-tg-yad"/>
                                                             </connections>
                                                         </textField>
@@ -130,6 +131,7 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             <connections>
+                                                                <action selector="editingEnded:" destination="VHR-fY-HBv" eventType="primaryActionTriggered" id="E14-6z-a9X"/>
                                                                 <action selector="priceChanged:" destination="VHR-fY-HBv" eventType="editingChanged" id="8GQ-wg-QeJ"/>
                                                             </connections>
                                                         </textField>
@@ -298,6 +300,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
+                                                        <action selector="editingEnded:" destination="Tvm-KB-dES" eventType="primaryActionTriggered" id="mdX-AF-17S"/>
                                                         <action selector="fieldChanged:" destination="Tvm-KB-dES" eventType="editingChanged" id="Bx5-uc-LPa"/>
                                                     </connections>
                                                 </textField>
@@ -348,7 +351,7 @@
                                                         <constraint firstItem="7hw-Od-TUT" firstAttribute="height" secondItem="6Pa-6v-Rov" secondAttribute="height" id="o6y-02-lAi"/>
                                                     </constraints>
                                                 </stackView>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Describe your item..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wdo-YM-fRb">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Describe your item..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wdo-YM-fRb">
                                                     <rect key="frame" x="0.0" y="30" width="353" height="100"/>
                                                     <color key="backgroundColor" red="0.94523876910000004" green="0.94463765619999995" blue="0.93791359659999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -358,6 +361,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
+                                                        <action selector="editingEnded:" destination="reG-yX-K6h" eventType="primaryActionTriggered" id="y8a-v3-t5E"/>
                                                         <action selector="fieldChanged:" destination="reG-yX-K6h" eventType="editingChanged" id="CiL-kA-0QD"/>
                                                     </connections>
                                                 </textField>

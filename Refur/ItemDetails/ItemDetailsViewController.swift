@@ -129,7 +129,7 @@ class ItemDetailsViewController: UIViewController {
         guard let userPost = userPost else { return }
         
         // Fake Sale
-        if Float.random(in: 0 ... 1) > 0.7 {
+        if Float.random(in: 0 ... 1) > 0.75 {
             addToCartButton.isEnabled = false
             addToCartButton.setTitle("SOLD", for: .normal)
             return

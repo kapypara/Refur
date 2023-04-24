@@ -74,12 +74,9 @@ class CheckoutTableViewController: UITableViewController, UICollectionViewDataSo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         checkoutCollection.delegate = self
         checkoutCollection.dataSource = self
-        totalItemsLbl.text = "Total items: " + String(checkoutItems.count) 
-        
-        
-        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -93,6 +90,7 @@ class CheckoutTableViewController: UITableViewController, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         checkoutItems = Cart.cart.filter { return $0.selection }
+        totalItemsLbl.text = "Total items: " + String(checkoutItems.count)
         
         return checkoutItems.count
     }

@@ -36,6 +36,10 @@ class ItemHeadCell: UITableViewCell {
             ref.name = itemName.text!
         }
     }
+    
+    @IBAction func editingEnded(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
 }
 
 class PirceCell: UITableViewCell {
@@ -71,7 +75,12 @@ class PirceCell: UITableViewCell {
         }
         
         ref.price = price
-        totalTextField.text = String(format: "BD%.3f", price * 0.1)
+        totalTextField.text = String(format: "BD%.3f", price * 1.1)
+    }
+    
+    
+    @IBAction func editingEnded(_ sender: Any) {
+        (sender as! UITextField).resignFirstResponder()
     }
 }
 
@@ -221,6 +230,9 @@ class FieldCell: UITableViewCell {
         ref.brand = FieldInput.text
     }
     
+    @IBAction func editingEnded(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
 }
 
 class DescriptionCell: UITableViewCell {
@@ -239,6 +251,11 @@ class DescriptionCell: UITableViewCell {
     
     @IBAction func fieldChanged(_ sender: Any) {
         ref.description = DescriptionInput.text
+    }
+    
+    
+    @IBAction func editingEnded(_ sender: UITextField) {
+        sender.resignFirstResponder()
     }
 }
 
