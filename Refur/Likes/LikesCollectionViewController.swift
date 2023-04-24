@@ -59,18 +59,24 @@ class LikesCollectionViewController: UICollectionViewController {
     // MARK: Load Likes
     func populatePostArray() {
         
-        likesHandler = Database.Users[User.uid! + "/Likes"].observe(.value) { snapshot in
+        likesHandler = Database.Users[User.uid! + "/Likes"].observe(.value) { [self] snapshot in
             
             guard let likes = snapshot.value as? [String] else { return }
             
-            self.postArray.removeAll()
+            postArray.removeAll()
             
-            for post in likes {
-                Database.Posts.getPost(post: post) { post in
+            let dummyPost = Post(item: Item.Other(name: "", description: "", condition: .GoodCondition, price: 0.0, type: .Other), images: [""])
+            
+            for _ in 0 ..< likes.count {
+                postArray.append(dummyPost)
+            }
+            
+            for (i, post) in likes.enumerated() {
+                Database.Posts.getPost(post: post) { [self] post in
                     guard let post = post else { return }
                     
                     // at this step we have a newe post to display
-                    self.postArray.append(post)
+                    postArray[i] = post
                     
                     
                     // if we find a new user that is not in the dict we added to it
@@ -102,6 +108,10 @@ class LikesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikesCell", for: indexPath) as! CategoriesCollectionViewCell
         
         let likedPost = postArray[indexPath.row]
+        
+        guard let imageString = likedPost.images.first, !imageString.isEmpty else {
+            return cell
+        }
         
         guard
             let LikedPostPoster = self.profileDict[likedPost.userUuid]
